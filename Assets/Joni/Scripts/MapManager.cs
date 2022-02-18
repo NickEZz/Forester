@@ -24,7 +24,7 @@ public class MapManager : MonoBehaviour
             System.Random rng = new System.Random(seed);
 
             // Laskee maa-palan koon, jotta maa-palat yhdistyy täydellisesti
-            float groundSize = groundPrefabs[0].transform.localScale.x / 5;
+            float groundSize = groundPrefabs[0].transform.localScale.x / 50;
 
             // Laskee offsetin, jotta maa-alueen keskiosa on 0x, 0z positionissa
             float offset = Mathf.Floor(width / 2) * 10;

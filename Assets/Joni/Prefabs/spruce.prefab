@@ -270,7 +270,7 @@ Transform:
   m_GameObject: {fileID: 4143749873871104960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.85, y: -0.028, z: -1.0023}
-  m_LocalScale: {x: 0.09969231, y: 0.09969231, z: 0.09969231}
+  m_LocalScale: {x: 0.035, y: 0.035, z: 0.035}
   m_Children:
   - {fileID: 7600478398760225952}
   - {fileID: 7548928164782228544}
@@ -293,6 +293,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57527e99a303094f8aa193a816118e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  adultTree: 0
+  hp: 3
+  treeHeight: 0
+  growthEveryFrame: 0.0025
+  treeSpawnChance: 20
   loopTime: 1
   timer: 1
   treesInRadius: 0

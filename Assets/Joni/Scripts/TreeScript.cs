@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class TreeScript : MonoBehaviour
 {
+    [SerializeField] int treeType;
+
+    [SerializeField] int hp;
+
+    [SerializeField] float treeHeight;
+
+    [SerializeField] bool adultTree = false;
+
+    [SerializeField] bool beingSawed = false;
+
+    [SerializeField] float growthEveryFrame;
+
+
     [SerializeField] int treeSpawnChance;
 
     [SerializeField] float loopTime = 1;
@@ -12,38 +25,51 @@ public class TreeScript : MonoBehaviour
     [SerializeField] int treesInRadius;
 
     [SerializeField] LayerMask treeMask;
-    public GameObject treePrefab;
+    public ToolScript toolScript;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        treeHeight = Random.Range(0.1f, 0.15f);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Jos puita on enemmän kuin 5 yhdellä alueella, scripti lopettaa puiden generoimisen
-        if (treesInRadius <= 5)
+        if (adultTree) // Sitten ku puu on kasvanut kokonaan, se alkaa spawnaamaan muita puita
         {
-            // Ajastin, kun ajastin on 0, aloittaa ajastimen alusta
-            timer -= Time.deltaTime;
-            if (timer <= 0)
+            // Jos puita on enemmän kuin 5 yhdellä alueella, scripti lopettaa puiden generoimisen
+            if (treesInRadius <= 5)
             {
-                timer = loopTime;
-
-                // Valitsee random numeron 1-20, eli tällä hetkellä 5% mahdollisuus että puu spawnaa
-                float rng = Random.Range(1, 21); 
-                if (rng >= 1)
+                // Ajastin, kun ajastin on 0, aloittaa ajastimen alusta
+                timer -= Time.deltaTime;
+                if (timer <= 0)
                 {
-                    SpawnTree();
-                }
+                    timer = loopTime;
 
-                // Tarkistaa kuinka monta puuta tämän puun lähellä on
-                Collider[] sphere = Physics.OverlapSphere(transform.position, 3f, treeMask);
-                treesInRadius = sphere.Length;
+                    // Valitsee random numeron 1-20, eli tällä hetkellä 5% mahdollisuus että puu spawnaa
+                    float rng = Random.Range(1, 101);
+                    if (rng <= treeSpawnChance)
+                    {
+                        SpawnTree();
+                    }
+
+                    // Tarkistaa kuinka monta puuta tämän puun lähellä on
+                    Collider[] sphere = Physics.OverlapSphere(transform.position, 3f, treeMask);
+                    treesInRadius = sphere.Length;
+                }
             }
         }
+        else // Puu kasvaa ensin
+        {
+            transform.localScale += new Vector3(1, 1, 1) * growthEveryFrame * Time.deltaTime;
+            if (transform.localScale.y >= treeHeight)
+            {
+                adultTree = true;
+            }
+        }
+        
 
 
     }
@@ -64,14 +90,50 @@ public class TreeScript : MonoBehaviour
         Collider[] overlap = Physics.OverlapSphere(treePos.point, 0.5f, treeMask);
         if (overlap.Length == 0)
         {
-            Instantiate(treePrefab, treePos.point, Quaternion.identity);
+            Instantiate(StorageScript.Instance.trees[treeType], treePos.point, Quaternion.identity);
         }
     }
 
-    public void CutTree()
+    public void ChopTree(int damage)
     {
-        Destroy(gameObject);
+        if (!beingSawed)
+        {
+            if (adultTree)
+            {
+                hp -= damage;
+                if (hp <= 0)
+                {
+                    StorageScript.Instance.wood += treeHeight * 10;
+                    Destroy(gameObject);
+                }
+            }
+        }
     }
 
+    public void StartSawing(int damage)
+    {
+        if (!beingSawed)
+        {
+            if (adultTree)
+            {
+                beingSawed = true;
+                StartCoroutine(SawTree(damage));
+            }   
+        }
+    }
 
+    IEnumerator SawTree(int damage)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            hp -= damage;
+            if (hp <= 0)
+            {
+                toolScript.sawing = false;
+                StorageScript.Instance.wood += treeHeight * 10;
+                Destroy(gameObject);
+            }
+        }
+    }
 }

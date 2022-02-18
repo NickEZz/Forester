@@ -53,10 +53,11 @@
     <UnityVersion>2020.3.27f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Joni\Scripts\MapManager.cs" />
-    <Compile Include="Assets\Joni\Scripts\TreeScript.cs" />
     <Compile Include="Assets\Joni\Scripts\ToolScript.cs" />
+    <Compile Include="Assets\Joni\Scripts\MapManager.cs" />
     <Compile Include="Assets\Joni\Scripts\MoveCamera.cs" />
+    <Compile Include="Assets\Joni\Scripts\TreeScript.cs" />
+    <Compile Include="Assets\Joni\StorageScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
