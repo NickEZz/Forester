@@ -5,12 +5,16 @@ using UnityEngine;
 public class ToolScript : MonoBehaviour
 {
     [SerializeField] int tool;
+    [SerializeField] int axeDamage;
+    [SerializeField] int sawDamage;
 
     public bool sawing = false;
 
-    GameObject[] previewObjects;
+    Mesh[] treeMeshes;
     GameObject[] trees;
-    public GameObject currentPreviewObject;
+    [SerializeField] GameObject previewObject;
+    [SerializeField] Renderer previewObjectRenderer;
+    
 
     [SerializeField] LayerMask[] layerMasks;
     [SerializeField] GameObject mainCamera;
@@ -20,17 +24,31 @@ public class ToolScript : MonoBehaviour
     void Start()
     {
         cam = mainCamera.GetComponent<Camera>();
-        previewObjects = StorageScript.Instance.previewObjects;
+        treeMeshes = StorageScript.Instance.treeMeshes;
         trees = StorageScript.Instance.trees;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            tool--;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            tool++;
+        }
+
         Vector2 input = Input.mousePosition;
         Ray ray = cam.ScreenPointToRay(input);
 
         RaycastHit mouse;
+
+        if (tool <= 1)
+        {
+            previewObject.GetComponent<MeshFilter>().mesh = null;
+        }
 
         switch (tool)
         {
@@ -40,7 +58,7 @@ public class ToolScript : MonoBehaviour
                 {
                     if (Physics.Raycast(ray, out mouse, 20f, layerMasks[0]))
                     {
-                        mouse.collider.GetComponent<TreeScript>().ChopTree(1);
+                        mouse.collider.GetComponent<TreeScript>().ChopTree(axeDamage);
                     }
                 }
                 
@@ -50,12 +68,12 @@ public class ToolScript : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    if (Physics.Raycast(ray, out mouse, 20f, layerMasks[1]))
+                    if (Physics.Raycast(ray, out mouse, 20f, layerMasks[0]))
                     {
                         if (!sawing)
                         {
                             sawing = true;
-                            mouse.collider.GetComponent<TreeScript>().StartSawing(1);
+                            mouse.collider.GetComponent<TreeScript>().StartSawing(sawDamage);
                             mouse.collider.GetComponent<TreeScript>().toolScript = this;
                         }
                     }
@@ -64,16 +82,7 @@ public class ToolScript : MonoBehaviour
                 break;
 
             case 2: // Spruce
-
-                if (Physics.Raycast(ray, out mouse, 20f, layerMasks[1]))
-                {
-                    currentPreviewObject.transform.position = mouse.point;
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        Instantiate(trees[0], mouse.point, Quaternion.identity);
-                    }
-                }
-
+                SpawnTree(0, ray);
                 break;
 
             case 3:
@@ -85,8 +94,33 @@ public class ToolScript : MonoBehaviour
         }
     }
 
-    void SpawnTree(int tree)
+    void SpawnTree(int tree, Ray ray)
     {
+        RaycastHit mouse;
 
+        if (Physics.Raycast(ray, out mouse, 20f, layerMasks[1]))
+        {
+            previewObject.GetComponent<MeshFilter>().mesh = treeMeshes[0]; // Muuttaa previewobjectin meshin     Pitäs keksiä joku tapa miten peli ei kutsuis getcomponent metodia joka frame, huono performancelle
+            previewObject.transform.position = mouse.point; // Liikuttaa previewobjectia sinne missä hiiri on
+
+            Collider[] overlap = Physics.OverlapSphere(mouse.point, 0.5f, layerMasks[0]);
+            if (overlap.Length > 0)
+            {
+                previewObjectRenderer.materials[1].SetColor("_Color", Color.red); // new Color(255f, 0f, 0f)
+            }
+            else if (overlap.Length == 0)
+            {
+                previewObjectRenderer.materials[1].SetColor("_Color", Color.white); // new Color(255f, 255f, 255f)
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (StorageScript.Instance.spruceSaplings > 0)
+                    {
+                        StorageScript.Instance.spruceSaplings--;
+                        Instantiate(trees[tree], mouse.point, Quaternion.identity);
+                    }
+                }
+            }
+        }
     }
 }

@@ -8,6 +8,8 @@ public class TreeScript : MonoBehaviour
 
     [SerializeField] int hp;
 
+    [SerializeField] float averageTreeHeight;
+
     [SerializeField] float treeHeight;
 
     [SerializeField] bool adultTree = false;
@@ -30,8 +32,7 @@ public class TreeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        treeHeight = Random.Range(0.1f, 0.15f);
-        
+        treeHeight = Random.Range(averageTreeHeight - 0.02f, averageTreeHeight + 0.02f);   
     }
 
     // Update is called once per frame
@@ -76,8 +77,8 @@ public class TreeScript : MonoBehaviour
     void SpawnTree()
     {
         // Valitsee random sijainnin puun läheltä jonne spawnata uusi puu
-        float x = Random.Range(-2f, 3f);
-        float z = Random.Range(-2f, 3f);
+        float x = Random.Range(-1f, 2f);
+        float z = Random.Range(-1f, 2f);
 
         
         Vector3 rayPos = new Vector3(transform.position.x - x, 10f, transform.position.z - z);
@@ -87,7 +88,7 @@ public class TreeScript : MonoBehaviour
         Physics.Raycast(rayPos, Vector3.down, out treePos);
 
         // Tarkistaa ensin onko halutulla alueella puuta valmiiksi, että uusi puu ei spawnaa olemassa olevan puun sisälle. Jos alueella on jo puu, toistaa tämän metodin uudelleen
-        Collider[] overlap = Physics.OverlapSphere(treePos.point, 0.5f, treeMask);
+        Collider[] overlap = Physics.OverlapSphere(treePos.point, 0.7f, treeMask);
         if (overlap.Length == 0)
         {
             Instantiate(StorageScript.Instance.trees[treeType], treePos.point, Quaternion.identity);
