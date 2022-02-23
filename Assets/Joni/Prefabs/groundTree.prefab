@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 744226502393522982}
   - component: {fileID: 3292396612596801516}
   - component: {fileID: 5914279314818367851}
-  m_Layer: 8
+  - component: {fileID: 1087341967498821908}
+  - component: {fileID: 1141765569162081991}
+  m_Layer: 10
   m_Name: groundTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3940664200856583737}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 500, y: 500, z: 500}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &744226502393522982
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -60,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4874126678125670354, guid: 7d3b55c3ede46204a9e72400c60b6e6f, type: 3}
+  - {fileID: 2100000, guid: 8aa7ba0c4aa38e14ab94a15fe4ae84f1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91,8 +93,42 @@ MeshCollider:
   m_GameObject: {fileID: 3940664200856583737}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7196802604745430461, guid: 7d3b55c3ede46204a9e72400c60b6e6f, type: 3}
+--- !u!65 &1087341967498821908
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3940664200856583737}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.020009372, z: 0.0013493138}
+  m_Center: {x: 0, y: -0.000004687346, z: 0.00012322793}
+--- !u!114 &1141765569162081991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3940664200856583737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a6c51a0ba9cec4bbe491c3de44d9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bought: 0
+  grassMat: {fileID: 2100000, guid: f38cf7c0e9ca4a842af365f91180335c, type: 2}
+  size: {x: 4.75, y: 5, z: 4.75}
+  gridPartMasks:
+  - serializedVersion: 2
+    m_Bits: 2048
+  - serializedVersion: 2
+    m_Bits: 4096
+  planeMesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}

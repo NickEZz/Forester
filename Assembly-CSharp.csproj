@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,15 +53,14 @@
     <UnityVersion>2020.3.27f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Assets\Joni\Scripts\ToolScript.cs" />
+    <Compile Include="Assets\Joni\Scripts\BuildScript.cs" />
     <Compile Include="Assets\Joni\Scripts\StorageScript.cs" />
     <Compile Include="Assets\Joni\Scripts\MapManager.cs" />
     <Compile Include="Assets\Joni\Scripts\MoveCamera.cs" />
+    <Compile Include="Assets\Joni\Scripts\AreaScript.cs" />
     <Compile Include="Assets\Joni\Scripts\TreeScript.cs" />
-    <Compile Include="Assets\BuildScript.cs" />
+    <Compile Include="Assets\Joni\test.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

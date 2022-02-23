@@ -11,8 +11,6 @@ public class MapManager : MonoBehaviour
     [SerializeField] int width;
     [SerializeField] int height;
 
-    //[SerializeField] float groundSize;
-
     [SerializeField] GameObject[] groundPrefabs;
 
 
@@ -34,8 +32,17 @@ public class MapManager : MonoBehaviour
             {
                 for (int x = 0; x < width; x++)
                 {
-                    // Luo maapalan valitsemalla random maa-palan kaikista saatavilla olevista maa-paloista ja laittamalla sen maa-palan oikeaan paikkaan
-                    Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize - offset, 0, y * groundSize - offset), Quaternion.Euler(-90f, 0f, 0f));
+                    if (y == Mathf.Floor(height / 2) && x == Mathf.Floor(width / 2))
+                    {
+                        // Keskimmäinen maa-pala on valmiiksi ostettu
+                        GameObject center = Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize - offset, 0, y * groundSize - offset), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
+                        center.GetComponent<AreaScript>().bought = true;
+                    }
+                    else
+                    {
+                        // Luo maapalan valitsemalla random maa-palan kaikista saatavilla olevista maa-paloista ja laittamalla sen maa-palan oikeaan paikkaan
+                        Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize - offset, 0, y * groundSize - offset), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
+                    }
                 }
             }
         }

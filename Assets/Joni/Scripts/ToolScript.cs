@@ -14,7 +14,8 @@ public class ToolScript : MonoBehaviour
     GameObject[] trees;
     [SerializeField] GameObject previewObject;
     [SerializeField] Renderer previewObjectRenderer;
-    
+
+    BuildScript buildScript;
 
     [SerializeField] LayerMask[] layerMasks;
     [SerializeField] GameObject mainCamera;
@@ -26,71 +27,75 @@ public class ToolScript : MonoBehaviour
         cam = mainCamera.GetComponent<Camera>();
         treeMeshes = StorageScript.Instance.treeMeshes;
         trees = StorageScript.Instance.trees;
+        buildScript = GetComponent<BuildScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (!buildScript.buildMode)
         {
-            tool--;
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            tool++;
-        }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                tool--;
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                tool++;
+            }
 
-        Vector2 input = Input.mousePosition;
-        Ray ray = cam.ScreenPointToRay(input);
+            Vector2 input = Input.mousePosition;
+            Ray ray = cam.ScreenPointToRay(input);
 
-        RaycastHit mouse;
+            RaycastHit mouse;
 
-        if (tool <= 1)
-        {
-            previewObject.GetComponent<MeshFilter>().mesh = null;
-        }
+            if (tool <= 1)
+            {
+                previewObject.GetComponent<MeshFilter>().mesh = null;
+            }
 
-        switch (tool)
-        {
-            case 0: // Kirves
+            switch (tool)
+            {
+                case 0: // Kirves
 
-                if (Input.GetMouseButtonDown(0))
-                {
-                    if (Physics.Raycast(ray, out mouse, 20f, layerMasks[0]))
+                    if (Input.GetMouseButtonDown(0))
                     {
-                        mouse.collider.GetComponent<TreeScript>().ChopTree(axeDamage);
-                    }
-                }
-                
-                break;
-
-            case 1: // Saha
-
-                if (Input.GetMouseButtonDown(0))
-                {
-                    if (Physics.Raycast(ray, out mouse, 20f, layerMasks[0]))
-                    {
-                        if (!sawing)
+                        if (Physics.Raycast(ray, out mouse, 20f, layerMasks[0]))
                         {
-                            sawing = true;
-                            mouse.collider.GetComponent<TreeScript>().StartSawing(sawDamage);
-                            mouse.collider.GetComponent<TreeScript>().toolScript = this;
+                            mouse.collider.GetComponent<TreeScript>().ChopTree(axeDamage);
                         }
                     }
-                }
 
-                break;
+                    break;
 
-            case 2: // Spruce
-                SpawnTree(0, ray);
-                break;
+                case 1: // Saha
 
-            case 3:
-                break;
-            case 4:
-                break;
-            default:
-                break;
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        if (Physics.Raycast(ray, out mouse, 20f, layerMasks[0]))
+                        {
+                            if (!sawing)
+                            {
+                                sawing = true;
+                                mouse.collider.GetComponent<TreeScript>().StartSawing(sawDamage);
+                                mouse.collider.GetComponent<TreeScript>().toolScript = this;
+                            }
+                        }
+                    }
+
+                    break;
+
+                case 2: // Spruce
+                    SpawnTree(0, ray);
+                    break;
+
+                case 3:
+                    break;
+                case 4:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

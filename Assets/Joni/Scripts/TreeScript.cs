@@ -18,6 +18,7 @@ public class TreeScript : MonoBehaviour
 
     [SerializeField] float growthEveryFrame;
 
+    Animator animator;
 
     [SerializeField] int treeSpawnChance;
 
@@ -26,13 +27,14 @@ public class TreeScript : MonoBehaviour
 
     [SerializeField] int treesInRadius;
 
-    [SerializeField] LayerMask treeMask;
+    [SerializeField] LayerMask[] layerMasks;
     public ToolScript toolScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        treeHeight = Random.Range(averageTreeHeight - 0.02f, averageTreeHeight + 0.02f);   
+        treeHeight = Random.Range(averageTreeHeight - 0.02f, averageTreeHeight + 0.02f);
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -57,7 +59,7 @@ public class TreeScript : MonoBehaviour
                     }
 
                     // Tarkistaa kuinka monta puuta tämän puun lähellä on
-                    Collider[] sphere = Physics.OverlapSphere(transform.position, 3f, treeMask);
+                    Collider[] sphere = Physics.OverlapSphere(transform.position, 3f, layerMasks[0]);
                     treesInRadius = sphere.Length;
                 }
             }
@@ -88,10 +90,14 @@ public class TreeScript : MonoBehaviour
         Physics.Raycast(rayPos, Vector3.down, out treePos);
 
         // Tarkistaa ensin onko halutulla alueella puuta valmiiksi, että uusi puu ei spawnaa olemassa olevan puun sisälle. Jos alueella on jo puu, toistaa tämän metodin uudelleen
-        Collider[] overlap = Physics.OverlapSphere(treePos.point, 0.7f, treeMask);
+        Collider[] overlap = Physics.OverlapSphere(treePos.point, 0.7f, layerMasks[1]);
         if (overlap.Length == 0)
         {
             Instantiate(StorageScript.Instance.trees[treeType], treePos.point, Quaternion.identity);
+        }
+        else
+        {
+            SpawnTree();
         }
     }
 
@@ -105,7 +111,7 @@ public class TreeScript : MonoBehaviour
                 if (hp <= 0)
                 {
                     StorageScript.Instance.wood += treeHeight * 10;
-                    Destroy(gameObject);
+                    animator.SetTrigger("Cut");
                 }
             }
         }
@@ -133,8 +139,13 @@ public class TreeScript : MonoBehaviour
             {
                 toolScript.sawing = false;
                 StorageScript.Instance.wood += treeHeight * 10;
-                Destroy(gameObject);
+                animator.SetTrigger("Cut");
             }
         }
+    }
+
+    void DestroyTree()
+    {
+        Destroy(gameObject);
     }
 }

@@ -9,6 +9,8 @@ public class StorageScript : MonoBehaviour
     public float money;
     public float wood;
 
+    public float workingPower;
+
     public GameObject[] trees;
     public Mesh[] treeMeshes;
     public int spruceSaplings;
