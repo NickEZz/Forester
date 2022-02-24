@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 744226502393522982}
   - component: {fileID: 3292396612596801516}
   - component: {fileID: 5914279314818367851}
-  - component: {fileID: 1087341967498821908}
   - component: {fileID: 1141765569162081991}
   m_Layer: 10
   m_Name: groundTree
@@ -93,24 +92,11 @@ MeshCollider:
   m_GameObject: {fileID: 3940664200856583737}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7196802604745430461, guid: 7d3b55c3ede46204a9e72400c60b6e6f, type: 3}
---- !u!65 &1087341967498821908
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3940664200856583737}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.020009372, z: 0.0013493138}
-  m_Center: {x: 0, y: -0.000004687346, z: 0.00012322793}
 --- !u!114 &1141765569162081991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bought: 0
-  grassMat: {fileID: 2100000, guid: f38cf7c0e9ca4a842af365f91180335c, type: 2}
+  buildingsInArea: 0
+  grassMat: {fileID: 2100000, guid: 62f73d8016c37c34b838056f114c92c0, type: 2}
   size: {x: 4.75, y: 5, z: 4.75}
   gridPartMasks:
   - serializedVersion: 2

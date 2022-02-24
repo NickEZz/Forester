@@ -36,12 +36,10 @@ public class BuildScript : MonoBehaviour
 
     /*
      * Todo
-     * 
-     * ei kuulu tänne mutta estä puut spawnaamasta ei-ostetuille alueille
      *
      * rotate? vois olla iha hyvä
      * 
-     * 
+     * talon rakentamisessa kestää aikaa
      * 
      * puun hakkuun automatisointi kun on rakennuksia: 
      * eli jokaisella rakennuksella oma tuottomäärä, laske ne kaikki yhteen
@@ -117,6 +115,10 @@ public class BuildScript : MonoBehaviour
                     if (StorageScript.Instance.money >= buildings[selectedBuilding].moneyCost && StorageScript.Instance.wood >= buildings[selectedBuilding].woodCost)
                     {
                         SpawnHouse(selectedBuilding);
+                    }
+                    else
+                    {
+                        // Joku teksti että ei riitä raha/puu
                     }
                 }
             }
@@ -201,12 +203,23 @@ public class BuildScript : MonoBehaviour
 
     void SpawnHouse(int select)
     {
-        StorageScript.Instance.money -= buildings[select].moneyCost;
-        StorageScript.Instance.wood -= buildings[select].woodCost;
-        StorageScript.Instance.workingPower += buildings[select].workingPower;
         RaycastHit hit;
         Physics.Raycast(previewTargetPos + new Vector3(0f, 2f, 0f), Vector3.down, out hit, 10f, layerMasks[0]);
-        Instantiate(buildings[select].buildingPrefab, hit.point - new Vector3(0, 0.240f, 0), Quaternion.identity);
+
+        AreaScript targetArea = hit.collider.gameObject.GetComponent<AreaScript>();
+
+        if (targetArea.buildingsInArea < 5)
+        {
+            targetArea.buildingsInArea++;
+            StorageScript.Instance.money -= buildings[select].moneyCost;
+            StorageScript.Instance.wood -= buildings[select].woodCost;
+            StorageScript.Instance.workingPower += buildings[select].workingPower;
+            Instantiate(buildings[select].buildingPrefab, hit.point + new Vector3(0, 0.14f, 0), Quaternion.identity);
+        }
+        else
+        {
+            // Joku teksti että max määrä taloja
+        }
     }
 }
 

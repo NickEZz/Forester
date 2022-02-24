@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ToolScript : MonoBehaviour
 {
-    [SerializeField] int tool;
+    public int tool;
     [SerializeField] int axeDamage;
     [SerializeField] int sawDamage;
 

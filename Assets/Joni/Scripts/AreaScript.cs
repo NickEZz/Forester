@@ -6,6 +6,8 @@ public class AreaScript : MonoBehaviour
 {
     public bool bought = false;
 
+    public int buildingsInArea;
+
     [SerializeField] Material grassMat;
 
     Renderer currentMaterial;
@@ -52,9 +54,6 @@ public class AreaScript : MonoBehaviour
                 gridParts[i].gameObject.GetComponent<MeshFilter>().mesh = planeMesh;
                 gridParts[i].gameObject.layer = 11;
             }
-        }
-        
+        }   
     }
-
-
 }

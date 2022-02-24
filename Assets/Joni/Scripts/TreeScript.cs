@@ -138,8 +138,9 @@ public class TreeScript : MonoBehaviour
             if (hp <= 0)
             {
                 toolScript.sawing = false;
-                StorageScript.Instance.wood += treeHeight * 10;
+                StorageScript.Instance.wood += treeHeight * 10; // Koska coroutine ei lopu heti, peli antaa lisää rahaa kunnes kaatumisanimaatio loppuu, pitää korjata
                 animator.SetTrigger("Cut");
+                yield break;
             }
         }
     }
