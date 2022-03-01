@@ -12,11 +12,14 @@ public class TreeScript : MonoBehaviour
 
     [SerializeField] float treeHeight;
 
-    [SerializeField] bool adultTree = false;
+    public bool adultTree = false;
 
     [SerializeField] bool beingSawed = false;
 
     [SerializeField] float growthEveryFrame;
+
+    AreaScript areaOfTree;
+    GameObject newTree;
 
     Animator animator;
 
@@ -33,8 +36,16 @@ public class TreeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        treeHeight = Random.Range(averageTreeHeight - 0.02f, averageTreeHeight + 0.02f);
+        treeHeight = Random.Range(averageTreeHeight - 0.02f, averageTreeHeight + 0.02f); // Arpoo random numeron puun korkeudelle
         animator = GetComponent<Animator>();
+
+        RaycastHit treePos;
+        Physics.Raycast(new Vector3(transform.position.x, 10f, transform.position.z), Vector3.down, out treePos, 20f, layerMasks[2]);
+       
+        areaOfTree = treePos.collider.GetComponent<AreaScript>();
+        areaOfTree.treesInArea.Add(gameObject);
+
+        transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0);
     }
 
     // Update is called once per frame
@@ -42,32 +53,43 @@ public class TreeScript : MonoBehaviour
     {
         if (adultTree) // Sitten ku puu on kasvanut kokonaan, se alkaa spawnaamaan muita puita
         {
-            // Jos puita on enemmän kuin 5 yhdellä alueella, scripti lopettaa puiden generoimisen
+            // Ajastin, kun ajastin on 0, aloittaa ajastimen alusta
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                timer = loopTime;
+
+                // Valitsee random numeron 1-100 eli 1-100%
+                float rng = Random.Range(1, 101);
+                if (rng <= treeSpawnChance)
+                {
+                    SpawnTree();
+                }
+
+                // Tarkistaa kuinka monta puuta tämän puun lähellä on
+                Collider[] sphere = Physics.OverlapSphere(transform.position, 3f, layerMasks[0]);
+                treesInRadius = sphere.Length;
+            }
+
+            /*// Jos puita on enemmän kuin 5 yhdellä alueella, scripti lopettaa puiden generoimisen
             if (treesInRadius <= 5)
             {
-                // Ajastin, kun ajastin on 0, aloittaa ajastimen alusta
-                timer -= Time.deltaTime;
-                if (timer <= 0)
-                {
-                    timer = loopTime;
-
-                    // Valitsee random numeron 1-20, eli tällä hetkellä 5% mahdollisuus että puu spawnaa
-                    float rng = Random.Range(1, 101);
-                    if (rng <= treeSpawnChance)
-                    {
-                        SpawnTree();
-                    }
-
-                    // Tarkistaa kuinka monta puuta tämän puun lähellä on
-                    Collider[] sphere = Physics.OverlapSphere(transform.position, 3f, layerMasks[0]);
-                    treesInRadius = sphere.Length;
-                }
-            }
+                
+            }*/
         }
         else // Puu kasvaa ensin
         {
-            transform.localScale += new Vector3(1, 1, 1) * growthEveryFrame * Time.deltaTime;
-            if (transform.localScale.y >= treeHeight)
+            if (areaOfTree.builtBuildingsInArea > 0) // Puu kasvaa nopeammin jos alueella on rakennuksia
+            {
+                transform.localScale += new Vector3(1, 1, 1) * growthEveryFrame * (areaOfTree.builtBuildingsInArea + 1) * Time.deltaTime;
+            }
+            else
+            {
+                transform.localScale += new Vector3(1, 1, 1) * growthEveryFrame * Time.deltaTime;
+
+            }
+            
+            if (transform.localScale.y >= treeHeight) // Kun puu on kasvanut
             {
                 adultTree = true;
             }
@@ -76,6 +98,7 @@ public class TreeScript : MonoBehaviour
 
 
     }
+
     void SpawnTree()
     {
         // Valitsee random sijainnin puun läheltä jonne spawnata uusi puu
@@ -93,11 +116,11 @@ public class TreeScript : MonoBehaviour
         Collider[] overlap = Physics.OverlapSphere(treePos.point, 0.7f, layerMasks[1]);
         if (overlap.Length == 0)
         {
-            Instantiate(StorageScript.Instance.trees[treeType], treePos.point, Quaternion.identity);
+            GameObject newTree = Instantiate(StorageScript.Instance.trees[treeType], treePos.point, Quaternion.identity);
         }
         else
         {
-            SpawnTree();
+            // spawnaa puu jonnekki muualle
         }
     }
 
@@ -110,8 +133,8 @@ public class TreeScript : MonoBehaviour
                 hp -= damage;
                 if (hp <= 0)
                 {
-                    StorageScript.Instance.wood += treeHeight * 10;
-                    animator.SetTrigger("Cut");
+                    //animator.SetTrigger("Cut");
+                    StartAnimation();
                 }
             }
         }
@@ -138,11 +161,17 @@ public class TreeScript : MonoBehaviour
             if (hp <= 0)
             {
                 toolScript.sawing = false;
-                StorageScript.Instance.wood += treeHeight * 10; // Koska coroutine ei lopu heti, peli antaa lisää rahaa kunnes kaatumisanimaatio loppuu, pitää korjata
-                animator.SetTrigger("Cut");
+                //animator.SetTrigger("Cut");
+                StartAnimation();
                 yield break;
             }
         }
+    }
+
+    public void StartAnimation()
+    {
+        animator.SetTrigger("Cut");
+        StorageScript.Instance.wood += treeHeight * 10;
     }
 
     void DestroyTree()

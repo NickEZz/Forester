@@ -9,8 +9,6 @@ public class StorageScript : MonoBehaviour
     public float money;
     public float wood;
 
-    public float workingPower;
-
     public GameObject[] trees;
     public Mesh[] treeMeshes;
     public int spruceSaplings;
@@ -26,5 +24,10 @@ public class StorageScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Update()
+    {
+        // workingPower loop tähän?
     }
 }

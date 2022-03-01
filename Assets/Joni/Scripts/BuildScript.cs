@@ -5,7 +5,9 @@ using UnityEngine;
 public class BuildScript : MonoBehaviour
 {
     public bool buildMode;
-    [SerializeField] int selectedBuilding;
+    public int selectedBuilding;
+
+    public bool inStore;
 
     [SerializeField] bool movingBuilding;
 
@@ -37,24 +39,13 @@ public class BuildScript : MonoBehaviour
     /*
      * Todo
      *
-     * rotate? vois olla iha hyvä
-     * 
-     * talon rakentamisessa kestää aikaa
-     * 
-     * puun hakkuun automatisointi kun on rakennuksia: 
-     * eli jokaisella rakennuksella oma tuottomäärä, laske ne kaikki yhteen
-     * sen kokonaisen tuottomäärän perusteella joko: 
-     * 
-     * anna puuta kokoajan pelaajalle ilman että puita katoaa kartalta
-     * tai
-     * kaikki paitsi 1-5 puuta kaatuu joka ? 10 min vaikka
      */
 
 
     // Update is called once per frame
     void Update() // Kommentoin myöhemmin ku koko scripti valmis tai pyynnöstä!!!! tiiän että on vähän sekava vielä
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.B) && !inStore)
         {
             buildMode = !buildMode;
         }
@@ -68,6 +59,10 @@ public class BuildScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 selectedBuilding++;
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                RotateHouse();
             }
 
             if (buildingArea == null)
@@ -172,26 +167,25 @@ public class BuildScript : MonoBehaviour
         return direction;
     }
 
-    void DestroyBuilding(float workingPower) // Probably not needed
-    {
-        // Joku tuhoamisanimaatio tähän
-        StorageScript.Instance.workingPower -= workingPower;
-        Destroy(gameObject);
-    }
-
     IEnumerator MoveBuilding(GameObject movableObject)
     {
+        previewObject.transform.rotation = movableObject.transform.rotation;
+
         while (true)
         {
+            RaycastHit hit;
+            Physics.Raycast(previewTargetPos + new Vector3(0f, 2f, 0f), Vector3.down, out hit, 10f, layerMasks[0]);
+
             movingBuilding = true;
 
-            movableObject.transform.position = previewObject.transform.position;
+            movableObject.transform.position = new Vector3(previewObject.transform.position.x, hit.point.y, previewObject.transform.position.z);
+            movableObject.transform.rotation = previewObject.transform.rotation;
 
             yield return null;
 
             if (Input.GetMouseButtonDown(0))
             {
-                movableObject.transform.position = previewTargetPos;
+                movableObject.transform.position = new Vector3(previewTargetPos.x, hit.point.y, previewTargetPos.z);
                 break;
             }
         }
@@ -208,18 +202,23 @@ public class BuildScript : MonoBehaviour
 
         AreaScript targetArea = hit.collider.gameObject.GetComponent<AreaScript>();
 
-        if (targetArea.buildingsInArea < 5)
+        if (targetArea.totalBuildingsInArea < 6)
         {
-            targetArea.buildingsInArea++;
             StorageScript.Instance.money -= buildings[select].moneyCost;
             StorageScript.Instance.wood -= buildings[select].woodCost;
-            StorageScript.Instance.workingPower += buildings[select].workingPower;
-            Instantiate(buildings[select].buildingPrefab, hit.point + new Vector3(0, 0.14f, 0), Quaternion.identity);
+
+            GameObject building = Instantiate(buildings[select].buildingPrefab, hit.point + new Vector3(0, 0.14f, 0), previewObject.transform.rotation);
+            building.GetComponent<HouseScript>().CopyVars(buildings[select].workingPower, targetArea);
         }
         else
         {
             // Joku teksti että max määrä taloja
         }
+    }
+
+    void RotateHouse()
+    {
+        previewObject.transform.rotation = previewObject.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
     }
 }
 

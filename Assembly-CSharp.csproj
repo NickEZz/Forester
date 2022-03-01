@@ -60,8 +60,9 @@
     <Compile Include="Assets\Joni\Scripts\MoveCamera.cs" />
     <Compile Include="Assets\Joni\Scripts\AreaScript.cs" />
     <Compile Include="Assets\Joni\Scripts\TreeScript.cs" />
-    <Compile Include="Assets\Joni\test.cs" />
     <Compile Include="Assets\Joni\Scripts\UIScript.cs" />
+    <Compile Include="Assets\Joni\test.cs" />
+    <Compile Include="Assets\Joni\Scripts\HouseScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

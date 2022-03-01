@@ -6,7 +6,16 @@ public class AreaScript : MonoBehaviour
 {
     public bool bought = false;
 
-    public int buildingsInArea;
+    public int totalBuildingsInArea;
+    public int builtBuildingsInArea;
+    public List<GameObject> treesInArea;
+
+    public float workingPower;
+
+    [SerializeField] bool working;
+
+    [SerializeField] float loopTime = 10;
+    [SerializeField] float timer;
 
     [SerializeField] Material grassMat;
 
@@ -32,6 +41,45 @@ public class AreaScript : MonoBehaviour
             GetComponent<MeshCollider>().enabled = true;
             gameObject.layer = 8;
             currentMaterial.material = grassMat;
+
+            if (builtBuildingsInArea > 0)
+            {
+                loopTime = 10 - 1.429f * builtBuildingsInArea; // needs to include workingpower in calculation
+
+                if (treesInArea.Count > 10)
+                {
+                    working = true;
+                }
+            }
+        }
+
+        if (working)
+        {
+            if (treesInArea.Count > 2)
+            {
+                timer -= Time.deltaTime;
+
+                if (timer <= 0)
+                {
+                    foreach (var tree in treesInArea)
+                    {
+                        TreeScript treeScript = tree.GetComponent<TreeScript>(); 
+                        if (treeScript.adultTree)
+                        {
+                            treeScript.StartAnimation();
+                            treesInArea.Remove(tree);
+                            timer = loopTime;
+
+                            break;
+                        }
+                    }
+                    
+                }
+            }
+            else
+            {
+                working = false;
+            }
         }
 
 

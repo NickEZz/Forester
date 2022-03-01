@@ -102,14 +102,12 @@ MonoBehaviour:
   treeHeight: 0
   adultTree: 0
   beingSawed: 0
-  growthEveryFrame: 0.0025
+  growthEveryFrame: 0.01
   treeSpawnChance: 5
   loopTime: 1
   timer: 1
   treesInRadius: 0
-  treeMask:
-    serializedVersion: 2
-    m_Bits: 64
+  layerMasks: []
   toolScript: {fileID: 0}
 --- !u!65 &8302725108442691232
 BoxCollider:
