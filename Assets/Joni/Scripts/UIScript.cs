@@ -95,4 +95,22 @@ public class UIScript : MonoBehaviour
         elementsToHide[4].SetActive(!elementsToHide[4].activeSelf);
         buildScript.inStore = elementsToHide[4].activeSelf;
     }
+    
+    public void SellOneSpruce()
+    {
+        if (StorageScript.Instance.wood >= 1)
+        {
+            StorageScript.Instance.wood--;
+            StorageScript.Instance.money += 60f;
+        }
+    }
+
+    public void SellTenSpruce()
+    {
+        if (StorageScript.Instance.wood >= 10)
+        {
+            StorageScript.Instance.wood -= 10f;
+            StorageScript.Instance.money += 10f * 60f;
+        }
+    }
 }
