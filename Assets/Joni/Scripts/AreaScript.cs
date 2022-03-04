@@ -5,6 +5,7 @@ using UnityEngine;
 public class AreaScript : MonoBehaviour
 {
     public bool bought = false;
+    public int sector;
 
     public int totalBuildingsInArea;
     public int builtBuildingsInArea;
@@ -63,7 +64,7 @@ public class AreaScript : MonoBehaviour
                 {
                     foreach (var tree in treesInArea)
                     {
-                        TreeScript treeScript = tree.GetComponent<TreeScript>(); 
+                        TreeScript treeScript = tree.GetComponent<TreeScript>();
                         if (treeScript.adultTree)
                         {
                             treeScript.StartAnimation();
@@ -103,5 +104,18 @@ public class AreaScript : MonoBehaviour
                 gridParts[i].gameObject.layer = 11;
             }
         }   
+    }
+
+    public void BuySector()
+    {
+        if (StorageScript.Instance.money >= 100f)
+        {
+            bought = true;
+            StorageScript.Instance.money -= 100f;
+            if (sector > StorageScript.Instance.currentSector)
+            {
+                StorageScript.Instance.currentSector = sector;
+            }
+        }
     }
 }

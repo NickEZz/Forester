@@ -1,0 +1,270 @@
+fileFormatVersion: 2
+guid: 2d64d339ea6590449aa61534e7ed05b2
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: 2074941241143569134
+    second: bottom|baseAction
+  - first:
+      74: -8126061483113363038
+    second: bottom|bottomAction
+  - first:
+      74: 8012181734807501418
+    second: bottom|chimneyAction
+  - first:
+      74: 1770848927130045461
+    second: bottom|doorstairsAction
+  - first:
+      74: 2477327884709700750
+    second: bottom|inside stairsAction
+  - first:
+      74: -8027768145465125051
+    second: bottom|outside propsAction
+  - first:
+      74: 2662447049296714074
+    second: bottom|roofAction
+  - first:
+      74: 1615693446319341192
+    second: bottom|upstairsfloorAction
+  - first:
+      74: -8259362887559592654
+    second: base|baseAction
+  - first:
+      74: 1709703276431157404
+    second: base|bottomAction
+  - first:
+      74: -4789615116026730492
+    second: base|chimneyAction
+  - first:
+      74: -5178009332593554242
+    second: base|doorstairsAction
+  - first:
+      74: 255214439265801998
+    second: base|inside stairsAction
+  - first:
+      74: -2950063462790407621
+    second: base|outside propsAction
+  - first:
+      74: 8684677431772253698
+    second: base|roofAction
+  - first:
+      74: -3642558054709142408
+    second: base|upstairsfloorAction
+  - first:
+      74: -2624654408607875217
+    second: roof|baseAction
+  - first:
+      74: -5289816034458836139
+    second: roof|bottomAction
+  - first:
+      74: 2189575670406719560
+    second: roof|chimneyAction
+  - first:
+      74: -7719707342215734788
+    second: roof|doorstairsAction
+  - first:
+      74: 4070222132222950683
+    second: roof|inside stairsAction
+  - first:
+      74: -3127584555853198042
+    second: roof|outside propsAction
+  - first:
+      74: -5815249584982796546
+    second: roof|roofAction
+  - first:
+      74: 7282852303989814086
+    second: roof|upstairsfloorAction
+  - first:
+      74: -221468689886865604
+    second: upstairsfloor|baseAction
+  - first:
+      74: 2400642168754499501
+    second: upstairsfloor|bottomAction
+  - first:
+      74: -6919163522211998347
+    second: upstairsfloor|chimneyAction
+  - first:
+      74: 1952658897196498478
+    second: upstairsfloor|doorstairsAction
+  - first:
+      74: -8530184957449377732
+    second: upstairsfloor|inside stairsAction
+  - first:
+      74: -5431456097353579471
+    second: upstairsfloor|outside propsAction
+  - first:
+      74: 4519823199252176959
+    second: upstairsfloor|roofAction
+  - first:
+      74: 1335122031051697562
+    second: upstairsfloor|upstairsfloorAction
+  - first:
+      74: -1860196926122576177
+    second: doorstairs|baseAction
+  - first:
+      74: 3291080309223946398
+    second: doorstairs|bottomAction
+  - first:
+      74: 6489662433055151596
+    second: doorstairs|chimneyAction
+  - first:
+      74: -3382819681908408930
+    second: doorstairs|doorstairsAction
+  - first:
+      74: 8717557337837214908
+    second: doorstairs|inside stairsAction
+  - first:
+      74: 170198296387224465
+    second: doorstairs|outside propsAction
+  - first:
+      74: -7257518264426642760
+    second: doorstairs|roofAction
+  - first:
+      74: 7384097544976644879
+    second: doorstairs|upstairsfloorAction
+  - first:
+      74: 6427661430349685865
+    second: inside stairs|baseAction
+  - first:
+      74: 7576130958260086616
+    second: inside stairs|bottomAction
+  - first:
+      74: 7484049520684879760
+    second: inside stairs|chimneyAction
+  - first:
+      74: 846981061506863961
+    second: inside stairs|doorstairsAction
+  - first:
+      74: -4109073260476415378
+    second: inside stairs|inside stairsAction
+  - first:
+      74: 5702894408339423949
+    second: inside stairs|outside propsAction
+  - first:
+      74: -1628710967865119410
+    second: inside stairs|roofAction
+  - first:
+      74: -2140786472178894536
+    second: inside stairs|upstairsfloorAction
+  - first:
+      74: 3844312580301675769
+    second: chimney|baseAction
+  - first:
+      74: -164872200158081510
+    second: chimney|bottomAction
+  - first:
+      74: 3191993007370099593
+    second: chimney|chimneyAction
+  - first:
+      74: -3697106379033808219
+    second: chimney|doorstairsAction
+  - first:
+      74: 2700133015060542890
+    second: chimney|inside stairsAction
+  - first:
+      74: -6521684492348290866
+    second: chimney|outside propsAction
+  - first:
+      74: 6814534151422101086
+    second: chimney|roofAction
+  - first:
+      74: -9150775073416089288
+    second: chimney|upstairsfloorAction
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

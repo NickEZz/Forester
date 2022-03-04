@@ -8,6 +8,12 @@ public class ToolScript : MonoBehaviour
     [SerializeField] int axeDamage;
     [SerializeField] int sawDamage;
 
+    public int currentAxeUpgrade;
+    public int currentSawUpgrade;
+
+    public Tool[] axes;
+    public Tool[] saws;
+
     public bool sawing = false;
 
     Mesh[] treeMeshes;
@@ -128,4 +134,28 @@ public class ToolScript : MonoBehaviour
             }
         }
     }
+
+    public void UpdateTool()
+    {
+        axeDamage = axes[currentAxeUpgrade].toolDamage;
+        sawDamage = saws[currentSawUpgrade].toolDamage;
+    }
 }
+
+[System.Serializable]
+public struct Tool
+{
+    public int toolId;
+    public Texture2D toolSprite;
+    public float toolPrice;
+    public int toolDamage;
+
+    public Tool(Texture2D _toolSprite, float _toolPrice, int _toolDamage, int _toolId)
+    {
+        toolSprite = _toolSprite;
+        toolPrice = _toolPrice;
+        toolDamage = _toolDamage;
+        toolId = _toolId;
+    }
+}
+

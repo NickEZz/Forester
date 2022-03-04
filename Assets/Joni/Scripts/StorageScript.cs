@@ -6,12 +6,20 @@ public class StorageScript : MonoBehaviour
 {
     public static StorageScript Instance { get; private set; }
 
+    public int currentSector;
+
     public float money;
+    public float spruceWood;
+    public float pineWood;
+    public float birchWood;
     public float wood;
 
     public GameObject[] trees;
     public Mesh[] treeMeshes;
+
     public int spruceSaplings;
+    public int pineSaplings;
+    public int birchSaplings;
 
     private void Awake()
     {
@@ -28,6 +36,6 @@ public class StorageScript : MonoBehaviour
 
     private void Update()
     {
-        // workingPower loop tähän?
+        wood = spruceWood + birchWood + pineWood;
     }
 }

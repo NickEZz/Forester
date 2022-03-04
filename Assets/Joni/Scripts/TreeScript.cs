@@ -33,6 +33,8 @@ public class TreeScript : MonoBehaviour
     [SerializeField] LayerMask[] layerMasks;
     public ToolScript toolScript;
 
+    bool animationPlaying;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -170,8 +172,26 @@ public class TreeScript : MonoBehaviour
 
     public void StartAnimation()
     {
-        animator.SetTrigger("Cut");
-        StorageScript.Instance.wood += treeHeight * 10;
+        if (!animationPlaying)
+        {
+            animator.SetTrigger("Cut");
+            animationPlaying = true;
+            areaOfTree.treesInArea.Remove(gameObject);
+            switch (treeType)
+            {
+                case 0:
+                    StorageScript.Instance.spruceWood += treeHeight * 10;
+                    break;
+                case 1:
+                    StorageScript.Instance.pineWood += treeHeight * 10;
+                    break;
+                case 2:
+                    StorageScript.Instance.birchWood += treeHeight * 10;
+                    break;
+            }
+        }
+        
+        //StorageScript.Instance.wood += treeHeight * 10;
     }
 
     void DestroyTree()

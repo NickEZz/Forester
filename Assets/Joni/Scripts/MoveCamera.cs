@@ -6,6 +6,8 @@ public class MoveCamera : MonoBehaviour
 {
     [SerializeField] float sensitivity;
     [SerializeField] float zoomSpeed;
+    [SerializeField] float minCameraHeight;
+    [SerializeField] float maxCameraHeight;
     
     float tempSpeed;
 
@@ -38,7 +40,7 @@ public class MoveCamera : MonoBehaviour
         }
 
         float scroll = Input.mouseScrollDelta.y * zoomSpeed;
-        targetPos = Mathf.Clamp(targetPos, 1, 14) - scroll;
+        targetPos = Mathf.Clamp(targetPos, minCameraHeight, maxCameraHeight) - scroll;
 
         float dir = targetPos - transform.position.y;
 

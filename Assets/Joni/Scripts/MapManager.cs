@@ -32,6 +32,35 @@ public class MapManager : MonoBehaviour
             {
                 for (int x = 0; x < width; x++)
                 {
+                    if (y == 0 && x == 0)
+                    {
+                        GameObject center = Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize, 0, y * groundSize), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
+                        center.GetComponent<AreaScript>().bought = true;
+                        StorageScript.Instance.currentSector = 0;
+                    }
+                    else if (y < 3 && x < 3)
+                    {
+                        GameObject sector0 = Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize, 0, y * groundSize), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
+                        sector0.GetComponent<AreaScript>().sector = 0;
+                    }
+                    else if (y > 2 && y < 6 || x > 2 && x < 6)
+                    {
+                        
+                        if (x < 6 && y < 6) 
+                        {
+                            GameObject sector1 = Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize, 0, y * groundSize), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
+                            sector1.GetComponent<AreaScript>().sector = 1;
+                        }
+                    }
+                    if (y > 5 || x > 5)
+                    {
+                        GameObject sector2 = Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize, 0, y * groundSize), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
+                        sector2.GetComponent<AreaScript>().sector = 2;
+                    }
+
+                    
+
+                    /*
                     if (y == Mathf.Floor(height / 2) && x == Mathf.Floor(width / 2))
                     {
                         // Keskimmäinen maa-pala on valmiiksi ostettu
@@ -43,6 +72,7 @@ public class MapManager : MonoBehaviour
                         // Luo maapalan valitsemalla random maa-palan kaikista saatavilla olevista maa-paloista ja laittamalla sen maa-palan oikeaan paikkaan
                         Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize - offset, 0, y * groundSize - offset), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
                     }
+                    */
                 }
             }
         }
