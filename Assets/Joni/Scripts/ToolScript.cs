@@ -16,7 +16,6 @@ public class ToolScript : MonoBehaviour
 
     public bool sawing = false;
 
-    Mesh[] treeMeshes;
     GameObject[] trees;
     [SerializeField] GameObject previewObject;
     [SerializeField] Renderer previewObjectRenderer;
@@ -34,7 +33,6 @@ public class ToolScript : MonoBehaviour
     void Start()
     {
         cam = mainCamera.GetComponent<Camera>();
-        treeMeshes = StorageScript.Instance.treeMeshes;
         trees = StorageScript.Instance.trees;
         buildScript = GetComponent<BuildScript>();
     }
@@ -60,7 +58,7 @@ public class ToolScript : MonoBehaviour
 
             if (tool <= 1)
             {
-                previewObject.GetComponent<MeshFilter>().mesh = null;
+                previewObject.SetActive(false);
             }
 
             switch (tool)
@@ -99,12 +97,20 @@ public class ToolScript : MonoBehaviour
                     break;
 
                 case 3:
+                    SpawnTree(1, ray);
                     break;
+
                 case 4:
+                    SpawnTree(2, ray);
                     break;
+
                 default:
                     break;
             }
+        }
+        else
+        {
+            previewObject.SetActive(false);
         }
     }
 
@@ -114,26 +120,30 @@ public class ToolScript : MonoBehaviour
 
         if (Physics.Raycast(ray, out mouse, 40f, layerMasks[1]))
         {
-            previewObject.GetComponent<MeshFilter>().mesh = treeMeshes[0]; // Muuttaa previewobjectin meshin     Pitäs keksiä joku tapa miten peli ei kutsuis getcomponent metodia joka frame, huono performancelle
+            previewObject.SetActive(true); // Laittaa previewobjectin näkyviin
             previewObject.transform.position = mouse.point; // Liikuttaa previewobjectia sinne missä hiiri on
 
-            Collider[] overlap = Physics.OverlapSphere(mouse.point, 0.5f, layerMasks[0]);
-            if (overlap.Length > 0)
+            if (StorageScript.Instance.saplings[tree] > 0)
             {
-                previewObjectRenderer.materials[1].SetColor("_Color", Color.red); // new Color(255f, 0f, 0f)
-            }
-            else if (overlap.Length == 0)
-            {
-                previewObjectRenderer.materials[1].SetColor("_Color", Color.white); // new Color(255f, 255f, 255f)
-
-                if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+                Collider[] overlap = Physics.OverlapSphere(mouse.point, 0.3f, layerMasks[0]);
+                if (overlap.Length > 0)
                 {
-                    if (StorageScript.Instance.spruceSaplings > 0)
+                    previewObjectRenderer.materials[1].SetColor("_Color", Color.red); // new Color(255f, 0f, 0f)
+                }
+                else if (overlap.Length == 0)
+                {
+                    previewObjectRenderer.materials[1].SetColor("_Color", Color.white); // new Color(255f, 255f, 255f)
+
+                    if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                     {
-                        StorageScript.Instance.spruceSaplings--;
+                        StorageScript.Instance.saplings[tree]--;
                         Instantiate(trees[tree], mouse.point, Quaternion.identity);
                     }
                 }
+            }
+            else
+            {
+                previewObjectRenderer.materials[1].SetColor("_Color", Color.red);
             }
         }
     }

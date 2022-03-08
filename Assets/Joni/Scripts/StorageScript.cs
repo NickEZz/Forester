@@ -15,11 +15,11 @@ public class StorageScript : MonoBehaviour
     public float wood;
 
     public GameObject[] trees;
-    public Mesh[] treeMeshes;
 
-    public int spruceSaplings;
-    public int pineSaplings;
-    public int birchSaplings;
+    public int[] saplings;
+    //public int spruceSaplings;
+    //public int pineSaplings;
+    //public int birchSaplings;
 
     private void Awake()
     {

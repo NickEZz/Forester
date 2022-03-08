@@ -244,7 +244,7 @@ public class UIScript : MonoBehaviour
     {
         if (StorageScript.Instance.money >= 10f)
         {
-            StorageScript.Instance.spruceSaplings++;
+            StorageScript.Instance.saplings[0]++;
             StorageScript.Instance.money -= 10f;
         }
     }
@@ -254,7 +254,7 @@ public class UIScript : MonoBehaviour
         {
             if (StorageScript.Instance.money >= 10f)
             {
-                StorageScript.Instance.pineSaplings++;
+                StorageScript.Instance.saplings[1]++;
                 StorageScript.Instance.money -= 10f;
             }
         }
@@ -265,7 +265,7 @@ public class UIScript : MonoBehaviour
         {
             if (StorageScript.Instance.money >= 10f)
             {
-                StorageScript.Instance.birchSaplings++;
+                StorageScript.Instance.saplings[2]++;
                 StorageScript.Instance.money -= 10f;
             }
         }
