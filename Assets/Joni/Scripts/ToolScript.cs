@@ -21,6 +21,9 @@ public class ToolScript : MonoBehaviour
     [SerializeField] GameObject previewObject;
     [SerializeField] Renderer previewObjectRenderer;
 
+    [SerializeField] GameObject axeModel;
+    [SerializeField] GameObject sawModel;
+
     BuildScript buildScript;
 
     [SerializeField] LayerMask[] layerMasks;
@@ -64,11 +67,11 @@ public class ToolScript : MonoBehaviour
             {
                 case 0: // Kirves
 
-                    if (Input.GetMouseButtonDown(0))
+                    if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                     {
-                        if (Physics.Raycast(ray, out mouse, 20f, layerMasks[0]))
+                        if (Physics.Raycast(ray, out mouse, 40f, layerMasks[0]))
                         {
-                            mouse.collider.GetComponent<TreeScript>().ChopTree(axeDamage);
+                            mouse.collider.GetComponent<TreeScript>().ChopTree(axeDamage, axeModel);
                         }
                     }
 
@@ -76,14 +79,14 @@ public class ToolScript : MonoBehaviour
 
                 case 1: // Saha
 
-                    if (Input.GetMouseButtonDown(0))
+                    if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                     {
-                        if (Physics.Raycast(ray, out mouse, 20f, layerMasks[0]))
+                        if (Physics.Raycast(ray, out mouse, 40f, layerMasks[0]))
                         {
                             if (!sawing)
                             {
                                 sawing = true;
-                                mouse.collider.GetComponent<TreeScript>().StartSawing(sawDamage);
+                                mouse.collider.GetComponent<TreeScript>().StartSawing(sawDamage, sawModel);
                                 mouse.collider.GetComponent<TreeScript>().toolScript = this;
                             }
                         }
@@ -109,7 +112,7 @@ public class ToolScript : MonoBehaviour
     {
         RaycastHit mouse;
 
-        if (Physics.Raycast(ray, out mouse, 20f, layerMasks[1]))
+        if (Physics.Raycast(ray, out mouse, 40f, layerMasks[1]))
         {
             previewObject.GetComponent<MeshFilter>().mesh = treeMeshes[0]; // Muuttaa previewobjectin meshin     Pitäs keksiä joku tapa miten peli ei kutsuis getcomponent metodia joka frame, huono performancelle
             previewObject.transform.position = mouse.point; // Liikuttaa previewobjectia sinne missä hiiri on
@@ -123,7 +126,7 @@ public class ToolScript : MonoBehaviour
             {
                 previewObjectRenderer.materials[1].SetColor("_Color", Color.white); // new Color(255f, 255f, 255f)
 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                 {
                     if (StorageScript.Instance.spruceSaplings > 0)
                     {
@@ -139,6 +142,11 @@ public class ToolScript : MonoBehaviour
     {
         axeDamage = axes[currentAxeUpgrade].toolDamage;
         sawDamage = saws[currentSawUpgrade].toolDamage;
+    }
+
+    void DestroyTool()
+    {
+        Destroy(gameObject);
     }
 }
 

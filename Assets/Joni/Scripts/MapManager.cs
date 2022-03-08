@@ -13,6 +13,8 @@ public class MapManager : MonoBehaviour
 
     [SerializeField] GameObject[] groundPrefabs;
 
+    public int[] sectorsOwned = new int[3];
+    public int[] sectorAreaAmounts = new int[3];
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,7 @@ public class MapManager : MonoBehaviour
                     {
                         GameObject sector0 = Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize, 0, y * groundSize), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
                         sector0.GetComponent<AreaScript>().sector = 0;
+                        sector0.GetComponent<AreaScript>().price = 100f;
                     }
                     else if (y > 2 && y < 6 || x > 2 && x < 6)
                     {
@@ -50,12 +53,14 @@ public class MapManager : MonoBehaviour
                         {
                             GameObject sector1 = Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize, 0, y * groundSize), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
                             sector1.GetComponent<AreaScript>().sector = 1;
+                            sector1.GetComponent<AreaScript>().price = 200f;
                         }
                     }
                     if (y > 5 || x > 5)
                     {
                         GameObject sector2 = Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize, 0, y * groundSize), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
                         sector2.GetComponent<AreaScript>().sector = 2;
+                        sector2.GetComponent<AreaScript>().price = 300f;
                     }
 
                     

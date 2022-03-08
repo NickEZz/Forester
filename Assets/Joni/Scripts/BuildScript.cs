@@ -105,7 +105,7 @@ public class BuildScript : MonoBehaviour
             {
                 previewObjectRenderer.material.SetColor("_Color", Color.green);
 
-                if (Input.GetMouseButtonDown(0) && !movingBuilding)
+                if (Input.GetMouseButtonDown(0) && !movingBuilding && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                 {
                     if (StorageScript.Instance.money >= buildings[selectedBuilding].moneyCost && StorageScript.Instance.wood >= buildings[selectedBuilding].woodCost)
                     {
@@ -121,7 +121,7 @@ public class BuildScript : MonoBehaviour
             {
                 for (int i = 0; i < colliders.Length; i++)
                 {
-                    if (colliders[i].gameObject.layer == 9 && Input.GetMouseButtonDown(0))
+                    if (colliders[i].gameObject.layer == 9 && Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                     {
                         if (!movingBuilding)
                         {
@@ -183,7 +183,7 @@ public class BuildScript : MonoBehaviour
 
             yield return null;
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
             {
                 movableObject.transform.position = new Vector3(previewTargetPos.x, hit.point.y, previewTargetPos.z);
                 break;

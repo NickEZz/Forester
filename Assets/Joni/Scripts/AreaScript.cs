@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AreaScript : MonoBehaviour
 {
+    public float price;
     public bool bought = false;
     public int sector;
 
@@ -106,16 +107,27 @@ public class AreaScript : MonoBehaviour
         }   
     }
 
-    public void BuySector()
+    public bool BuyArea()
     {
-        if (StorageScript.Instance.money >= 100f)
+        if (!bought)
         {
-            bought = true;
-            StorageScript.Instance.money -= 100f;
-            if (sector > StorageScript.Instance.currentSector)
+            if (StorageScript.Instance.money >= price)
             {
-                StorageScript.Instance.currentSector = sector;
+                bought = true;
+                StorageScript.Instance.money -= price;
+                if (sector > StorageScript.Instance.currentSector)
+                {
+                    StorageScript.Instance.currentSector = sector;
+                }
+
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
+
+        return false;
     }
 }

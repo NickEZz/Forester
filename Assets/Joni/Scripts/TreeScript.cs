@@ -112,27 +112,31 @@ public class TreeScript : MonoBehaviour
 
         // Ottaa sijainnin ylh‰‰lt‰p‰in raycastilla, ett‰ puu spawnaa maan p‰‰lle, eik‰ ole ilmassa tai maan sis‰ss‰.
         RaycastHit treePos;
-        Physics.Raycast(rayPos, Vector3.down, out treePos);
-
-        // Tarkistaa ensin onko halutulla alueella puuta valmiiksi, ett‰ uusi puu ei spawnaa olemassa olevan puun sis‰lle. Jos alueella on jo puu, toistaa t‰m‰n metodin uudelleen
-        Collider[] overlap = Physics.OverlapSphere(treePos.point, 0.7f, layerMasks[1]);
-        if (overlap.Length == 0)
+        if (Physics.Raycast(rayPos, Vector3.down, out treePos, 20f, layerMasks[2]))
         {
-            GameObject newTree = Instantiate(StorageScript.Instance.trees[treeType], treePos.point, Quaternion.identity);
+            // Tarkistaa ensin onko halutulla alueella puuta valmiiksi, ett‰ uusi puu ei spawnaa olemassa olevan puun sis‰lle. Jos alueella on jo puu, toistaa t‰m‰n metodin uudelleen
+            Collider[] overlap = Physics.OverlapSphere(treePos.point, 0.7f, layerMasks[1]);
+            if (overlap.Length == 0)
+            {
+                GameObject newTree = Instantiate(StorageScript.Instance.trees[treeType], treePos.point, Quaternion.identity);
+            }
+            else
+            {
+                // spawnaa puu jonnekki muualle??
+            }
         }
-        else
-        {
-            // spawnaa puu jonnekki muualle
-        }
+        
     }
 
-    public void ChopTree(int damage)
+    public void ChopTree(int damage, GameObject axePrefab)
     {
         if (!beingSawed)
         {
             if (adultTree)
             {
                 hp -= damage;
+                Instantiate(axePrefab, transform.position + new Vector3(0, 0.45f, -0.8f), Quaternion.Euler(0f, 180f, 90f));
+
                 if (hp <= 0)
                 {
                     //animator.SetTrigger("Cut");
@@ -142,28 +146,33 @@ public class TreeScript : MonoBehaviour
         }
     }
 
-    public void StartSawing(int damage)
+    public void StartSawing(int damage, GameObject sawPrefab)
     {
         if (!beingSawed)
         {
             if (adultTree)
             {
                 beingSawed = true;
-                StartCoroutine(SawTree(damage));
+                StartCoroutine(SawTree(damage, sawPrefab));
             }   
         }
     }
 
-    IEnumerator SawTree(int damage)
+    IEnumerator SawTree(int damage, GameObject sawPrefab)
     {
+        GameObject saw = Instantiate(sawPrefab, transform.position + new Vector3(0.6f, 0.36f, 0f), Quaternion.Euler(0, 50, 90));
+
         while (true)
         {
             yield return new WaitForSeconds(1f);
             hp -= damage;
+
             if (hp <= 0)
             {
                 toolScript.sawing = false;
-                //animator.SetTrigger("Cut");
+
+                Destroy(saw);
+
                 StartAnimation();
                 yield break;
             }

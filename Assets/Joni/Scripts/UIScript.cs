@@ -23,6 +23,9 @@ public class UIScript : MonoBehaviour
     [SerializeField] RawImage[] shopToolIcons;
     [SerializeField] TextMeshProUGUI[] shopToolPrices;
 
+    [SerializeField] GameObject pineSapling;
+    [SerializeField] GameObject birchSapling;
+
 
     private void Update()
     {
@@ -61,6 +64,36 @@ public class UIScript : MonoBehaviour
                 shopToolIcons[1].texture = toolScript.saws[toolScript.currentSawUpgrade + 1].toolSprite;
                 shopToolPrices[1].text = toolScript.saws[toolScript.currentSawUpgrade + 1].toolPrice.ToString() + "€";
             }
+        }
+
+        switch (StorageScript.Instance.currentSector)
+        {
+            case 0:
+                if (pineSapling.activeSelf)
+                {
+                    pineSapling.SetActive(false);
+                }
+                if (birchSapling.activeSelf)
+                {
+                    birchSapling.SetActive(false);
+                }
+                break;
+            case 1:
+                if (!pineSapling.activeSelf)
+                {
+                    pineSapling.SetActive(true);
+                }
+                break;
+            case 2:
+                if (!pineSapling.activeSelf)
+                {
+                    pineSapling.SetActive(true);
+                }
+                if (!birchSapling.activeSelf)
+                {
+                    birchSapling.SetActive(true);
+                }
+                break;
         }
 
         currentToolIcon.texture = toolIcons[toolScript.tool];

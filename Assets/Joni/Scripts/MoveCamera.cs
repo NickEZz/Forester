@@ -8,6 +8,8 @@ public class MoveCamera : MonoBehaviour
     [SerializeField] float zoomSpeed;
     [SerializeField] float minCameraHeight;
     [SerializeField] float maxCameraHeight;
+
+    [SerializeField] float[] zoomedInBorders;
     
     float tempSpeed;
 
@@ -38,6 +40,11 @@ public class MoveCamera : MonoBehaviour
 
             transform.position -= new Vector3(mouseX, 0, mouseY);
         }
+
+        var pos = transform.position;
+        pos.x = Mathf.Clamp(transform.position.x, zoomedInBorders[0] + transform.position.y, zoomedInBorders[1] - transform.position.y);
+        pos.z = Mathf.Clamp(transform.position.z, zoomedInBorders[2], zoomedInBorders[3] - 2 * transform.position.y);
+        transform.position = pos;
 
         float scroll = Input.mouseScrollDelta.y * zoomSpeed;
         targetPos = Mathf.Clamp(targetPos, minCameraHeight, maxCameraHeight) - scroll;
