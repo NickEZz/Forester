@@ -6,10 +6,12 @@ public class HouseScript : MonoBehaviour
 {
     [SerializeField] bool building;
 
-    public float workingPower;
+    float workingPower;
 
     [SerializeField] float buildTime;
     [SerializeField] float timer;
+
+    [SerializeField] int materialIndex;
 
     AreaScript targetArea;
 
@@ -36,9 +38,14 @@ public class HouseScript : MonoBehaviour
         }
     }
 
-    public void CopyVars(float _workingPower, AreaScript _targetArea)
+    public void SetupHouse(float _workingPower, AreaScript _targetArea, Material color)
     {
         workingPower = _workingPower;
         targetArea = _targetArea;
+
+        MeshRenderer renderer = GetComponent<MeshRenderer>(); // Ei muuta väriä
+        Material[] materials = renderer.materials;
+        materials[materialIndex] = color;
+        renderer.sharedMaterials = materials;
     }
 }

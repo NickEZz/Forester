@@ -5,8 +5,8 @@ using UnityEngine;
 public class ToolScript : MonoBehaviour
 {
     public int tool;
-    [SerializeField] int axeDamage;
-    [SerializeField] int sawDamage;
+    [SerializeField] float axeDamage;
+    [SerializeField] float sawDamage;
 
     public int currentAxeUpgrade;
     public int currentSawUpgrade;
@@ -69,7 +69,7 @@ public class ToolScript : MonoBehaviour
                     {
                         if (Physics.Raycast(ray, out mouse, 40f, layerMasks[0]))
                         {
-                            mouse.collider.GetComponent<TreeScript>().ChopTree(axeDamage, axeModel);
+                            mouse.collider.GetComponent<TreeScript>().ChopTree(axeDamage);
                         }
                     }
 
@@ -84,7 +84,7 @@ public class ToolScript : MonoBehaviour
                             if (!sawing)
                             {
                                 sawing = true;
-                                mouse.collider.GetComponent<TreeScript>().StartSawing(sawDamage, sawModel);
+                                mouse.collider.GetComponent<TreeScript>().StartSawing(sawDamage);
                                 mouse.collider.GetComponent<TreeScript>().toolScript = this;
                             }
                         }
@@ -166,9 +166,9 @@ public struct Tool
     public int toolId;
     public Texture2D toolSprite;
     public float toolPrice;
-    public int toolDamage;
+    public float toolDamage;
 
-    public Tool(Texture2D _toolSprite, float _toolPrice, int _toolDamage, int _toolId)
+    public Tool(Texture2D _toolSprite, float _toolPrice, float _toolDamage, int _toolId)
     {
         toolSprite = _toolSprite;
         toolPrice = _toolPrice;

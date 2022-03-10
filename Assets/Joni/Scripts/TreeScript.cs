@@ -6,7 +6,7 @@ public class TreeScript : MonoBehaviour
 {
     [SerializeField] int treeType;
 
-    [SerializeField] int hp;
+    public float hp;
 
     [SerializeField] float averageTreeHeight;
 
@@ -32,6 +32,9 @@ public class TreeScript : MonoBehaviour
 
     [SerializeField] LayerMask[] layerMasks;
     public ToolScript toolScript;
+
+    [SerializeField] GameObject axeModel;
+    [SerializeField] GameObject sawModel;
 
     bool animationPlaying;
 
@@ -72,18 +75,12 @@ public class TreeScript : MonoBehaviour
                 Collider[] sphere = Physics.OverlapSphere(transform.position, 3f, layerMasks[0]);
                 treesInRadius = sphere.Length;
             }
-
-            /*// Jos puita on enemmän kuin 5 yhdellä alueella, scripti lopettaa puiden generoimisen
-            if (treesInRadius <= 5)
-            {
-                
-            }*/
         }
         else // Puu kasvaa ensin
         {
             if (areaOfTree.builtBuildingsInArea > 0) // Puu kasvaa nopeammin jos alueella on rakennuksia
             {
-                transform.localScale += new Vector3(1, 1, 1) * growthEveryFrame * (areaOfTree.builtBuildingsInArea + 1) * Time.deltaTime;
+                transform.localScale += new Vector3(1, 1, 1) * growthEveryFrame * (areaOfTree.workingPower + 1) * Time.deltaTime; // include workingpower in this too
             }
             else
             {
@@ -128,14 +125,14 @@ public class TreeScript : MonoBehaviour
         
     }
 
-    public void ChopTree(int damage, GameObject axePrefab)
+    public void ChopTree(float damage)
     {
         if (!beingSawed)
         {
             if (adultTree)
             {
                 hp -= damage;
-                Instantiate(axePrefab, transform.position + new Vector3(0, 0.45f, -0.8f), Quaternion.Euler(0f, 180f, 90f));
+                Instantiate(axeModel, transform.position + new Vector3(0, 0.45f, -0.8f), Quaternion.Euler(0f, 180f, 90f));
 
                 if (hp <= 0)
                 {
@@ -146,21 +143,21 @@ public class TreeScript : MonoBehaviour
         }
     }
 
-    public void StartSawing(int damage, GameObject sawPrefab)
+    public void StartSawing(float damage)
     {
         if (!beingSawed)
         {
             if (adultTree)
             {
                 beingSawed = true;
-                StartCoroutine(SawTree(damage, sawPrefab));
+                StartCoroutine(SawTree(damage));
             }   
         }
     }
 
-    IEnumerator SawTree(int damage, GameObject sawPrefab)
+    IEnumerator SawTree(float damage)
     {
-        GameObject saw = Instantiate(sawPrefab, transform.position + new Vector3(0.6f, 0.36f, 0f), Quaternion.Euler(0, 50, 90));
+        GameObject saw = Instantiate(sawModel, transform.position + new Vector3(0.6f, 0.36f, 0f), Quaternion.Euler(0, 50, 90));
 
         while (true)
         {
@@ -186,6 +183,8 @@ public class TreeScript : MonoBehaviour
             animator.SetTrigger("Cut");
             animationPlaying = true;
             areaOfTree.treesInArea.Remove(gameObject);
+            StorageScript.Instance.wood[treeType] += treeHeight * 10;
+            /*
             switch (treeType)
             {
                 case 0:
@@ -197,10 +196,8 @@ public class TreeScript : MonoBehaviour
                 case 2:
                     StorageScript.Instance.birchWood += treeHeight * 10;
                     break;
-            }
+            }*/
         }
-        
-        //StorageScript.Instance.wood += treeHeight * 10;
     }
 
     void DestroyTree()

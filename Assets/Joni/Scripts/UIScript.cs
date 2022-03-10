@@ -6,8 +6,10 @@ using TMPro;
 
 public class UIScript : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI[] woodCounters;
+    [SerializeField] TextMeshProUGUI totalWoodCounter;
     [SerializeField] TextMeshProUGUI[] moneyCounters;
+
+    [SerializeField] TextMeshProUGUI[] woodCounters;
 
     [SerializeField] GameObject[] elementsToHide;
 
@@ -29,13 +31,15 @@ public class UIScript : MonoBehaviour
 
     private void Update()
     {
-        for (int i = 0; i < woodCounters.Length; i++)
-        {
-            woodCounters[i].text = StorageScript.Instance.wood.ToString("F1");
-        }
+        totalWoodCounter.text = StorageScript.Instance.totalWood.ToString("F1") + "m³";
+
         for (int i = 0; i < moneyCounters.Length; i++)
         {
-            moneyCounters[i].text = StorageScript.Instance.money.ToString("F1");
+            moneyCounters[i].text = StorageScript.Instance.money.ToString("F1") + "€";
+        }
+        for (int i = 0; i < woodCounters.Length; i++)
+        {
+            woodCounters[i].text = StorageScript.Instance.wood[i].ToString("F1") + "m³";
         }
 
         toolIcons[0] = toolScript.axes[toolScript.currentAxeUpgrade].toolSprite;
@@ -169,53 +173,53 @@ public class UIScript : MonoBehaviour
     
     public void SellOneSpruce()
     {
-        if (StorageScript.Instance.spruceWood >= 1)
+        if (StorageScript.Instance.wood[0] >= 1)
         {
-            StorageScript.Instance.spruceWood--;
+            StorageScript.Instance.wood[0]--;
             StorageScript.Instance.money += 60f;
         }
     }
 
     public void SellTenSpruce()
     {
-        if (StorageScript.Instance.spruceWood >= 10)
+        if (StorageScript.Instance.wood[0] >= 10)
         {
-            StorageScript.Instance.spruceWood -= 10f;
+            StorageScript.Instance.wood[0] -= 10f;
             StorageScript.Instance.money += 10f * 60f;
         }
     }
 
     public void SellOnePine()
     {
-        if (StorageScript.Instance.pineWood >= 1)
+        if (StorageScript.Instance.wood[1] >= 1)
         {
-            StorageScript.Instance.pineWood--;
+            StorageScript.Instance.wood[1]--;
             StorageScript.Instance.money += 130f;
         }
     }
 
     public void SellTenPine()
     {
-        if (StorageScript.Instance.pineWood >= 10)
+        if (StorageScript.Instance.wood[1] >= 10)
         {
-            StorageScript.Instance.pineWood -= 10f;
+            StorageScript.Instance.wood[1] -= 10f;
             StorageScript.Instance.money += 10f * 130f;
         }
     }
     public void SellOneBirch()
     {
-        if (StorageScript.Instance.birchWood >= 1)
+        if (StorageScript.Instance.wood[2] >= 1)
         {
-            StorageScript.Instance.birchWood--;
+            StorageScript.Instance.wood[2]--;
             StorageScript.Instance.money += 200f;
         }
     }
 
     public void SellTenBirch()
     {
-        if (StorageScript.Instance.birchWood >= 10)
+        if (StorageScript.Instance.wood[2] >= 10)
         {
-            StorageScript.Instance.birchWood -= 10f;
+            StorageScript.Instance.wood[2] -= 10f;
             StorageScript.Instance.money += 10f * 200f;
         }
     }

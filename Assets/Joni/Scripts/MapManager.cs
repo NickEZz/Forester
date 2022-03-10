@@ -11,10 +11,14 @@ public class MapManager : MonoBehaviour
     [SerializeField] int width;
     [SerializeField] int height;
 
+    [SerializeField] float sector0Cost, sector1Cost, sector2Cost;
+
     [SerializeField] GameObject[] groundPrefabs;
 
     public int[] sectorsOwned = new int[3];
     public int[] sectorAreaAmounts = new int[3];
+
+    [SerializeField] BuildScript buildScript;
 
     // Start is called before the first frame update
     void Start()
@@ -32,19 +36,25 @@ public class MapManager : MonoBehaviour
             // Scripti generoi maa-palat rivi kerrallaan, vasemmalta oikealla jonka jälkeen se generoi seuraavan rivin edellisen yläpuolelle
             for (int y = 0; y < height; y++)
             {
-                for (int x = 0; x < width; x++)
+                for (int x = 0; x < width; x++) // en keksiny parempaa tapaa jakaa alueet eri ryhmiin
                 {
                     if (y == 0 && x == 0)
                     {
                         GameObject center = Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize, 0, y * groundSize), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
-                        center.GetComponent<AreaScript>().bought = true;
+                        AreaScript newAreaScript = center.GetComponent<AreaScript>();
+                        newAreaScript.SetAreaStats(0, 0, buildScript);
+                        newAreaScript.bought = true;
                         StorageScript.Instance.currentSector = 0;
                     }
                     else if (y < 3 && x < 3)
                     {
                         GameObject sector0 = Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize, 0, y * groundSize), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
-                        sector0.GetComponent<AreaScript>().sector = 0;
-                        sector0.GetComponent<AreaScript>().price = 100f;
+                        AreaScript newAreaScript = sector0.GetComponent<AreaScript>();
+                        newAreaScript.SetAreaStats(0, sector0Cost, buildScript);
+
+
+                        //sector0.GetComponent<AreaScript>().sector = 0;
+                        //sector0.GetComponent<AreaScript>().price = 100f;
                     }
                     else if (y > 2 && y < 6 || x > 2 && x < 6)
                     {
@@ -52,15 +62,21 @@ public class MapManager : MonoBehaviour
                         if (x < 6 && y < 6) 
                         {
                             GameObject sector1 = Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize, 0, y * groundSize), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
-                            sector1.GetComponent<AreaScript>().sector = 1;
-                            sector1.GetComponent<AreaScript>().price = 200f;
+                            AreaScript newAreaScript = sector1.GetComponent<AreaScript>();
+                            newAreaScript.SetAreaStats(1, sector1Cost, buildScript);
+
+                            //sector1.GetComponent<AreaScript>().sector = 1;
+                            //sector1.GetComponent<AreaScript>().price = 200f;
                         }
                     }
                     if (y > 5 || x > 5)
                     {
                         GameObject sector2 = Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize, 0, y * groundSize), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
-                        sector2.GetComponent<AreaScript>().sector = 2;
-                        sector2.GetComponent<AreaScript>().price = 300f;
+                        AreaScript newAreaScript = sector2.GetComponent<AreaScript>();
+                        newAreaScript.SetAreaStats(2, sector2Cost, buildScript);
+
+                        //sector2.GetComponent<AreaScript>().sector = 2;
+                        //sector2.GetComponent<AreaScript>().price = 300f;
                     }
 
                     

@@ -8,15 +8,19 @@ public class AreaScript : MonoBehaviour
     public bool bought = false;
     public int sector;
 
+    [SerializeField] GameObject grid;
+    public BuildScript buildScript;
+
     public int totalBuildingsInArea;
     public int builtBuildingsInArea;
     public List<GameObject> treesInArea;
+
+    bool setup = false;
 
     public float workingPower;
 
     [SerializeField] bool working;
 
-    [SerializeField] float loopTime = 10;
     [SerializeField] float timer;
 
     [SerializeField] Material grassMat;
@@ -33,57 +37,62 @@ public class AreaScript : MonoBehaviour
     void Start()
     {
         currentMaterial = GetComponent<Renderer>();
+        timer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (bought)
+        if (bought) // Kun pelaaja ostaa alueen, antaa alueelle colliderin
         {
-            GetComponent<MeshCollider>().enabled = true;
-            gameObject.layer = 8;
-            currentMaterial.material = grassMat;
-
-            if (builtBuildingsInArea > 0)
+            if (!setup) // Jos aluetta ei ole viel‰ setupattu
             {
-                loopTime = 10 - 1.429f * builtBuildingsInArea; // needs to include workingpower in calculation
+                GetComponent<MeshCollider>().enabled = true; // antaa alueelle colliderin
+                gameObject.layer = 8; // vaihtaa layerin "Buyable Area" to "Ground"
+                currentMaterial.material = grassMat; // Vaihtaa maan v‰rin
+                buildScript.gridList.Add(grid); // ja lis‰‰ alueen gridin buildscript grid listaan
 
-                if (treesInArea.Count > 10)
+                setup = true; // Laittaa setup boolin true ett‰ peli ei toista n‰it‰ montaa kertaa
+            }
+            
+            if (builtBuildingsInArea > 0) 
+            {
+                if (treesInArea.Count > 5) 
                 {
                     working = true;
                 }
-            }
-        }
-
-        if (working)
-        {
-            if (treesInArea.Count > 2)
-            {
-                timer -= Time.deltaTime;
-
-                if (timer <= 0)
+                else
                 {
-                    foreach (var tree in treesInArea)
-                    {
-                        TreeScript treeScript = tree.GetComponent<TreeScript>();
-                        if (treeScript.adultTree)
-                        {
-                            treeScript.StartAnimation();
-                            treesInArea.Remove(tree);
-                            timer = loopTime;
-
-                            break;
-                        }
-                    }
-                    
+                    working = false;
                 }
             }
-            else
-            {
-                working = false;
-            }
         }
 
+        if (working) // Jos alueella on rakennuksia ja puita on enemm‰n kuin 5
+        {
+            timer -= Time.deltaTime; // Laskee yhden sekunnin
+
+            if (timer <= 0)
+            {
+                foreach (var tree in treesInArea) // Jonka j‰lkeen k‰y l‰pi puut listasta
+                {
+                    TreeScript treeScript = tree.GetComponent<TreeScript>();
+                    if (treeScript.adultTree) // Ottaa ekan puun joka on jo kasvanut
+                    {
+                        treeScript.ChopTree(workingPower / 2f); // Ja v‰hent‰‰ silt‰ puulta hp:ta
+                        if (treeScript.hp <= 0)
+                        {
+                            treesInArea.Remove(tree); // Jos puulla on 0 hp, poistaa sen listasta
+                        }
+                        
+                        timer = 1;
+
+                        break; // Lopettaa foreach loopin koska se teki puuhun vahinkoa
+                    }
+                }
+
+            }
+        }
 
         if (gameObject.layer == 10) // Jos aluetta ei ole viel‰ ostettu
         {
@@ -129,5 +138,12 @@ public class AreaScript : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void SetAreaStats(int _sector, float _price, BuildScript _buildScript)
+    {
+        sector = _sector;
+        price = _price;
+        buildScript = _buildScript;
     }
 }

@@ -9,17 +9,13 @@ public class StorageScript : MonoBehaviour
     public int currentSector;
 
     public float money;
-    public float spruceWood;
-    public float pineWood;
-    public float birchWood;
-    public float wood;
+    public float[] wood; // 0 = spruce, 1 = pine, 2 = birch
+
+    public float totalWood;
 
     public GameObject[] trees;
 
     public int[] saplings;
-    //public int spruceSaplings;
-    //public int pineSaplings;
-    //public int birchSaplings;
 
     private void Awake()
     {
@@ -36,6 +32,6 @@ public class StorageScript : MonoBehaviour
 
     private void Update()
     {
-        wood = spruceWood + birchWood + pineWood;
+        totalWood = wood[0] + wood[1] + wood[2];
     }
 }
