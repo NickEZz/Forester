@@ -2210,7 +2210,6 @@ MonoBehaviour:
   treesInArea: []
   workingPower: 0
   working: 0
-  loopTime: 10
   timer: 0
   grassMat: {fileID: 2100000, guid: 62f73d8016c37c34b838056f114c92c0, type: 2}
   size: {x: 4.75, y: 5, z: 4.75}

@@ -10,6 +10,7 @@ public class UIScript : MonoBehaviour
     [SerializeField] TextMeshProUGUI[] moneyCounters;
 
     [SerializeField] TextMeshProUGUI[] woodCounters;
+    [SerializeField] TextMeshProUGUI[] saplingCounters;
 
     [SerializeField] GameObject[] elementsToHide;
 
@@ -17,7 +18,7 @@ public class UIScript : MonoBehaviour
     [SerializeField] BuildScript buildScript;
 
     [SerializeField] RawImage currentBuildingIcon;
-    [SerializeField] Texture[] buildingIcons;
+    [SerializeField] Image[] buildingButtons;
 
     [SerializeField] RawImage currentToolIcon;
     [SerializeField] Texture2D[] toolIcons;
@@ -27,6 +28,8 @@ public class UIScript : MonoBehaviour
 
     [SerializeField] GameObject pineSapling;
     [SerializeField] GameObject birchSapling;
+
+    [SerializeField] AudioManager audioManager;
 
 
     private void Update()
@@ -40,6 +43,10 @@ public class UIScript : MonoBehaviour
         for (int i = 0; i < woodCounters.Length; i++)
         {
             woodCounters[i].text = StorageScript.Instance.wood[i].ToString("F1") + "m³";
+        }
+        for (int i = 0; i < saplingCounters.Length; i++)
+        {
+            saplingCounters[i].text = StorageScript.Instance.saplings[i].ToString();
         }
 
         toolIcons[0] = toolScript.axes[toolScript.currentAxeUpgrade].toolSprite;
@@ -99,6 +106,7 @@ public class UIScript : MonoBehaviour
                 }
                 break;
         }
+        //samanlainen rakennuksille
 
         currentToolIcon.texture = toolIcons[toolScript.tool];
         //currentBuildingIcon.texture = buildingIcons[buildScript.selectedBuilding];
@@ -110,6 +118,18 @@ public class UIScript : MonoBehaviour
                 elementsToHide[i].SetActive(false);
             }
             elementsToHide[3].SetActive(true);
+
+            for (int i = 0; i < buildingButtons.Length; i++)
+            {
+                if (i == buildScript.selectedBuilding)
+                {
+                    buildingButtons[i].color = Color.gray;
+                }
+                else
+                {
+                    buildingButtons[i].color = Color.white;
+                }
+            }
         }
         else
         {
@@ -122,6 +142,7 @@ public class UIScript : MonoBehaviour
     public void ToggleToolMenu()
     {
         elementsToHide[2].SetActive(!elementsToHide[2].activeSelf);
+        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void SelectAxe()
@@ -129,6 +150,7 @@ public class UIScript : MonoBehaviour
         toolScript.tool = 0;
         currentToolIcon.texture = toolIcons[0];
         ToggleToolMenu();
+        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void SelectSaw()
@@ -136,6 +158,7 @@ public class UIScript : MonoBehaviour
         toolScript.tool = 1;
         currentToolIcon.texture = toolIcons[1];
         ToggleToolMenu();
+        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void SelectSpruceSapling()
@@ -143,32 +166,54 @@ public class UIScript : MonoBehaviour
         toolScript.tool = 2;
         currentToolIcon.texture = toolIcons[2];
         ToggleToolMenu();
+        audioManager.PlaySound("click", Vector3.zero);
+    }
+
+    public void SelectPineSapling()
+    {
+        toolScript.tool = 3;
+        currentToolIcon.texture = toolIcons[2];
+        ToggleToolMenu();
+        audioManager.PlaySound("click", Vector3.zero);
+    }
+
+    public void SelectBirchSapling()
+    {
+        toolScript.tool = 4;
+        currentToolIcon.texture = toolIcons[2];
+        ToggleToolMenu();
+        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void ToggleBuildMode()
     {
         buildScript.buildMode = !buildScript.buildMode;
+        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void SelectBuildingOne()
     {
         buildScript.selectedBuilding = 0;
+        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void SelectBuildingTwo()
     {
         buildScript.selectedBuilding = 1;
+        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void SelectBuildingThree()
     {
         buildScript.selectedBuilding = 2;
+        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void ToggleStore()
     {
         elementsToHide[4].SetActive(!elementsToHide[4].activeSelf);
         buildScript.inStore = elementsToHide[4].activeSelf;
+        audioManager.PlaySound("click", Vector3.zero);
     }
     
     public void SellOneSpruce()
@@ -178,6 +223,7 @@ public class UIScript : MonoBehaviour
             StorageScript.Instance.wood[0]--;
             StorageScript.Instance.money += 60f;
         }
+        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void SellTenSpruce()
@@ -187,6 +233,7 @@ public class UIScript : MonoBehaviour
             StorageScript.Instance.wood[0] -= 10f;
             StorageScript.Instance.money += 10f * 60f;
         }
+        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void SellOnePine()
@@ -196,6 +243,7 @@ public class UIScript : MonoBehaviour
             StorageScript.Instance.wood[1]--;
             StorageScript.Instance.money += 130f;
         }
+        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void SellTenPine()
@@ -205,6 +253,7 @@ public class UIScript : MonoBehaviour
             StorageScript.Instance.wood[1] -= 10f;
             StorageScript.Instance.money += 10f * 130f;
         }
+        audioManager.PlaySound("click", Vector3.zero);
     }
     public void SellOneBirch()
     {
@@ -213,6 +262,7 @@ public class UIScript : MonoBehaviour
             StorageScript.Instance.wood[2]--;
             StorageScript.Instance.money += 200f;
         }
+        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void SellTenBirch()
@@ -222,6 +272,7 @@ public class UIScript : MonoBehaviour
             StorageScript.Instance.wood[2] -= 10f;
             StorageScript.Instance.money += 10f * 200f;
         }
+        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void BuyAxeUpgrade()
@@ -232,6 +283,7 @@ public class UIScript : MonoBehaviour
             StorageScript.Instance.money -= toolScript.axes[toolScript.currentAxeUpgrade].toolPrice;
             toolScript.UpdateTool();
         }
+        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void BuySawUpgrade()
@@ -242,6 +294,7 @@ public class UIScript : MonoBehaviour
             StorageScript.Instance.money -= toolScript.saws[toolScript.currentSawUpgrade].toolPrice;
             toolScript.UpdateTool();
         }
+        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void BuySpruceSapling()
@@ -251,6 +304,7 @@ public class UIScript : MonoBehaviour
             StorageScript.Instance.saplings[0]++;
             StorageScript.Instance.money -= 10f;
         }
+        audioManager.PlaySound("click", Vector3.zero);
     }
     public void BuyPineSapling()
     {
@@ -262,6 +316,7 @@ public class UIScript : MonoBehaviour
                 StorageScript.Instance.money -= 10f;
             }
         }
+        audioManager.PlaySound("click", Vector3.zero);
     }
     public void BuyBirchSapling()
     {
@@ -273,5 +328,6 @@ public class UIScript : MonoBehaviour
                 StorageScript.Instance.money -= 10f;
             }
         }
+        audioManager.PlaySound("click", Vector3.zero);
     }
 }

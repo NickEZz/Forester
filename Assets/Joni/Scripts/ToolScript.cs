@@ -69,7 +69,10 @@ public class ToolScript : MonoBehaviour
                     {
                         if (Physics.Raycast(ray, out mouse, 40f, layerMasks[0]))
                         {
-                            mouse.collider.GetComponent<TreeScript>().ChopTree(axeDamage);
+                            if (mouse.collider.GetComponent<TreeScript>().hp > 0)
+                            {
+                                mouse.collider.GetComponent<TreeScript>().ChopTree(axeDamage);
+                            }
                         }
                     }
 
@@ -81,11 +84,14 @@ public class ToolScript : MonoBehaviour
                     {
                         if (Physics.Raycast(ray, out mouse, 40f, layerMasks[0]))
                         {
-                            if (!sawing)
+                            if (mouse.collider.GetComponent<TreeScript>().hp > 0)
                             {
-                                sawing = true;
-                                mouse.collider.GetComponent<TreeScript>().StartSawing(sawDamage);
-                                mouse.collider.GetComponent<TreeScript>().toolScript = this;
+                                if (!sawing)
+                                {
+                                    sawing = true;
+                                    mouse.collider.GetComponent<TreeScript>().StartSawing(sawDamage);
+                                    mouse.collider.GetComponent<TreeScript>().toolScript = this;
+                                }
                             }
                         }
                     }
@@ -136,6 +142,7 @@ public class ToolScript : MonoBehaviour
 
                     if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                     {
+                        FindObjectOfType<AudioManager>().PlaySound("planttree", mouse.point);
                         StorageScript.Instance.saplings[tree]--;
                         Instantiate(trees[tree], mouse.point, Quaternion.identity);
                     }

@@ -38,9 +38,13 @@ public class TreeScript : MonoBehaviour
 
     bool animationPlaying;
 
+    AudioManager audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
+
         treeHeight = Random.Range(averageTreeHeight - 0.02f, averageTreeHeight + 0.02f); // Arpoo random numeron puun korkeudelle
         animator = GetComponent<Animator>();
 
@@ -134,9 +138,13 @@ public class TreeScript : MonoBehaviour
                 hp -= damage;
                 Instantiate(axeModel, transform.position + new Vector3(0, 0.45f, -0.8f), Quaternion.Euler(0f, 180f, 90f));
 
+                audioManager.PlaySound("choptree", transform.position);
+
                 if (hp <= 0)
                 {
                     //animator.SetTrigger("Cut");
+
+                    audioManager.PlaySound("treefall", transform.position);
                     StartAnimation();
                 }
             }
@@ -158,6 +166,7 @@ public class TreeScript : MonoBehaviour
     IEnumerator SawTree(float damage)
     {
         GameObject saw = Instantiate(sawModel, transform.position + new Vector3(0.6f, 0.36f, 0f), Quaternion.Euler(0, 50, 90));
+        audioManager.PlaySound("sawtree", transform.position);
 
         while (true)
         {
@@ -169,7 +178,7 @@ public class TreeScript : MonoBehaviour
                 toolScript.sawing = false;
 
                 Destroy(saw);
-
+                audioManager.StopSound("sawtree");
                 StartAnimation();
                 yield break;
             }

@@ -56,6 +56,7 @@
     <Compile Include="Assets\Joni\Scripts\ToolScript.cs" />
     <Compile Include="Assets\Joni\Scripts\HouseScript.cs" />
     <Compile Include="Assets\Joni\Scripts\PopUpScript.cs" />
+    <Compile Include="Assets\Joni\Scripts\ToolEvent.cs" />
     <Compile Include="Assets\Joni\Scripts\BuildScript.cs" />
     <Compile Include="Assets\Joni\Scripts\StorageScript.cs" />
     <Compile Include="Assets\Joni\Scripts\MapManager.cs" />
@@ -63,8 +64,9 @@
     <Compile Include="Assets\Joni\Scripts\AreaScript.cs" />
     <Compile Include="Assets\Joni\Scripts\TreeScript.cs" />
     <Compile Include="Assets\Joni\Scripts\UIScript.cs" />
+    <Compile Include="Assets\Joni\Scripts\DeveloperScript.cs" />
     <Compile Include="Assets\Joni\test.cs" />
-    <Compile Include="Assets\Joni\Scripts\ToolEvent.cs" />
+    <Compile Include="Assets\AudioManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
