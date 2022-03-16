@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treeType: 0
-  hp: 3
+  hp: 5
   averageTreeHeight: 0.22
   treeHeight: 0
   adultTree: 0

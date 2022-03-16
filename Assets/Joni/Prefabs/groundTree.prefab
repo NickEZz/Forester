@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 76169520183084295}
   - component: {fileID: 2733580459907239026}
-  - component: {fileID: 44237375645779201}
   - component: {fileID: 9050354526887168352}
   m_Layer: 11
   m_Name: gridPiece
@@ -41,19 +40,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128821407604664145}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &44237375645779201
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128821407604664145}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &9050354526887168352
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -105,7 +91,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2319853919573432310}
   - component: {fileID: 6064900801572726507}
-  - component: {fileID: 9047843028434635368}
   - component: {fileID: 9162104040198302245}
   m_Layer: 11
   m_Name: gridPiece
@@ -136,19 +121,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 171704446777783288}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &9047843028434635368
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171704446777783288}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &9162104040198302245
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -200,7 +172,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4151589935263702542}
   - component: {fileID: 8231098919777526445}
-  - component: {fileID: 3059969063758004296}
   - component: {fileID: 792824198561682223}
   m_Layer: 11
   m_Name: gridPiece
@@ -231,19 +202,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194810098546444465}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &3059969063758004296
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194810098546444465}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &792824198561682223
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -295,7 +253,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7026148533928775544}
   - component: {fileID: 1306198186291214212}
-  - component: {fileID: 1903917434344735211}
   - component: {fileID: 2674850014217302874}
   m_Layer: 11
   m_Name: gridPiece
@@ -326,19 +283,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 239767517532338782}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &1903917434344735211
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 239767517532338782}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2674850014217302874
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -390,7 +334,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1517915956186472192}
   - component: {fileID: 5338719370058698884}
-  - component: {fileID: 2854387619007366598}
   - component: {fileID: 8023635885276155788}
   m_Layer: 11
   m_Name: gridPiece
@@ -421,19 +364,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322898619246371559}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &2854387619007366598
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 322898619246371559}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &8023635885276155788
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -485,7 +415,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8479360830319169244}
   - component: {fileID: 6150150168932158132}
-  - component: {fileID: 8562330935360593270}
   - component: {fileID: 4829917845202842958}
   m_Layer: 11
   m_Name: gridPiece
@@ -516,19 +445,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 357617092585670817}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &8562330935360593270
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 357617092585670817}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &4829917845202842958
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -580,7 +496,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2701390952090673870}
   - component: {fileID: 538058409026251848}
-  - component: {fileID: 9043216589869547296}
   - component: {fileID: 7625070938495981888}
   m_Layer: 11
   m_Name: gridPiece
@@ -611,19 +526,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 424496036208999591}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &9043216589869547296
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 424496036208999591}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &7625070938495981888
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -675,7 +577,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3746964237733369113}
   - component: {fileID: 5366149292908255997}
-  - component: {fileID: 221028286652060968}
   - component: {fileID: 3955959529092961640}
   m_Layer: 11
   m_Name: gridPiece
@@ -706,19 +607,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495005127220695139}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &221028286652060968
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495005127220695139}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &3955959529092961640
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -770,7 +658,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1107506832400535594}
   - component: {fileID: 32490655950526031}
-  - component: {fileID: 3200750361731027161}
   - component: {fileID: 9094599119195562257}
   m_Layer: 11
   m_Name: gridPiece
@@ -801,19 +688,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 496723311873996347}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &3200750361731027161
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496723311873996347}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &9094599119195562257
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -865,7 +739,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4246583957268850421}
   - component: {fileID: 8217303401166085909}
-  - component: {fileID: 3716251787424057734}
   - component: {fileID: 1921658573488151485}
   m_Layer: 11
   m_Name: gridPiece
@@ -896,19 +769,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665503539385870467}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &3716251787424057734
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 665503539385870467}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1921658573488151485
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -960,7 +820,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1551755200223397511}
   - component: {fileID: 3473332905327720445}
-  - component: {fileID: 3055701320826612125}
   - component: {fileID: 8727104761557410635}
   m_Layer: 11
   m_Name: gridPiece
@@ -991,19 +850,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920542513247473748}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &3055701320826612125
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 920542513247473748}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &8727104761557410635
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1055,7 +901,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4510598944043167000}
   - component: {fileID: 5480301101745566867}
-  - component: {fileID: 1673081587904171013}
   - component: {fileID: 6660445949679358527}
   m_Layer: 11
   m_Name: gridPiece
@@ -1086,19 +931,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 965114404733831752}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &1673081587904171013
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 965114404733831752}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &6660445949679358527
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1150,7 +982,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7194355427169529190}
   - component: {fileID: 7044273664001439788}
-  - component: {fileID: 1990479138193172722}
   - component: {fileID: 2245372250495979899}
   m_Layer: 11
   m_Name: gridPiece
@@ -1181,19 +1012,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1348671401568269483}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &1990479138193172722
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1348671401568269483}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2245372250495979899
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1245,7 +1063,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5509445927162577316}
   - component: {fileID: 118753370439072473}
-  - component: {fileID: 5416553644008963255}
   - component: {fileID: 8946227922185633738}
   m_Layer: 11
   m_Name: gridPiece
@@ -1276,19 +1093,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355238284349159747}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &5416553644008963255
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355238284349159747}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &8946227922185633738
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1340,7 +1144,6 @@ GameObject:
   m_Component:
   - component: {fileID: 835838933671918575}
   - component: {fileID: 3682749914454459942}
-  - component: {fileID: 4542204685098797269}
   - component: {fileID: 2096233012931165411}
   m_Layer: 11
   m_Name: gridPiece
@@ -1371,19 +1174,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1529413974780327523}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &4542204685098797269
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1529413974780327523}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2096233012931165411
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1435,7 +1225,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1437788330605784391}
   - component: {fileID: 5311577212372385326}
-  - component: {fileID: 2279548859755760826}
   - component: {fileID: 4337533755057240286}
   m_Layer: 11
   m_Name: gridPiece
@@ -1466,19 +1255,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834215972030348537}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &2279548859755760826
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1834215972030348537}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &4337533755057240286
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1530,7 +1306,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9043742187763776259}
   - component: {fileID: 6455974688733379790}
-  - component: {fileID: 4842394673418082442}
   - component: {fileID: 4252040353733191758}
   m_Layer: 11
   m_Name: gridPiece
@@ -1561,19 +1336,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2543665105663713546}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &4842394673418082442
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2543665105663713546}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &4252040353733191758
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1625,7 +1387,6 @@ GameObject:
   m_Component:
   - component: {fileID: 703759563904004986}
   - component: {fileID: 942444099552941512}
-  - component: {fileID: 7342931182814296356}
   - component: {fileID: 3868392640352039860}
   m_Layer: 11
   m_Name: gridPiece
@@ -1656,19 +1417,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2698416810187824252}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &7342931182814296356
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2698416810187824252}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &3868392640352039860
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1720,7 +1468,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6649300812714226266}
   - component: {fileID: 1275757433684219810}
-  - component: {fileID: 725656064095154594}
   - component: {fileID: 5425739464673473863}
   m_Layer: 11
   m_Name: gridPiece
@@ -1751,19 +1498,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3014418633246650115}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &725656064095154594
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3014418633246650115}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &5425739464673473863
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1815,7 +1549,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7749735834725622025}
   - component: {fileID: 6740220129923581642}
-  - component: {fileID: 3978533908670553988}
   - component: {fileID: 5526888939617998207}
   m_Layer: 11
   m_Name: gridPiece
@@ -1846,19 +1579,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3188339194491979820}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &3978533908670553988
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3188339194491979820}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &5526888939617998207
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1910,7 +1630,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1892186013760777646}
   - component: {fileID: 1331547166284012799}
-  - component: {fileID: 4750017244337415946}
   - component: {fileID: 1968826789312521401}
   m_Layer: 11
   m_Name: gridPiece
@@ -1941,19 +1660,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3471063779788923995}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &4750017244337415946
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3471063779788923995}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1968826789312521401
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2005,7 +1711,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7138878330285948316}
   - component: {fileID: 5890053662676973146}
-  - component: {fileID: 2241400501434974723}
   - component: {fileID: 5985198226481898894}
   m_Layer: 11
   m_Name: gridPiece
@@ -2036,19 +1741,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3521630948536449662}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &2241400501434974723
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3521630948536449662}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &5985198226481898894
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2100,7 +1792,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2416120017555760625}
   - component: {fileID: 9047892501158828985}
-  - component: {fileID: 6783791942757533772}
   - component: {fileID: 847669055200552849}
   m_Layer: 11
   m_Name: gridPiece
@@ -2131,19 +1822,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3527192147792395413}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6783791942757533772
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3527192147792395413}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &847669055200552849
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2195,7 +1873,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3246672845436845523}
   - component: {fileID: 178146588981957273}
-  - component: {fileID: 2601112871824860885}
   - component: {fileID: 7842886157543306033}
   m_Layer: 11
   m_Name: gridPiece
@@ -2226,19 +1903,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3781932290630775524}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &2601112871824860885
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3781932290630775524}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &7842886157543306033
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2290,7 +1954,6 @@ GameObject:
   m_Component:
   - component: {fileID: 191897049882251260}
   - component: {fileID: 8290583574144369335}
-  - component: {fileID: 1873482420400196665}
   - component: {fileID: 6045993752906291832}
   m_Layer: 11
   m_Name: gridPiece
@@ -2321,19 +1984,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3782058202445071862}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &1873482420400196665
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3782058202445071862}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &6045993752906291832
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2385,7 +2035,6 @@ GameObject:
   m_Component:
   - component: {fileID: 298167175679705573}
   - component: {fileID: 5442814521338663338}
-  - component: {fileID: 6119307223933852462}
   - component: {fileID: 2854600007941910797}
   m_Layer: 11
   m_Name: gridPiece
@@ -2416,19 +2065,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3869156880072390986}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6119307223933852462
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3869156880072390986}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2854600007941910797
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2480,7 +2116,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2242207477008239075}
   - component: {fileID: 6089286988244050396}
-  - component: {fileID: 3279397625051956353}
   - component: {fileID: 673098413503085703}
   m_Layer: 11
   m_Name: gridPiece
@@ -2511,19 +2146,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3890651187784461344}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &3279397625051956353
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3890651187784461344}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &673098413503085703
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2687,6 +2309,7 @@ MonoBehaviour:
   working: 0
   timer: 0
   grassMat: {fileID: 2100000, guid: 62f73d8016c37c34b838056f114c92c0, type: 2}
+  highlightedMat: {fileID: 2100000, guid: 25a42f109234b9e45b9bead2df21fc46, type: 2}
   size: {x: 4.75, y: 5, z: 4.75}
   gridPartMasks:
   - serializedVersion: 2
@@ -2694,6 +2317,7 @@ MonoBehaviour:
   - serializedVersion: 2
     m_Bits: 4096
   planeMesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  focused: 0
 --- !u!1 &4083481844618145485
 GameObject:
   m_ObjectHideFlags: 0
@@ -2704,7 +2328,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1356360493882125922}
   - component: {fileID: 3636435694257678522}
-  - component: {fileID: 5189506033997588450}
   - component: {fileID: 3451777488371634792}
   m_Layer: 11
   m_Name: gridPiece
@@ -2735,19 +2358,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4083481844618145485}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &5189506033997588450
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4083481844618145485}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &3451777488371634792
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2799,7 +2409,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1441450731142005301}
   - component: {fileID: 2524299372307313415}
-  - component: {fileID: 4466866653972034030}
   - component: {fileID: 5334160869491370752}
   m_Layer: 11
   m_Name: gridPiece
@@ -2830,19 +2439,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4473052571651219438}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &4466866653972034030
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4473052571651219438}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &5334160869491370752
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2894,7 +2490,6 @@ GameObject:
   m_Component:
   - component: {fileID: 958944003288907410}
   - component: {fileID: 7380660925822242194}
-  - component: {fileID: 602141747943792909}
   - component: {fileID: 3710811848534210903}
   m_Layer: 11
   m_Name: gridPiece
@@ -2925,19 +2520,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4560836504785708266}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &602141747943792909
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560836504785708266}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &3710811848534210903
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2989,7 +2571,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5250608628707009438}
   - component: {fileID: 2251074391177967888}
-  - component: {fileID: 5664284468501052584}
   - component: {fileID: 6299551124827987739}
   m_Layer: 11
   m_Name: gridPiece
@@ -3020,19 +2601,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4564126060779704821}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &5664284468501052584
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4564126060779704821}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &6299551124827987739
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3084,7 +2652,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1651552326150059903}
   - component: {fileID: 6911259284344468519}
-  - component: {fileID: 7831264739487821868}
   - component: {fileID: 8755183321807270403}
   m_Layer: 11
   m_Name: gridPiece
@@ -3115,19 +2682,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4681483773876222288}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &7831264739487821868
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4681483773876222288}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &8755183321807270403
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3179,7 +2733,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7790477633488376552}
   - component: {fileID: 2524049041197281910}
-  - component: {fileID: 7354479407675237942}
   - component: {fileID: 2322809197695138267}
   m_Layer: 11
   m_Name: gridPiece
@@ -3210,19 +2763,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4703045155885713869}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &7354479407675237942
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4703045155885713869}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2322809197695138267
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3274,7 +2814,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2940803506130725006}
   - component: {fileID: 1369733004664576829}
-  - component: {fileID: 5375331963108336501}
   - component: {fileID: 6035967871213898106}
   m_Layer: 11
   m_Name: gridPiece
@@ -3305,19 +2844,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4790720786873323981}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &5375331963108336501
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4790720786873323981}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &6035967871213898106
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3369,7 +2895,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7300740792262946629}
   - component: {fileID: 5190884422386214380}
-  - component: {fileID: 6685386160303209680}
   - component: {fileID: 4786221832586019265}
   m_Layer: 11
   m_Name: gridPiece
@@ -3400,19 +2925,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4826553067974497866}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6685386160303209680
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4826553067974497866}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &4786221832586019265
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3464,7 +2976,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8458318962592023375}
   - component: {fileID: 1733143619700751392}
-  - component: {fileID: 9081037281444598335}
   - component: {fileID: 4183189849868388380}
   m_Layer: 11
   m_Name: gridPiece
@@ -3495,19 +3006,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4923215383277776284}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &9081037281444598335
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4923215383277776284}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &4183189849868388380
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3559,7 +3057,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1847556327597481852}
   - component: {fileID: 6867829541288196894}
-  - component: {fileID: 2160576310974420617}
   - component: {fileID: 134799489082007045}
   m_Layer: 11
   m_Name: gridPiece
@@ -3590,19 +3087,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4966765057973343837}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &2160576310974420617
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4966765057973343837}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &134799489082007045
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3654,7 +3138,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3940413180429037302}
   - component: {fileID: 7709210121199276198}
-  - component: {fileID: 6614181134331041251}
   - component: {fileID: 3564842444152001337}
   m_Layer: 11
   m_Name: gridPiece
@@ -3685,19 +3168,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5103842908097941396}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6614181134331041251
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5103842908097941396}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &3564842444152001337
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3749,7 +3219,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4876687131928706268}
   - component: {fileID: 5985985257786382372}
-  - component: {fileID: 5897696519185278855}
   - component: {fileID: 7144172981665714945}
   m_Layer: 11
   m_Name: gridPiece
@@ -3780,19 +3249,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5109551257102213860}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &5897696519185278855
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5109551257102213860}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &7144172981665714945
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3844,7 +3300,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4049677953277376861}
   - component: {fileID: 3309192899948095279}
-  - component: {fileID: 8967284951917453861}
   - component: {fileID: 7489553557826597193}
   m_Layer: 11
   m_Name: gridPiece
@@ -3875,19 +3330,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5242986578011907708}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &8967284951917453861
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5242986578011907708}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &7489553557826597193
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3939,7 +3381,6 @@ GameObject:
   m_Component:
   - component: {fileID: 263441215585108159}
   - component: {fileID: 1283813626595048080}
-  - component: {fileID: 4569139751808718607}
   - component: {fileID: 4812568196304935925}
   m_Layer: 11
   m_Name: gridPiece
@@ -3970,19 +3411,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5400444571114149413}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &4569139751808718607
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5400444571114149413}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &4812568196304935925
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4034,7 +3462,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4510180986005726052}
   - component: {fileID: 5727872888555841366}
-  - component: {fileID: 7919994686757890926}
   - component: {fileID: 254124239942295319}
   m_Layer: 11
   m_Name: gridPiece
@@ -4065,19 +3492,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5430903050854898910}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &7919994686757890926
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5430903050854898910}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &254124239942295319
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4129,7 +3543,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5581554939842665890}
   - component: {fileID: 5310975600562836813}
-  - component: {fileID: 7066190837651111373}
   - component: {fileID: 220656539092118053}
   m_Layer: 11
   m_Name: gridPiece
@@ -4160,19 +3573,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5437853452039605123}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &7066190837651111373
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5437853452039605123}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &220656539092118053
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4224,7 +3624,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5912089374495205178}
   - component: {fileID: 2595298213012997242}
-  - component: {fileID: 7345767721283706721}
   - component: {fileID: 3163797144440126190}
   m_Layer: 11
   m_Name: gridPiece
@@ -4255,19 +3654,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5521950216944486874}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &7345767721283706721
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5521950216944486874}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &3163797144440126190
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4319,7 +3705,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5475212732938200300}
   - component: {fileID: 2715147028562332556}
-  - component: {fileID: 6008720704901435489}
   - component: {fileID: 1606513350817707023}
   m_Layer: 11
   m_Name: gridPiece
@@ -4350,19 +3735,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5622030118822804404}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6008720704901435489
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5622030118822804404}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1606513350817707023
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4414,7 +3786,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7598064741955535881}
   - component: {fileID: 2409392990593367427}
-  - component: {fileID: 3803875410158080084}
   - component: {fileID: 9110791756017790140}
   m_Layer: 11
   m_Name: gridPiece
@@ -4445,19 +3816,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5796905517352218465}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &3803875410158080084
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5796905517352218465}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &9110791756017790140
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4509,7 +3867,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3527657132815298419}
   - component: {fileID: 6158848679742491436}
-  - component: {fileID: 5982678030556512092}
   - component: {fileID: 3509291649668385080}
   m_Layer: 11
   m_Name: gridPiece
@@ -4540,19 +3897,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6060286167481396939}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &5982678030556512092
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6060286167481396939}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &3509291649668385080
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4604,7 +3948,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3891765966190133566}
   - component: {fileID: 3145837815773635900}
-  - component: {fileID: 6822786976416328769}
   - component: {fileID: 5918731731974804507}
   m_Layer: 11
   m_Name: gridPiece
@@ -4635,19 +3978,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6112677088578586172}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6822786976416328769
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6112677088578586172}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &5918731731974804507
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4699,7 +4029,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8451314053596699256}
   - component: {fileID: 8285881646188863021}
-  - component: {fileID: 5889099994156466027}
   - component: {fileID: 3926454072500294840}
   m_Layer: 11
   m_Name: gridPiece
@@ -4730,19 +4059,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6597516814974081724}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &5889099994156466027
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6597516814974081724}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &3926454072500294840
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4794,7 +4110,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7651645006873374746}
   - component: {fileID: 2504080688586570498}
-  - component: {fileID: 1625925583996388508}
   - component: {fileID: 7022013489140516119}
   m_Layer: 11
   m_Name: gridPiece
@@ -4825,19 +4140,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6607315153811242787}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &1625925583996388508
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6607315153811242787}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &7022013489140516119
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4889,7 +4191,6 @@ GameObject:
   m_Component:
   - component: {fileID: 236835946137874256}
   - component: {fileID: 3899896845692483154}
-  - component: {fileID: 928743175922814428}
   - component: {fileID: 4584162225951313606}
   m_Layer: 11
   m_Name: gridPiece
@@ -4920,19 +4221,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6626274580006828229}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &928743175922814428
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6626274580006828229}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &4584162225951313606
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4984,7 +4272,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4976729550012827689}
   - component: {fileID: 8113361878397015325}
-  - component: {fileID: 1943094956177204454}
   - component: {fileID: 6952986529029913927}
   m_Layer: 11
   m_Name: gridPiece
@@ -5015,19 +4302,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6753378516799710398}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &1943094956177204454
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6753378516799710398}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &6952986529029913927
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5079,7 +4353,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6532846872208900905}
   - component: {fileID: 2386248529049528255}
-  - component: {fileID: 9177802215290425204}
   - component: {fileID: 5854426893716797946}
   m_Layer: 11
   m_Name: gridPiece
@@ -5110,19 +4383,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6790079349174524795}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &9177802215290425204
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6790079349174524795}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &5854426893716797946
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5174,7 +4434,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6861695884416726441}
   - component: {fileID: 2196635995813865011}
-  - component: {fileID: 6186163684332870263}
   - component: {fileID: 2391744818113328854}
   m_Layer: 11
   m_Name: gridPiece
@@ -5205,19 +4464,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6959655619188405814}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6186163684332870263
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6959655619188405814}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2391744818113328854
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5269,7 +4515,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3666091982338595184}
   - component: {fileID: 7306354715729058430}
-  - component: {fileID: 921249245931609918}
   - component: {fileID: 3163122502376706048}
   m_Layer: 11
   m_Name: gridPiece
@@ -5300,19 +4545,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6989190344314485036}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &921249245931609918
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6989190344314485036}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &3163122502376706048
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5364,7 +4596,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6809698236280980695}
   - component: {fileID: 4958927381679268782}
-  - component: {fileID: 4821653121439731713}
   - component: {fileID: 8374638444727915121}
   m_Layer: 11
   m_Name: gridPiece
@@ -5395,19 +4626,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6992553053458853946}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &4821653121439731713
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6992553053458853946}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &8374638444727915121
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5459,7 +4677,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8663879690256169929}
   - component: {fileID: 5166777846677548246}
-  - component: {fileID: 3634941737543709492}
   - component: {fileID: 212564301976356495}
   m_Layer: 11
   m_Name: gridPiece
@@ -5490,19 +4707,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7115386081017540827}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &3634941737543709492
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7115386081017540827}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &212564301976356495
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5554,7 +4758,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8068629790286142480}
   - component: {fileID: 647190575379068286}
-  - component: {fileID: 1795066856005879706}
   - component: {fileID: 3324791277041352818}
   m_Layer: 11
   m_Name: gridPiece
@@ -5585,19 +4788,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7197360247848421312}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &1795066856005879706
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7197360247848421312}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &3324791277041352818
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5649,7 +4839,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5440319300018575787}
   - component: {fileID: 5279729033385282945}
-  - component: {fileID: 2114473522237333046}
   - component: {fileID: 5235020236039964859}
   m_Layer: 11
   m_Name: gridPiece
@@ -5680,19 +4869,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7227283683093621743}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &2114473522237333046
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7227283683093621743}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &5235020236039964859
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5744,7 +4920,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8231834514084692442}
   - component: {fileID: 4218065505859953823}
-  - component: {fileID: 3203987491866038944}
   - component: {fileID: 839395151322907654}
   m_Layer: 11
   m_Name: gridPiece
@@ -5775,19 +4950,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7237418724280450184}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &3203987491866038944
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7237418724280450184}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &839395151322907654
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5839,7 +5001,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8102379971597107534}
   - component: {fileID: 4863190091204011960}
-  - component: {fileID: 6817738337940164873}
   - component: {fileID: 6017497828755101771}
   m_Layer: 11
   m_Name: gridPiece
@@ -5870,19 +5031,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7402198821434639251}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6817738337940164873
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7402198821434639251}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &6017497828755101771
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5934,7 +5082,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2097436108794014880}
   - component: {fileID: 4685879629129782420}
-  - component: {fileID: 7162724985448064780}
   - component: {fileID: 5781995295916579121}
   m_Layer: 11
   m_Name: gridPiece
@@ -5965,19 +5112,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7454484443458049021}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &7162724985448064780
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7454484443458049021}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &5781995295916579121
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6029,7 +5163,6 @@ GameObject:
   m_Component:
   - component: {fileID: 854254252999529089}
   - component: {fileID: 9172590394009553575}
-  - component: {fileID: 3873750303926549507}
   - component: {fileID: 4449812493902610766}
   m_Layer: 11
   m_Name: gridPiece
@@ -6060,19 +5193,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7485321732345984836}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &3873750303926549507
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7485321732345984836}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &4449812493902610766
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6124,7 +5244,6 @@ GameObject:
   m_Component:
   - component: {fileID: 412477094902876968}
   - component: {fileID: 2394497263937088804}
-  - component: {fileID: 9126314013166422090}
   - component: {fileID: 2993965049051291393}
   m_Layer: 11
   m_Name: gridPiece
@@ -6155,19 +5274,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7595009830671085865}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &9126314013166422090
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595009830671085865}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2993965049051291393
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6219,7 +5325,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3489749852811078012}
   - component: {fileID: 3085017502155845553}
-  - component: {fileID: 8456187934595985537}
   - component: {fileID: 3010865774929098}
   m_Layer: 11
   m_Name: gridPiece
@@ -6250,19 +5355,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7617007857218649727}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &8456187934595985537
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7617007857218649727}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &3010865774929098
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6314,7 +5406,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3898975617157249786}
   - component: {fileID: 3069916698267761595}
-  - component: {fileID: 4302370280861511071}
   - component: {fileID: 4958796830441034675}
   m_Layer: 11
   m_Name: gridPiece
@@ -6345,19 +5436,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7816518434008395406}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &4302370280861511071
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7816518434008395406}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &4958796830441034675
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6409,7 +5487,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3661048045778110277}
   - component: {fileID: 7324801867974194697}
-  - component: {fileID: 5300473794719724174}
   - component: {fileID: 1846188354305630146}
   m_Layer: 11
   m_Name: gridPiece
@@ -6440,19 +5517,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7863093656279722867}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &5300473794719724174
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7863093656279722867}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1846188354305630146
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6504,7 +5568,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2568609185334951965}
   - component: {fileID: 2966184705126572312}
-  - component: {fileID: 1742265792510397553}
   - component: {fileID: 1962585761933307844}
   m_Layer: 11
   m_Name: gridPiece
@@ -6535,19 +5598,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8026988806282155422}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &1742265792510397553
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8026988806282155422}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1962585761933307844
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6599,7 +5649,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3924348658401190416}
   - component: {fileID: 4996366453213826984}
-  - component: {fileID: 4413345124326356884}
   - component: {fileID: 489935442097981070}
   m_Layer: 11
   m_Name: gridPiece
@@ -6630,19 +5679,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8081549307490116281}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &4413345124326356884
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8081549307490116281}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &489935442097981070
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6694,7 +5730,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3311563241896883310}
   - component: {fileID: 8601533717838008374}
-  - component: {fileID: 7709863662395689811}
   - component: {fileID: 9105418133141264465}
   m_Layer: 11
   m_Name: gridPiece
@@ -6725,19 +5760,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8152450885401917020}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &7709863662395689811
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8152450885401917020}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &9105418133141264465
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6789,7 +5811,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5395233359882616454}
   - component: {fileID: 647872454755154810}
-  - component: {fileID: 1358241504950839904}
   - component: {fileID: 3491729509122349858}
   m_Layer: 11
   m_Name: gridPiece
@@ -6820,19 +5841,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8193234426089748123}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &1358241504950839904
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8193234426089748123}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &3491729509122349858
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6884,7 +5892,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7187799467475870293}
   - component: {fileID: 1858540459867918972}
-  - component: {fileID: 7291467875793002271}
   - component: {fileID: 8948690470209852122}
   m_Layer: 11
   m_Name: gridPiece
@@ -6915,19 +5922,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8467717701164818337}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &7291467875793002271
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8467717701164818337}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &8948690470209852122
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6979,7 +5973,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5004006867461307563}
   - component: {fileID: 507752276986327694}
-  - component: {fileID: 4394798372752070341}
   - component: {fileID: 268483427154781370}
   m_Layer: 11
   m_Name: gridPiece
@@ -7010,19 +6003,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8563496113627991483}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &4394798372752070341
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8563496113627991483}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &268483427154781370
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7074,7 +6054,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6390027466304886368}
   - component: {fileID: 5474530497230449140}
-  - component: {fileID: 7524537567979944182}
   - component: {fileID: 2773213470385982151}
   m_Layer: 11
   m_Name: gridPiece
@@ -7105,19 +6084,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8766291816636388283}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &7524537567979944182
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8766291816636388283}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2773213470385982151
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7169,7 +6135,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8723108918882842066}
   - component: {fileID: 3258438086738953422}
-  - component: {fileID: 469804511611093649}
   - component: {fileID: 4270227283105402116}
   m_Layer: 11
   m_Name: gridPiece
@@ -7200,19 +6165,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8767771010495543275}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &469804511611093649
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8767771010495543275}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &4270227283105402116
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7264,7 +6216,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1632551846845143801}
   - component: {fileID: 1691266466906247071}
-  - component: {fileID: 4440185999007415292}
   - component: {fileID: 4934708524496810661}
   m_Layer: 11
   m_Name: gridPiece
@@ -7295,19 +6246,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8769706355038220557}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &4440185999007415292
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8769706355038220557}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &4934708524496810661
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7359,7 +6297,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1525557034727407775}
   - component: {fileID: 336045297001459013}
-  - component: {fileID: 515135797830343492}
   - component: {fileID: 3088073760620156642}
   m_Layer: 11
   m_Name: gridPiece
@@ -7390,19 +6327,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8941173204085185887}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &515135797830343492
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8941173204085185887}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &3088073760620156642
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7454,7 +6378,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4462237558244977905}
   - component: {fileID: 9145770109093453191}
-  - component: {fileID: 6968546422925821519}
   - component: {fileID: 7479207627369531502}
   m_Layer: 11
   m_Name: gridPiece
@@ -7485,19 +6408,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8973996709075228337}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6968546422925821519
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8973996709075228337}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &7479207627369531502
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7549,7 +6459,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8117405476254688647}
   - component: {fileID: 6619380957905846805}
-  - component: {fileID: 4799807197986428542}
   - component: {fileID: 8045210520739943836}
   m_Layer: 11
   m_Name: gridPiece
@@ -7580,19 +6489,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9033779431747677992}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &4799807197986428542
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9033779431747677992}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &8045210520739943836
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7643,6 +6539,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 971784556065809182}
+  - component: {fileID: 1444403309882328628}
   m_Layer: 11
   m_Name: Grid
   m_TagString: Untagged
@@ -7745,6 +6642,19 @@ Transform:
   m_Father: {fileID: 4466407112546182275}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1444403309882328628
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9039822209202358222}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.8, y: 0.15, z: 9.8}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9089477638032337014
 GameObject:
   m_ObjectHideFlags: 0
@@ -7755,7 +6665,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9184863558093989714}
   - component: {fileID: 5051193311895581859}
-  - component: {fileID: 4749404482476776622}
   - component: {fileID: 3257681653717343581}
   m_Layer: 11
   m_Name: gridPiece
@@ -7786,19 +6695,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9089477638032337014}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &4749404482476776622
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9089477638032337014}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &3257681653717343581
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7850,7 +6746,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3482887622493375541}
   - component: {fileID: 4528181897139998273}
-  - component: {fileID: 3221358756981412415}
   - component: {fileID: 6269056778994152715}
   m_Layer: 11
   m_Name: gridPiece
@@ -7881,19 +6776,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9184322584723605196}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &3221358756981412415
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9184322584723605196}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 12.15, y: 0.13, z: 12.15}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &6269056778994152715
 MeshRenderer:
   m_ObjectHideFlags: 0

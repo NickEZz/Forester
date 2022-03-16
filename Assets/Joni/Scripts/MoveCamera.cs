@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveCamera : MonoBehaviour
 {
-    [SerializeField] float sensitivity;
+    public float sensitivity;
     [SerializeField] float zoomSpeed;
     [SerializeField] float minCameraHeight;
     [SerializeField] float maxCameraHeight;

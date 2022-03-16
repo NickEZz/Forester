@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treeType: 1
-  hp: 8
+  hp: 10
   averageTreeHeight: 0.36
   treeHeight: 0
   adultTree: 0

@@ -53,6 +53,7 @@ public class TreeScript : MonoBehaviour
        
         areaOfTree = treePos.collider.GetComponent<AreaScript>();
         areaOfTree.treesInArea.Add(gameObject);
+        treeSpawnChance += (int)areaOfTree.workingPower * 4;
 
         transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0);
     }
@@ -105,8 +106,8 @@ public class TreeScript : MonoBehaviour
     void SpawnTree()
     {
         // Valitsee random sijainnin puun läheltä jonne spawnata uusi puu
-        float x = Random.Range(-1f, 2f);
-        float z = Random.Range(-1f, 2f);
+        float x = Random.Range(-1f, 1f);
+        float z = Random.Range(-1f, 1f);
 
         
         Vector3 rayPos = new Vector3(transform.position.x - x, 10f, transform.position.z - z);
@@ -129,7 +130,7 @@ public class TreeScript : MonoBehaviour
         
     }
 
-    public void ChopTree(float damage)
+    public void ChopTree(float damage, bool player)
     {
         if (!beingSawed)
         {
@@ -138,13 +139,17 @@ public class TreeScript : MonoBehaviour
                 hp -= damage;
                 Instantiate(axeModel, transform.position + new Vector3(0, 0.45f, -0.8f), Quaternion.Euler(0f, 180f, 90f));
 
-                audioManager.PlaySound("choptree", transform.position);
+                if (player)
+                {
+                    audioManager.PlaySound("choptree", transform.position);
+                }
 
                 if (hp <= 0)
                 {
-                    //animator.SetTrigger("Cut");
-
-                    audioManager.PlaySound("treefall", transform.position);
+                    if (player)
+                    {
+                        audioManager.PlaySound("treefall", transform.position);
+                    }
                     StartAnimation();
                 }
             }

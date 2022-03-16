@@ -109,7 +109,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4163cc8f1f9134aaea31b53f667e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingLevel: 0
+  upgradeCost:
+  - 0
+  - 40
+  - 0
+  moneyCost: 1000
   building: 0
+  upgradeable: 1
   buildTime: 10
   timer: 0
   materialIndex: 1

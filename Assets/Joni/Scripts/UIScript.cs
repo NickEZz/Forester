@@ -6,34 +6,44 @@ using TMPro;
 
 public class UIScript : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI totalWoodCounter;
-    [SerializeField] TextMeshProUGUI[] moneyCounters;
+    [SerializeField] private TextMeshProUGUI totalWoodCounter;
+    [SerializeField] private TextMeshProUGUI[] moneyCounters;
 
-    [SerializeField] TextMeshProUGUI[] woodCounters;
-    [SerializeField] TextMeshProUGUI[] saplingCounters;
+    [SerializeField] private TextMeshProUGUI[] woodCounters;
+    [SerializeField] private TextMeshProUGUI[] saplingCounters;
 
-    [SerializeField] GameObject[] elementsToHide;
+    [SerializeField] private GameObject[] elementsToHide;
 
-    [SerializeField] ToolScript toolScript;
-    [SerializeField] BuildScript buildScript;
+    [SerializeField] private ToolScript toolScript;
+    [SerializeField] private BuildScript buildScript;
 
-    [SerializeField] RawImage currentBuildingIcon;
-    [SerializeField] Image[] buildingButtons;
+    [SerializeField] private RawImage currentBuildingIcon;
+    [SerializeField] private Image[] buildingButtons;
 
-    [SerializeField] RawImage currentToolIcon;
-    [SerializeField] Texture2D[] toolIcons;
+    [SerializeField] private RawImage currentToolIcon;
+    [SerializeField] private Texture2D[] toolIcons;
+    [SerializeField] private TextMeshProUGUI saplingNameText;
+    [SerializeField] private TextMeshProUGUI saplingAmountText;
 
-    [SerializeField] RawImage[] shopToolIcons;
-    [SerializeField] TextMeshProUGUI[] shopToolPrices;
+    [SerializeField] private RawImage[] shopToolIcons;
+    [SerializeField] private TextMeshProUGUI[] shopToolPrices;
 
-    [SerializeField] GameObject pineSapling;
-    [SerializeField] GameObject birchSapling;
+    [SerializeField] private GameObject pineSapling;
+    [SerializeField] private GameObject birchSapling;
 
-    [SerializeField] AudioManager audioManager;
+    [SerializeField] private GameObject gameMenu;
+    [SerializeField] private GameObject exitConfirmWindow;
+
+    [SerializeField] private Slider volumeSlider;
+    [SerializeField] private Slider sensitivitySlider;
+
+    [SerializeField] private MoveCamera moveCamera;
+    [SerializeField] private AudioManager audioManager;
 
 
     private void Update()
     {
+        // Kauppa ja raha/puu counterit
         totalWoodCounter.text = StorageScript.Instance.totalWood.ToString("F1") + "m³";
 
         for (int i = 0; i < moneyCounters.Length; i++)
@@ -77,6 +87,7 @@ public class UIScript : MonoBehaviour
             }
         }
 
+        // Piilottaa saplingit jota ei voi ostaa vielä
         switch (StorageScript.Instance.currentSector)
         {
             case 0:
@@ -84,10 +95,12 @@ public class UIScript : MonoBehaviour
                 {
                     pineSapling.SetActive(false);
                 }
+                /*
                 if (birchSapling.activeSelf)
                 {
                     birchSapling.SetActive(false);
                 }
+                */
                 break;
             case 1:
                 if (!pineSapling.activeSelf)
@@ -100,17 +113,39 @@ public class UIScript : MonoBehaviour
                 {
                     pineSapling.SetActive(true);
                 }
-                if (!birchSapling.activeSelf)
+                /*if (!birchSapling.activeSelf)
                 {
-                    birchSapling.SetActive(true);
-                }
+                    //birchSapling.SetActive(true);
+                }*/
                 break;
         }
-        //samanlainen rakennuksille
+        
+        // Vaihtaa työkalun kuvakkeen oikeaksi kuvakkeeksi
+        //currentToolIcon.texture = toolIcons[toolScript.tool];
+        switch (toolScript.tool)
+        {
+            default:
+                saplingNameText.gameObject.SetActive(false);
+                currentToolIcon.gameObject.SetActive(true);
+                currentToolIcon.texture = toolIcons[toolScript.tool];
+                break;
+            case 2:
+                currentToolIcon.gameObject.SetActive(false);
+                saplingNameText.gameObject.SetActive(true);
+                saplingNameText.text = "Spruce sapling";
+                saplingAmountText.text = StorageScript.Instance.saplings[0].ToString();
+                break;
+            case 3:
+                currentToolIcon.gameObject.SetActive(false);
+                saplingNameText.gameObject.SetActive(true);
+                saplingNameText.text = "Pine sapling";
+                saplingAmountText.text = StorageScript.Instance.saplings[1].ToString();
+                break;
+            
+        }
 
-        currentToolIcon.texture = toolIcons[toolScript.tool];
-        //currentBuildingIcon.texture = buildingIcons[buildScript.selectedBuilding];
 
+        // Kun menee buildmodeen, piilottaa joitain ui elementtejä ja tuo muita esille
         if (buildScript.buildMode)
         {
             for (int i = 0; i < elementsToHide.Length - 1; i++)
@@ -137,6 +172,10 @@ public class UIScript : MonoBehaviour
             elementsToHide[1].SetActive(true);
             elementsToHide[3].SetActive(false);
         }
+
+        // Volume ja sensitivity sliderit
+        audioManager.volumeMaster = volumeSlider.value;
+        moveCamera.sensitivity = sensitivitySlider.value;
     }
 
     public void ToggleToolMenu()
@@ -216,118 +255,156 @@ public class UIScript : MonoBehaviour
         audioManager.PlaySound("click", Vector3.zero);
     }
     
-    public void SellOneSpruce()
+    public void SellSpruce(float amount)
     {
-        if (StorageScript.Instance.wood[0] >= 1)
+        if (StorageScript.Instance.wood[0] >= amount)
         {
-            StorageScript.Instance.wood[0]--;
-            StorageScript.Instance.money += 60f;
+            StorageScript.Instance.wood[0] -= amount;
+            StorageScript.Instance.money += amount * 60f;
+            audioManager.PlaySound("transactionsound", Vector3.zero);
         }
-        audioManager.PlaySound("click", Vector3.zero);
+        
     }
 
-    public void SellTenSpruce()
+    public void SellAllSpruce()
     {
-        if (StorageScript.Instance.wood[0] >= 10)
+        if (StorageScript.Instance.wood[0] > 0)
         {
-            StorageScript.Instance.wood[0] -= 10f;
-            StorageScript.Instance.money += 10f * 60f;
+            audioManager.PlaySound("transactionsound", Vector3.zero);
+            StorageScript.Instance.money += StorageScript.Instance.wood[0] * 60f;
+            StorageScript.Instance.wood[0] -= StorageScript.Instance.wood[0];
+
         }
-        audioManager.PlaySound("click", Vector3.zero);
+
     }
 
-    public void SellOnePine()
+    public void SellPine(float amount)
     {
-        if (StorageScript.Instance.wood[1] >= 1)
+        if (StorageScript.Instance.wood[1] >= amount)
         {
-            StorageScript.Instance.wood[1]--;
-            StorageScript.Instance.money += 130f;
+            StorageScript.Instance.wood[1] -= amount;
+            StorageScript.Instance.money += amount * 130f;
+            audioManager.PlaySound("transactionsound", Vector3.zero);
         }
-        audioManager.PlaySound("click", Vector3.zero);
+        
     }
 
-    public void SellTenPine()
+    public void SellAllPine()
     {
-        if (StorageScript.Instance.wood[1] >= 10)
+        if (StorageScript.Instance.wood[1] > 0)
         {
-            StorageScript.Instance.wood[1] -= 10f;
-            StorageScript.Instance.money += 10f * 130f;
+            audioManager.PlaySound("transactionsound", Vector3.zero);
+            StorageScript.Instance.money += StorageScript.Instance.wood[1] * 130f;
+            StorageScript.Instance.wood[1] -= StorageScript.Instance.wood[1];
+
         }
-        audioManager.PlaySound("click", Vector3.zero);
-    }
-    public void SellOneBirch()
-    {
-        if (StorageScript.Instance.wood[2] >= 1)
-        {
-            StorageScript.Instance.wood[2]--;
-            StorageScript.Instance.money += 200f;
-        }
-        audioManager.PlaySound("click", Vector3.zero);
     }
 
-    public void SellTenBirch()
+    public void SellBirch(float amount)
     {
-        if (StorageScript.Instance.wood[2] >= 10)
+        if (StorageScript.Instance.wood[2] >= amount)
         {
-            StorageScript.Instance.wood[2] -= 10f;
-            StorageScript.Instance.money += 10f * 200f;
+            StorageScript.Instance.wood[2] -= amount;
+            StorageScript.Instance.money += amount * 200f;
+            audioManager.PlaySound("transactionsound", Vector3.zero);
         }
-        audioManager.PlaySound("click", Vector3.zero);
+    }
+
+    public void SellAllBirch()
+    {
+        if (StorageScript.Instance.wood[2] > 0)
+        {
+            audioManager.PlaySound("transactionsound", Vector3.zero);
+            StorageScript.Instance.money += StorageScript.Instance.wood[2] * 200f;
+            StorageScript.Instance.wood[2] -= StorageScript.Instance.wood[2];
+            
+        }
     }
 
     public void BuyAxeUpgrade()
     {
         if (StorageScript.Instance.money >= toolScript.axes[toolScript.currentAxeUpgrade + 1].toolPrice)
         {
+            audioManager.PlaySound("transactionsound", Vector3.zero);
             toolScript.currentAxeUpgrade++;
             StorageScript.Instance.money -= toolScript.axes[toolScript.currentAxeUpgrade].toolPrice;
             toolScript.UpdateTool();
         }
-        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void BuySawUpgrade()
     {
         if (StorageScript.Instance.money >= toolScript.saws[toolScript.currentSawUpgrade + 1].toolPrice)
         {
+            audioManager.PlaySound("transactionsound", Vector3.zero);
             toolScript.currentSawUpgrade++;
             StorageScript.Instance.money -= toolScript.saws[toolScript.currentSawUpgrade].toolPrice;
             toolScript.UpdateTool();
         }
-        audioManager.PlaySound("click", Vector3.zero);
+        
     }
 
-    public void BuySpruceSapling()
+    public void BuySpruceSapling(float amount)
     {
-        if (StorageScript.Instance.money >= 10f)
+        if (StorageScript.Instance.money >= 50f * amount)
         {
-            StorageScript.Instance.saplings[0]++;
-            StorageScript.Instance.money -= 10f;
+            audioManager.PlaySound("transactionsound", Vector3.zero);
+            StorageScript.Instance.saplings[0] += (int)amount;
+            StorageScript.Instance.money -= 50f * amount;
         }
-        audioManager.PlaySound("click", Vector3.zero);
+        
     }
-    public void BuyPineSapling()
+    public void BuyPineSapling(float amount)
     {
         if (StorageScript.Instance.currentSector >= 1)
         {
-            if (StorageScript.Instance.money >= 10f)
+            if (StorageScript.Instance.money >= 100f * amount)
             {
-                StorageScript.Instance.saplings[1]++;
-                StorageScript.Instance.money -= 10f;
+                audioManager.PlaySound("transactionsound", Vector3.zero);
+                StorageScript.Instance.saplings[1] += (int)amount;
+                StorageScript.Instance.money -= 100f * amount;
             }
         }
-        audioManager.PlaySound("click", Vector3.zero);
+        
     }
     public void BuyBirchSapling()
     {
         if (StorageScript.Instance.currentSector >= 2)
         {
-            if (StorageScript.Instance.money >= 10f)
+            if (StorageScript.Instance.money >= 2000f)
             {
+                audioManager.PlaySound("transactionsound", Vector3.zero);
                 StorageScript.Instance.saplings[2]++;
-                StorageScript.Instance.money -= 10f;
+                StorageScript.Instance.money -= 2000f;
             }
         }
+    }
+
+    public void ToggleGameMenu()
+    {
+        gameMenu.SetActive(!gameMenu.activeSelf);
+        exitConfirmWindow.SetActive(false);
         audioManager.PlaySound("click", Vector3.zero);
+    }
+
+    public void ExitButton()
+    {
+        exitConfirmWindow.SetActive(true);
+        audioManager.PlaySound("click", Vector3.zero);
+    }
+
+    public void ConfirmExit(bool choice)
+    {
+        if (choice)
+        {
+            print("quit");
+            Application.Quit();
+        }
+        else
+        {
+            print("canceled quit");
+            exitConfirmWindow.SetActive(false);
+            audioManager.PlaySound("click", Vector3.zero);
+        }
     }
 }

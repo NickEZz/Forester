@@ -50,6 +50,7 @@ public class ToolScript : MonoBehaviour
             {
                 tool++;
             }
+            tool = Mathf.Clamp(tool++, 0, 3);
 
             Vector2 input = Input.mousePosition;
             Ray ray = cam.ScreenPointToRay(input);
@@ -71,7 +72,7 @@ public class ToolScript : MonoBehaviour
                         {
                             if (mouse.collider.GetComponent<TreeScript>().hp > 0)
                             {
-                                mouse.collider.GetComponent<TreeScript>().ChopTree(axeDamage);
+                                mouse.collider.GetComponent<TreeScript>().ChopTree(axeDamage, true);
                             }
                         }
                     }
@@ -84,7 +85,7 @@ public class ToolScript : MonoBehaviour
                     {
                         if (Physics.Raycast(ray, out mouse, 40f, layerMasks[0]))
                         {
-                            if (mouse.collider.GetComponent<TreeScript>().hp > 0)
+                            if (mouse.collider.GetComponent<TreeScript>().adultTree && mouse.collider.GetComponent<TreeScript>().hp > 0)
                             {
                                 if (!sawing)
                                 {

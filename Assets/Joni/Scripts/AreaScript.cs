@@ -24,6 +24,7 @@ public class AreaScript : MonoBehaviour
     [SerializeField] float timer;
 
     [SerializeField] Material grassMat;
+    [SerializeField] Material highlightedMat;
 
     Renderer currentMaterial;
 
@@ -33,9 +34,14 @@ public class AreaScript : MonoBehaviour
 
     [SerializeField] Mesh planeMesh;
 
+    MapManager mapManager;
+
+    public bool focused;
+
     // Start is called before the first frame update
     void Start()
     {
+        //mapManager = FindObjectOfType<MapManager>();
         currentMaterial = GetComponent<Renderer>();
         timer = 0;
     }
@@ -66,6 +72,15 @@ public class AreaScript : MonoBehaviour
                     working = false;
                 }
             }
+
+            if (focused)
+            {
+                currentMaterial.material = highlightedMat;
+            }
+            else
+            {
+                currentMaterial.material = grassMat;
+            }
         }
 
         if (working) // Jos alueella on rakennuksia ja puita on enemm‰n kuin 5
@@ -79,7 +94,7 @@ public class AreaScript : MonoBehaviour
                     TreeScript treeScript = tree.GetComponent<TreeScript>();
                     if (treeScript.adultTree) // Ottaa ekan puun joka on jo kasvanut
                     {
-                        treeScript.ChopTree(workingPower / 2f); // Ja v‰hent‰‰ silt‰ puulta hp:ta
+                        treeScript.ChopTree(workingPower / 2f, false); // Ja v‰hent‰‰ silt‰ puulta hp:ta
                         if (treeScript.hp <= 0)
                         {
                             treesInArea.Remove(tree); // Jos puulla on 0 hp, poistaa sen listasta
@@ -124,6 +139,9 @@ public class AreaScript : MonoBehaviour
             {
                 bought = true;
                 StorageScript.Instance.money -= price;
+
+                //mapManager.UpdatePrices(StorageScript.Instance.currentSector, mapManager., mapManager.)
+
                 if (sector > StorageScript.Instance.currentSector)
                 {
                     StorageScript.Instance.currentSector = sector;
