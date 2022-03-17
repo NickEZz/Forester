@@ -8559,6 +8559,7 @@ MonoBehaviour:
   trees:
   - {fileID: 1493405889664521902, guid: 7b0d959510960b245bd8462f43d3f5e6, type: 3}
   - {fileID: 3080712938068371604, guid: 31ab1f1c9cca69b49ab9941c741264a2, type: 3}
+  - {fileID: 4347354049761296060, guid: 1dfdce4485048ec428a741783c96a690, type: 3}
   saplings: 0a0000000000000000000000
 --- !u!114 &261715873
 MonoBehaviour:
@@ -16593,10 +16594,10 @@ RectTransform:
   m_Father: {fileID: 536733241}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.073552735, y: 0.06917291}
+  m_AnchorMin: {x: 0.073552735, y: 0.5124623}
   m_AnchorMax: {x: 0.47043973, y: 0.9288271}
-  m_AnchoredPosition: {x: 0.55062103, y: 35.499977}
-  m_SizeDelta: {x: -0.2347107, y: -70.94714}
+  m_AnchoredPosition: {x: 0.55062866, y: -0.000022888184}
+  m_SizeDelta: {x: -0.2347107, y: 0.052856445}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &510335688
 MonoBehaviour:
@@ -30425,7 +30426,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.194, y: 0.20015657}
   m_AnchorMax: {x: 0.81670743, y: 0.7436313}
-  m_AnchoredPosition: {x: -0.48340797, y: 0.9286957}
+  m_AnchoredPosition: {x: -0.48340988, y: 0.9286957}
   m_SizeDelta: {x: 0.4673996, y: 1.466999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &889807923
@@ -55680,7 +55681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.042000003, y: 0.5}
   m_AnchorMax: {x: 0.95800006, y: 0.915}
-  m_AnchoredPosition: {x: 0.000019073486, y: -0.0010004044}
+  m_AnchoredPosition: {x: 0.000019073486, y: -0.001001358}
   m_SizeDelta: {x: 0.34200287, y: -0.002199173}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1554821817
@@ -62737,7 +62738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.055000003, y: 0.045760777}
   m_AnchorMax: {x: 0.94500005, y: 0.37800002}
-  m_AnchoredPosition: {x: 0, y: 0.79999924}
+  m_AnchoredPosition: {x: 0, y: 0.7999954}
   m_SizeDelta: {x: -0.3409996, y: 0.64920044}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1717928180

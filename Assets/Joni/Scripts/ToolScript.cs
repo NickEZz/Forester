@@ -50,7 +50,7 @@ public class ToolScript : MonoBehaviour
             {
                 tool++;
             }
-            tool = Mathf.Clamp(tool++, 0, 3);
+            tool = Mathf.Clamp(tool++, 0, 4);
 
             Vector2 input = Input.mousePosition;
             Ray ray = cam.ScreenPointToRay(input);
