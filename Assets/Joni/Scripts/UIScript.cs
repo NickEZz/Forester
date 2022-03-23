@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UIScript : MonoBehaviour
 {
@@ -34,12 +35,26 @@ public class UIScript : MonoBehaviour
     [SerializeField] private GameObject gameMenu;
     [SerializeField] private GameObject exitConfirmWindow;
 
-    [SerializeField] private Slider volumeSlider;
-    [SerializeField] private Slider sensitivitySlider;
+    [SerializeField] private GameObject optionsMenu;
+    [SerializeField] private GameObject resetConfirmation;
+    [SerializeField] private Toggle fullscreenToggle;
+    [SerializeField] public Slider volumeSlider;
+    [SerializeField] public Slider sensitivitySlider;
 
     [SerializeField] private MoveCamera moveCamera;
     [SerializeField] private AudioManager audioManager;
 
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("Sensitivity"))
+        {
+            sensitivitySlider.value = PlayerPrefs.GetFloat("Sensitivity");
+        }
+        if (PlayerPrefs.HasKey("Volume"))
+        {
+            volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+        }
+    }
 
     private void Update()
     {
@@ -176,6 +191,8 @@ public class UIScript : MonoBehaviour
         // Volume ja sensitivity sliderit
         audioManager.volumeMaster = volumeSlider.value;
         moveCamera.sensitivity = sensitivitySlider.value;
+
+        Screen.fullScreen = fullscreenToggle.isOn;
     }
 
     public void ToggleToolMenu()
@@ -385,6 +402,44 @@ public class UIScript : MonoBehaviour
         gameMenu.SetActive(!gameMenu.activeSelf);
         exitConfirmWindow.SetActive(false);
         audioManager.PlaySound("click", Vector3.zero);
+    }
+
+    public void ToggleOptionsMenu()
+    {
+        optionsMenu.SetActive(!optionsMenu.activeSelf);
+        audioManager.PlaySound("click", Vector3.zero);
+    }
+
+    public void SaveVolume()
+    {
+        SaveManager.Instance.SaveSetting("Volume", volumeSlider.value);
+    }
+
+    public void SaveSensitivity()
+    {
+        SaveManager.Instance.SaveSetting("Sensitivity", sensitivitySlider.value);
+    }
+
+    public void ResetSaveGameButton()
+    {
+        resetConfirmation.SetActive(true);
+        audioManager.PlaySound("click", Vector3.zero);
+    }
+    
+    public void ConfirmReset(bool choice)
+    {
+        if (choice)
+        {
+            print("reset");
+            SaveManager.Instance.ResetSaveData();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        else
+        {
+            print("canceled reset");
+            resetConfirmation.SetActive(false);
+            audioManager.PlaySound("click", Vector3.zero);
+        }
     }
 
     public void ExitButton()

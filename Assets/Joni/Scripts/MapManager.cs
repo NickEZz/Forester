@@ -22,6 +22,8 @@ public class MapManager : MonoBehaviour
 
     [SerializeField] BuildScript buildScript;
 
+    int i;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,16 +87,36 @@ public class MapManager : MonoBehaviour
         {
             GameObject center = Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize, 0, y * groundSize), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
             AreaScript newAreaScript = center.GetComponent<AreaScript>();
-            newAreaScript.SetAreaStats(sector, 0, buildScript);
+            newAreaScript.SetAreaStats(sector, 0, i, buildScript);
             newAreaScript.bought = true;
             StorageScript.Instance.currentSector = 0;
+            if (mapExists)
+            {
+                newAreaScript.bought = StorageScript.Instance.areas[i].bought;
+                newAreaScript.totalBuildingsInArea = StorageScript.Instance.areas[i].totalBuildingsInArea;
+                newAreaScript.builtBuildingsInArea = StorageScript.Instance.areas[i].builtBuildingsInArea;
+                newAreaScript.treesInArea = StorageScript.Instance.areas[i].treesInArea;
+                newAreaScript.workingPower = StorageScript.Instance.areas[i].workingPower;
+            }
         }
         else
         {
             GameObject levelPart = Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize, 0, y * groundSize), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
             AreaScript newAreaScript = levelPart.GetComponent<AreaScript>();
             areaList.Add(newAreaScript);
-            newAreaScript.SetAreaStats(sector, cost, buildScript);
+            newAreaScript.SetAreaStats(sector, cost, i, buildScript);
+            if (mapExists)
+            {
+                newAreaScript.bought = StorageScript.Instance.areas[i].bought;
+                newAreaScript.totalBuildingsInArea = StorageScript.Instance.areas[i].totalBuildingsInArea;
+                newAreaScript.builtBuildingsInArea = StorageScript.Instance.areas[i].builtBuildingsInArea;
+                newAreaScript.treesInArea = StorageScript.Instance.areas[i].treesInArea;
+                newAreaScript.workingPower = StorageScript.Instance.areas[i].workingPower;
+            }
         }
+
+        print(i);
+        i++;
+        
     }
 }

@@ -121,6 +121,7 @@ public class TreeScript : MonoBehaviour
             if (overlap.Length == 0)
             {
                 GameObject newTree = Instantiate(StorageScript.Instance.trees[treeType], treePos.point, Quaternion.identity);
+                StorageScript.Instance.treesInGame.Add(newTree);
             }
             else
             {
@@ -197,6 +198,7 @@ public class TreeScript : MonoBehaviour
             animator.SetTrigger("Cut");
             animationPlaying = true;
             areaOfTree.treesInArea.Remove(gameObject);
+            StorageScript.Instance.treesInGame.Remove(gameObject);
             StorageScript.Instance.wood[treeType] += treeHeight * 10;
             /*
             switch (treeType)

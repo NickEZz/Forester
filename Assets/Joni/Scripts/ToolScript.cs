@@ -145,7 +145,8 @@ public class ToolScript : MonoBehaviour
                     {
                         FindObjectOfType<AudioManager>().PlaySound("planttree", mouse.point);
                         StorageScript.Instance.saplings[tree]--;
-                        Instantiate(trees[tree], mouse.point, Quaternion.identity);
+                        GameObject newTree = Instantiate(trees[tree], mouse.point, Quaternion.identity);
+                        StorageScript.Instance.treesInGame.Add(newTree);
                     }
                 }
             }

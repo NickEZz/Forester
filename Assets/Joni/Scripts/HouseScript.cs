@@ -60,6 +60,8 @@ public class HouseScript : MonoBehaviour
         Material[] materials = renderer.materials;
         materials[materialIndex] = color;
         renderer.sharedMaterials = materials;
+
+        StorageScript.Instance.buildingsInGame.Add(gameObject);
     }
 
     public bool UpgradeHouse()
@@ -75,6 +77,7 @@ public class HouseScript : MonoBehaviour
             targetArea.builtBuildingsInArea--;
             targetArea.workingPower -= workingPower;
 
+            StorageScript.Instance.buildingsInGame.Remove(gameObject);
             Destroy(gameObject);
 
             return true;

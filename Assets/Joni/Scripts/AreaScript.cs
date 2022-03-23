@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AreaScript : MonoBehaviour
 {
+    public int areaId;
+    
     public float price;
     public bool bought = false;
     public int sector;
@@ -158,10 +160,29 @@ public class AreaScript : MonoBehaviour
         return false;
     }
 
-    public void SetAreaStats(int _sector, float _price, BuildScript _buildScript)
+    public void SetAreaStats(int _sector, float _price, int _areaId, BuildScript _buildScript)
     {
         sector = _sector;
         price = _price;
         buildScript = _buildScript;
+        areaId = _areaId;
+    }
+}
+
+public class Area
+{
+    public bool bought;
+    public int totalBuildingsInArea;
+    public int builtBuildingsInArea;
+    public List<GameObject> treesInArea;
+    public float workingPower;
+
+    public Area(bool _bought, int _totalBuildingsInArea, int _builtBuildingsInArea, List<GameObject> _treesInArea, float _workingPower)
+    {
+        bought = _bought;
+        totalBuildingsInArea = _totalBuildingsInArea;
+        builtBuildingsInArea= _builtBuildingsInArea;
+        treesInArea= _treesInArea;
+        workingPower = _workingPower;
     }
 }
