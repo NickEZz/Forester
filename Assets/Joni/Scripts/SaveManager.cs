@@ -13,6 +13,7 @@ public class SaveManager : MonoBehaviour
     [SerializeField] float autosaveInterval;
 
     [SerializeField] ToolScript toolScript;
+    [SerializeField] MapManager mapManager;
 
     //public SaveData saveData;
 
@@ -42,12 +43,12 @@ public class SaveManager : MonoBehaviour
         {
             SaveGameData();
         } 
+        */
         if (Input.GetKeyDown(KeyCode.L))
         {
             LoadGameData(); 
         }
-        */
-
+       
         if (Input.GetKey(KeyCode.LeftControl))
         {
             if (Input.GetKeyDown(KeyCode.S))
@@ -70,8 +71,24 @@ public class SaveManager : MonoBehaviour
         saveData.currentSawUpgrade = toolScript.currentSawUpgrade;
 
         saveData.areas = StorageScript.Instance.areas;
-        //saveData.buildingsInGame = StorageScript.Instance.buildingsInGame;
-        //saveData.treesInGame = StorageScript.Instance.treesInGame;
+
+        StorageScript.Instance.trees.Clear();
+
+        for (int i = 0; i < StorageScript.Instance.treesInGame.Count; i++)
+        {
+            TreeScript treeScript = StorageScript.Instance.treesInGame[i].GetComponent<TreeScript>();
+            Tree tree = new Tree(treeScript.treeType,
+                treeScript.hp, 
+                treeScript.adultTree, 
+                treeScript.treeHeight,
+                new CustomVector(treeScript.transform.position.x, treeScript.transform.position.y, treeScript.transform.position.z), 
+                treeScript.transform.localScale.y, 
+                treeScript.transform.rotation.y);
+
+            StorageScript.Instance.trees.Add(tree);
+        }
+
+        saveData.trees = StorageScript.Instance.trees;
 
         Debug.Log("Saved game");
         BinaryFormatter binaryFormatter = new BinaryFormatter();
@@ -97,7 +114,27 @@ public class SaveManager : MonoBehaviour
             toolScript.currentAxeUpgrade = saveData.currentAxeUpgrade;
             toolScript.currentSawUpgrade = saveData.currentSawUpgrade;
 
+            StorageScript.Instance.areas = saveData.areas;
+
+            mapManager.CreateMap(true);
+
+            for (int i = 0; i < saveData.trees.Count; i++)
+            {
+                GameObject newTree = Instantiate(StorageScript.Instance.treeTypes[saveData.trees[i].treeType], new Vector3(saveData.trees[i].position.x, saveData.trees[i].position.y, saveData.trees[i].position.z), Quaternion.Euler(0, saveData.trees[i].yRotation, 0));
+                TreeScript newTreeScript = newTree.GetComponent<TreeScript>();
+                newTreeScript.hp = saveData.trees[i].hp;
+                newTreeScript.adultTree = saveData.trees[i].adultTree;
+                newTreeScript.treeHeight = saveData.trees[i].treeHeight;
+                newTree.transform.localScale = new Vector3(saveData.trees[i].scale, saveData.trees[i].scale, saveData.trees[i].scale);
+
+                StorageScript.Instance.treesInGame.Add(newTree);
+            }
+
             Debug.Log("Loaded game");
+        }
+        else
+        {
+            mapManager.CreateMap(false);
         }
     }
 
@@ -123,14 +160,6 @@ public class SaveData
     public int currentAxeUpgrade;
     public int currentSawUpgrade;
 
-    public bool mapExists;
     public List<Area> areas;
-
-    //public List<GameObject> buildingsInGame;
-    //public List<GameObject> treesInGame;
-
-    //bool mapExists;
-
-    //GameObject[] buildings;
-    //GameObject[] trees;
+    public List<Tree> trees;
 }

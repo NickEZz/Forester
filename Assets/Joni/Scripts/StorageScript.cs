@@ -15,12 +15,14 @@ public class StorageScript : MonoBehaviour
 
     SaveData saveData;
 
-    public GameObject[] trees;
+    public GameObject[] treeTypes;
 
     public int[] saplings;
 
     public List<GameObject> buildingsInGame;
     public List<GameObject> treesInGame;
+
+    public List<Tree> trees;
 
     public List<Area> areas;
 

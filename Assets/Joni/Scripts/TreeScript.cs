@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class TreeScript : MonoBehaviour
 {
-    [SerializeField] int treeType;
+    public int treeType;
 
     public float hp;
 
-    [SerializeField] float averageTreeHeight;
+    public float averageTreeHeight;
 
-    [SerializeField] float treeHeight;
+    public float treeHeight;
 
     public bool adultTree = false;
 
@@ -19,7 +19,6 @@ public class TreeScript : MonoBehaviour
     [SerializeField] float growthEveryFrame;
 
     AreaScript areaOfTree;
-    GameObject newTree;
 
     Animator animator;
 
@@ -45,24 +44,27 @@ public class TreeScript : MonoBehaviour
     {
         audioManager = FindObjectOfType<AudioManager>();
 
-        treeHeight = Random.Range(averageTreeHeight - 0.02f, averageTreeHeight + 0.02f); // Arpoo random numeron puun korkeudelle
         animator = GetComponent<Animator>();
-
-        RaycastHit treePos;
-        Physics.Raycast(new Vector3(transform.position.x, 10f, transform.position.z), Vector3.down, out treePos, 20f, layerMasks[2]);
-       
-        areaOfTree = treePos.collider.GetComponent<AreaScript>();
-        areaOfTree.treesInArea.Add(gameObject);
-        treeSpawnChance += (int)areaOfTree.workingPower * 4;
-
-        transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (areaOfTree == null)
+        {
+            RaycastHit treePos;
+            if (Physics.Raycast(new Vector3(transform.position.x, 10f, transform.position.z), Vector3.down, out treePos, 20f, layerMasks[2]))
+            {
+                areaOfTree = treePos.collider.GetComponent<AreaScript>();
+                areaOfTree.treesInArea.Add(gameObject);
+                treeSpawnChance += (int)areaOfTree.workingPower * 4;
+            }
+        }
+
         if (adultTree) // Sitten ku puu on kasvanut kokonaan, se alkaa spawnaamaan muita puita
         {
+            transform.localScale = new Vector3(treeHeight, treeHeight, treeHeight);
+
             // Ajastin, kun ajastin on 0, aloittaa ajastimen alusta
             timer -= Time.deltaTime;
             if (timer <= 0)
@@ -83,6 +85,11 @@ public class TreeScript : MonoBehaviour
         }
         else // Puu kasvaa ensin
         {
+            if (transform.localScale.y >= treeHeight) // Kun puu on kasvanut
+            {
+                adultTree = true;
+            }
+
             if (areaOfTree.builtBuildingsInArea > 0) // Puu kasvaa nopeammin jos alueella on rakennuksia
             {
                 transform.localScale += new Vector3(1, 1, 1) * growthEveryFrame * (areaOfTree.workingPower + 1) * Time.deltaTime; // include workingpower in this too
@@ -91,11 +98,6 @@ public class TreeScript : MonoBehaviour
             {
                 transform.localScale += new Vector3(1, 1, 1) * growthEveryFrame * Time.deltaTime;
 
-            }
-            
-            if (transform.localScale.y >= treeHeight) // Kun puu on kasvanut
-            {
-                adultTree = true;
             }
         }
         
@@ -120,7 +122,10 @@ public class TreeScript : MonoBehaviour
             Collider[] overlap = Physics.OverlapSphere(treePos.point, 0.7f, layerMasks[1]);
             if (overlap.Length == 0)
             {
-                GameObject newTree = Instantiate(StorageScript.Instance.trees[treeType], treePos.point, Quaternion.identity);
+                GameObject newTree = Instantiate(StorageScript.Instance.treeTypes[treeType], treePos.point, Quaternion.identity);
+                TreeScript newTreeScript = newTree.GetComponent<TreeScript>();
+                newTreeScript.treeHeight = Random.Range(newTreeScript.averageTreeHeight - 0.02f, newTreeScript.averageTreeHeight + 0.02f); // Arpoo random numeron puun korkeudelle
+                newTree.transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0);
                 StorageScript.Instance.treesInGame.Add(newTree);
             }
             else
@@ -219,5 +224,28 @@ public class TreeScript : MonoBehaviour
     void DestroyTree()
     {
         Destroy(gameObject);
+    }
+}
+
+[System.Serializable]
+public class Tree
+{
+    public int treeType;
+    public float hp;
+    public bool adultTree;
+    public float treeHeight;
+    public CustomVector position;
+    public float scale;
+    public float yRotation;
+
+    public Tree(int _treeType, float _hp, bool _adultTree, float _treeHeight, CustomVector _position, float _scale, float _yRotation) // Vector3 _position, Vector3 _scale, Quaternion _rotation
+    {
+        treeType = _treeType;
+        hp = _hp;
+        adultTree = _adultTree;
+        treeHeight = _treeHeight;
+        position = _position;
+        scale = _scale;
+        yRotation = _yRotation;
     }
 }

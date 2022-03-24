@@ -144,6 +144,11 @@ public class AreaScript : MonoBehaviour
 
                 //mapManager.UpdatePrices(StorageScript.Instance.currentSector, mapManager., mapManager.)
 
+                // save areas
+
+                StorageScript.Instance.areas[areaId].bought = true;
+                SaveManager.Instance.SaveGameData();
+
                 if (sector > StorageScript.Instance.currentSector)
                 {
                     StorageScript.Instance.currentSector = sector;
@@ -169,20 +174,19 @@ public class AreaScript : MonoBehaviour
     }
 }
 
+[System.Serializable]
 public class Area
 {
     public bool bought;
     public int totalBuildingsInArea;
     public int builtBuildingsInArea;
-    public List<GameObject> treesInArea;
     public float workingPower;
 
-    public Area(bool _bought, int _totalBuildingsInArea, int _builtBuildingsInArea, List<GameObject> _treesInArea, float _workingPower)
+    public Area(bool _bought, int _totalBuildingsInArea, int _builtBuildingsInArea, float _workingPower)
     {
         bought = _bought;
         totalBuildingsInArea = _totalBuildingsInArea;
         builtBuildingsInArea= _builtBuildingsInArea;
-        treesInArea= _treesInArea;
         workingPower = _workingPower;
     }
 }

@@ -33,7 +33,7 @@ public class ToolScript : MonoBehaviour
     void Start()
     {
         cam = mainCamera.GetComponent<Camera>();
-        trees = StorageScript.Instance.trees;
+        trees = StorageScript.Instance.treeTypes;
         buildScript = GetComponent<BuildScript>();
     }
 
@@ -146,6 +146,9 @@ public class ToolScript : MonoBehaviour
                         FindObjectOfType<AudioManager>().PlaySound("planttree", mouse.point);
                         StorageScript.Instance.saplings[tree]--;
                         GameObject newTree = Instantiate(trees[tree], mouse.point, Quaternion.identity);
+                        TreeScript newTreeScript = newTree.GetComponent<TreeScript>();
+                        newTreeScript.treeHeight = Random.Range(newTreeScript.averageTreeHeight - 0.02f, newTreeScript.averageTreeHeight + 0.02f); // Arpoo random numeron puun korkeudelle
+                        newTree.transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0);
                         StorageScript.Instance.treesInGame.Add(newTree);
                     }
                 }
