@@ -13,6 +13,7 @@ public class TreeScript : MonoBehaviour
     public float treeHeight;
 
     public bool adultTree = false;
+    [SerializeField] GameObject grass;
 
     [SerializeField] bool beingSawed = false;
 
@@ -42,6 +43,8 @@ public class TreeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StorageScript.Instance.treesInGame.Add(gameObject);
+
         audioManager = FindObjectOfType<AudioManager>();
 
         animator = GetComponent<Animator>();
@@ -64,6 +67,7 @@ public class TreeScript : MonoBehaviour
         if (adultTree) // Sitten ku puu on kasvanut kokonaan, se alkaa spawnaamaan muita puita
         {
             transform.localScale = new Vector3(treeHeight, treeHeight, treeHeight);
+            grass.SetActive(true);
 
             // Ajastin, kun ajastin on 0, aloittaa ajastimen alusta
             timer -= Time.deltaTime;
@@ -126,7 +130,6 @@ public class TreeScript : MonoBehaviour
                 TreeScript newTreeScript = newTree.GetComponent<TreeScript>();
                 newTreeScript.treeHeight = Random.Range(newTreeScript.averageTreeHeight - 0.02f, newTreeScript.averageTreeHeight + 0.02f); // Arpoo random numeron puun korkeudelle
                 newTree.transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0);
-                StorageScript.Instance.treesInGame.Add(newTree);
             }
             else
             {
@@ -205,19 +208,6 @@ public class TreeScript : MonoBehaviour
             areaOfTree.treesInArea.Remove(gameObject);
             StorageScript.Instance.treesInGame.Remove(gameObject);
             StorageScript.Instance.wood[treeType] += treeHeight * 10;
-            /*
-            switch (treeType)
-            {
-                case 0:
-                    StorageScript.Instance.spruceWood += treeHeight * 10;
-                    break;
-                case 1:
-                    StorageScript.Instance.pineWood += treeHeight * 10;
-                    break;
-                case 2:
-                    StorageScript.Instance.birchWood += treeHeight * 10;
-                    break;
-            }*/
         }
     }
 
@@ -228,7 +218,7 @@ public class TreeScript : MonoBehaviour
 }
 
 [System.Serializable]
-public class Tree
+public class TreeSaveData
 {
     public int treeType;
     public float hp;
@@ -238,7 +228,7 @@ public class Tree
     public float scale;
     public float yRotation;
 
-    public Tree(int _treeType, float _hp, bool _adultTree, float _treeHeight, CustomVector _position, float _scale, float _yRotation) // Vector3 _position, Vector3 _scale, Quaternion _rotation
+    public TreeSaveData(int _treeType, float _hp, bool _adultTree, float _treeHeight, CustomVector _position, float _scale, float _yRotation) // Vector3 _position, Vector3 _scale, Quaternion _rotation
     {
         treeType = _treeType;
         hp = _hp;
@@ -248,4 +238,12 @@ public class Tree
         scale = _scale;
         yRotation = _yRotation;
     }
+}
+
+[System.Serializable]
+public class Sapling
+{
+    public string name;
+    public float price;
+    public Texture2D sprite;
 }

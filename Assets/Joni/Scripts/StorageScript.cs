@@ -10,21 +10,31 @@ public class StorageScript : MonoBehaviour
 
     public float money;
     public float[] wood; // 0 = spruce, 1 = pine, 2 = birch
+    public int[] saplings;
 
     public float totalWood;
+
+    public int currentAxeUpgrade;
+    public int currentSawUpgrade;
 
     SaveData saveData;
 
     public GameObject[] treeTypes;
-
-    public int[] saplings;
+    public Sapling[] saplingTypes;
+    public Building[] buildingTypes;
+    public Tool[] axes;
+    public Tool[] saws;
 
     public List<GameObject> buildingsInGame;
     public List<GameObject> treesInGame;
 
-    public List<Tree> trees;
+    public List<TreeSaveData> trees;
 
-    public List<Area> areas;
+    public List<AreaSaveData> areas;
+
+    public List<BuildingSaveData> buildings;
+
+
 
     private void Awake()
     {

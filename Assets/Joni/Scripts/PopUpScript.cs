@@ -80,7 +80,7 @@ public class PopUpScript : MonoBehaviour
                         {
                             upgradePopUp.transform.position = mouse.collider.transform.position + Vector3.up * 2f;
                             upgradePopUpButtonText.text = "Upgrade!";
-                            upgradePopUpText.text = ("Cost: " + selectedHouse.upgradeCost[selectedHouse.buildingLevel + 1] + "m³ " + woodNames[selectedHouse.buildingLevel + 1] + ", " + selectedHouse.moneyCost + "€");
+                            upgradePopUpText.text = ("Cost: " + selectedHouse.upgradeWoodCost[selectedHouse.buildingLevel + 1] + "m³ " + woodNames[selectedHouse.buildingLevel + 1] + ", " + selectedHouse.upgradeMoneyCost + "€");
                             targetHouse = selectedHouse;
                             upgradePopUp.SetActive(true);
                         }

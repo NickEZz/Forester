@@ -114,10 +114,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4163cc8f1f9134aaea31b53f667e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  building: 0
+  buildingLevel: 1
+  workingPower: 2
+  upgradeable: 1
+  upgradeWoodCost:
+  - 0
+  - 0
+  - 100
+  upgradeMoneyCost: 2000
   buildTime: 20
-  timer: 0
+  yOffset: 0.21
+  chosenColor: 0
   materialIndex: 1
+  meshRenderer: {fileID: 3524242068353975297}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
+  targetArea: {fileID: 0}
 --- !u!65 &193633481322772452
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -129,5 +142,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4572666, y: 3.1254778, z: 2.6131823}
-  m_Center: {x: 0.02, y: 0.72679573, z: 0.06}
+  m_Size: {x: 2.4572666, y: 3.0603812, z: 2.6131823}
+  m_Center: {x: 0.020000044, y: 0.6942471, z: 0.06000002}

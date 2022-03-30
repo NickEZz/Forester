@@ -175,14 +175,14 @@ public class AreaScript : MonoBehaviour
 }
 
 [System.Serializable]
-public class Area
+public class AreaSaveData
 {
     public bool bought;
     public int totalBuildingsInArea;
     public int builtBuildingsInArea;
     public float workingPower;
 
-    public Area(bool _bought, int _totalBuildingsInArea, int _builtBuildingsInArea, float _workingPower)
+    public AreaSaveData(bool _bought, int _totalBuildingsInArea, int _builtBuildingsInArea, float _workingPower)
     {
         bought = _bought;
         totalBuildingsInArea = _totalBuildingsInArea;

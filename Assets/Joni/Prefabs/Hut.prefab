@@ -110,13 +110,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingLevel: 0
-  upgradeCost:
+  workingPower: 1
+  upgradeable: 1
+  upgradeWoodCost:
   - 0
   - 40
   - 0
-  moneyCost: 1000
-  building: 0
-  upgradeable: 1
+  upgradeMoneyCost: 1000
   buildTime: 10
-  timer: 0
+  yOffset: 0.14
+  chosenColor: 0
   materialIndex: 1
+  meshRenderer: {fileID: 897854105363651356}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 256
+  targetArea: {fileID: 0}

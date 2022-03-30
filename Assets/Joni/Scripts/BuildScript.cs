@@ -11,9 +11,6 @@ public class BuildScript : MonoBehaviour
 
     [SerializeField] bool movingBuilding;
 
-    [SerializeField] Building[] buildings;
-    [SerializeField] Material[] buildingColors;
-
     public List<GameObject> gridList;
 
     [SerializeField] Vector3 cellSize = default;
@@ -23,6 +20,7 @@ public class BuildScript : MonoBehaviour
     Vector3 lastPos;
     Vector3 previewTargetPos;
     [SerializeField] float previewObjectMoveSpeed;
+    [SerializeField] Vector3 previewObjectSize;
 
     [SerializeField] LayerMask[] layerMasks;
     [SerializeField] Camera cam;
@@ -59,13 +57,13 @@ public class BuildScript : MonoBehaviour
             {
                 selectedBuilding++;
             }
-            selectedBuilding = Mathf.Clamp(selectedBuilding, 0, buildings.Length - 1);
+            selectedBuilding = Mathf.Clamp(selectedBuilding, 0, StorageScript.Instance.buildingTypes.Length - 1);
             if (Input.GetKeyDown(KeyCode.R))
             {
                 RotateHouse();
             }
 
-            previewObject.transform.localScale = buildings[selectedBuilding].buildingSize * 2;
+            previewObject.transform.localScale = previewObjectSize * 2;
 
             Vector2 input = Input.mousePosition;
             Ray ray = cam.ScreenPointToRay(input);
@@ -81,16 +79,21 @@ public class BuildScript : MonoBehaviour
 
                 currentArea = mouse.collider.gameObject;
 
-                if (currentArea != previousArea)
+                if (!movingBuilding)
                 {
-                    if (previousArea != null)
+                    if (currentArea != previousArea)
                     {
-                        previousArea.GetComponentInParent<AreaScript>().focused = false;
+                        if (previousArea != null)
+                        {
+                            previousArea.GetComponentInParent<AreaScript>().focused = false;
+                        }
+                        currentArea.GetComponentInParent<AreaScript>().focused = true;
                     }
-                    currentArea.GetComponentInParent<AreaScript>().focused = true;
+
+                    previousArea = mouse.collider.gameObject;
                 }
                 
-                previousArea = mouse.collider.gameObject;
+                
             }
             else
             {
@@ -101,7 +104,7 @@ public class BuildScript : MonoBehaviour
 
             if (!movingBuilding)
             {
-                Collider[] colliders = Physics.OverlapBox(previewTargetPos, buildings[selectedBuilding].buildingSize, Quaternion.identity, layerMasks[1]); // tämä
+                Collider[] colliders = Physics.OverlapBox(previewTargetPos, previewObjectSize, Quaternion.identity, layerMasks[1]); // tämä
                 if (colliders.Length == 0) // Jos muita rakennuksia ei ole edessä
                 {
                     previewObject.SetActive(true);
@@ -109,7 +112,7 @@ public class BuildScript : MonoBehaviour
 
                     if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                     {
-                        if (StorageScript.Instance.money >= buildings[selectedBuilding].moneyCost && StorageScript.Instance.wood[selectedBuilding] >= buildings[selectedBuilding].woodCost[selectedBuilding])
+                        if (StorageScript.Instance.money >= StorageScript.Instance.buildingTypes[selectedBuilding].moneyCost && StorageScript.Instance.wood[selectedBuilding] >= StorageScript.Instance.buildingTypes[selectedBuilding].woodCost[selectedBuilding])
                         {
                             SpawnHouse(selectedBuilding);
                         }
@@ -188,6 +191,7 @@ public class BuildScript : MonoBehaviour
 
     IEnumerator MoveBuilding(GameObject movableObject)
     {
+        GameObject originalArea = movableObject.GetComponent<HouseScript>().targetArea.gameObject;
         Vector3 oldPos = movableObject.transform.position;
         previewObject.transform.rotation = movableObject.transform.rotation;
         previewObject.SetActive(true);
@@ -202,16 +206,32 @@ public class BuildScript : MonoBehaviour
             movableObject.transform.position = new Vector3(previewObject.transform.position.x, hit.point.y + 0.2f, previewObject.transform.position.z);
             movableObject.transform.rotation = previewObject.transform.rotation;
 
-            Collider[] collidingHouses = Physics.OverlapBox(previewTargetPos    , buildings[selectedBuilding].buildingSize, Quaternion.identity, layerMasks[1]); // tämä
+            Collider[] collidingHouses = Physics.OverlapBox(previewTargetPos, previewObjectSize, Quaternion.identity, layerMasks[1]); 
             if (collidingHouses.Length <= 1)
             {
-                previewObjectRenderer.material.SetColor("_Color", Color.green);
-
-                if (Input.GetMouseButtonUp(0))
+                if (hit.collider.gameObject != originalArea)
                 {
-                    movableObject.transform.position = new Vector3(previewTargetPos.x, hit.point.y + 0.2f, previewTargetPos.z);
-                    break;
+                    previewObjectRenderer.material.SetColor("_Color", Color.red);
+
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        movableObject.transform.position = oldPos;
+                        break;
+                    }
                 }
+                else
+                {
+                    previewObjectRenderer.material.SetColor("_Color", Color.green);
+
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        movableObject.transform.position = new Vector3(previewTargetPos.x, hit.point.y + 0.2f, previewTargetPos.z);
+                        break;
+                    }
+                }
+                
+
+                
             }
             else
             {
@@ -240,13 +260,24 @@ public class BuildScript : MonoBehaviour
 
         if (targetArea.totalBuildingsInArea < 6)
         {
-            StorageScript.Instance.money -= buildings[select].moneyCost;
-            StorageScript.Instance.wood[selectedBuilding] -= buildings[select].woodCost[selectedBuilding];
+            
             FindObjectOfType<AudioManager>().PlaySound("construction", hit.point);
 
-            GameObject building = Instantiate(buildings[select].buildingPrefab, hit.point + new Vector3(0, 0.14f, 0), previewObject.transform.rotation);
-            Material mat = buildingColors[Random.Range(0, buildingColors.Length)];
-            building.GetComponent<HouseScript>().SetupHouse(select, buildings[select].workingPower, targetArea, mat, buildings);
+            GameObject building = Instantiate(StorageScript.Instance.buildingTypes[select].buildingPrefab, hit.point, previewObject.transform.rotation); // buildings[select].buildingPrefab
+            HouseScript houseScript = building.GetComponent<HouseScript>();
+
+            building.transform.position += new Vector3(0, houseScript.yOffset, 0);
+
+            StorageScript.Instance.money -= StorageScript.Instance.buildingTypes[select].moneyCost;
+            StorageScript.Instance.wood[select] -= StorageScript.Instance.buildingTypes[select].woodCost[select];
+
+            //StorageScript.Instance.money -= houseScript.moneyCost;
+            //StorageScript.Instance.wood[select] -= houseScript.woodCost[houseScript.buildingLevel];
+            
+            houseScript.buildingLevel = select;
+            houseScript.chosenColor = Random.Range(0, StorageScript.Instance.buildingTypes[select].colors.Length);
+
+            SaveManager.Instance.SaveGameData();
         }
         else
         {
@@ -266,16 +297,14 @@ public struct Building
     public GameObject buildingPrefab;
     public float[] woodCost;
     public float moneyCost;
-    public float workingPower;
-    public Vector3 buildingSize;
+    public Material[] colors;
 
-    public Building(GameObject _buildingPrefab, float[] _woodCost, float _moneyCost, Vector3 _buildingSize, float _workingPower)
+    public Building(GameObject _buildingPrefab, float[] _woodCost, float _moneyCost, Material[] _colors)
     {
         buildingPrefab = _buildingPrefab;
         woodCost = _woodCost;
         moneyCost = _moneyCost;
-        buildingSize = _buildingSize;
-        workingPower = _workingPower;
+        colors = _colors;
     }
 }
 

@@ -1,0 +1,272 @@
+fileFormatVersion: 2
+guid: 6d425f0e05b25c14a91a5e61e5c2955b
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable:
+  - first:
+      74: -3096156017550640990
+    second: bottom.001|bottom.001|bottom.001|base|base|baseAction|base|baseAction|bott
+  - first:
+      74: 201090195969877177
+    second: bottom.001|bottom.001|bottom.001|base|base|bottomAction|base|bottomAction|
+  - first:
+      74: 2954611872606525203
+    second: bottom.001|bottom.001|bottom.001|base|base|chimneyAction|base|chimneyActio
+  - first:
+      74: 7646953969754581544
+    second: bottom.001|bottom.001|bottom.001|base|base|doorstairsAction|base|doorstair
+  - first:
+      74: -868347361450105083
+    second: bottom.001|bottom.001|bottom.001|base|base|inside stairsAction|base|inside
+  - first:
+      74: -1897830954774285185
+    second: bottom.001|bottom.001|bottom.001|base|base|outside propsAction|base|outsid
+  - first:
+      74: 5811629597081633009
+    second: bottom.001|bottom.001|bottom.001|base|base|roofAction|base|roofAction|bott
+  - first:
+      74: -5260581897610893340
+    second: bottom.001|bottom.001|bottom.001|base|base|upstairsfloorAction|base|upstai
+  - first:
+      74: 1769674103127064907
+    second: bottom.001|bottom.001|bottom.001|bottom.001|bottom|baseAction|bottom|baseA
+  - first:
+      74: -6682793325724958440
+    second: bottom.001|bottom.001|bottom.001|bottom.001|bottom|bottomAction|bottom|bot
+  - first:
+      74: 2026019543292210759
+    second: bottom.001|bottom.001|bottom.001|bottom.001|bottom|chimneyAction|bottom|ch
+  - first:
+      74: -9022230781979425689
+    second: bottom.001|bottom.001|bottom.001|bottom.001|bottom|doorstairsAction|bottom
+  - first:
+      74: 3609224488576439763
+    second: bottom.001|bottom.001|bottom.001|bottom.001|bottom|inside stairsAction|bot
+  - first:
+      74: -7200560569210990663
+    second: bottom.001|bottom.001|bottom.001|bottom.001|bottom|outside propsAction|bot
+  - first:
+      74: -8267081368204242577
+    second: bottom.001|bottom.001|bottom.001|bottom.001|bottom|roofAction|bottom|roofA
+  - first:
+      74: 1649005345199742600
+    second: bottom.001|bottom.001|bottom.001|bottom.001|bottom|upstairsfloorAction|bot
+  - first:
+      74: -9013251481109174730
+    second: bottom.001|bottom.001|bottom.001|chimney|chimney|baseAction|chimney|baseAc
+  - first:
+      74: 4972723222034266567
+    second: bottom.001|bottom.001|bottom.001|chimney|chimney|bottomAction|chimney|bott
+  - first:
+      74: -5886253937962047077
+    second: bottom.001|bottom.001|bottom.001|chimney|chimney|chimneyAction|chimney|chi
+  - first:
+      74: -7585191430521420165
+    second: bottom.001|bottom.001|bottom.001|chimney|chimney|doorstairsAction|chimney|
+  - first:
+      74: -3349838072074792632
+    second: bottom.001|bottom.001|bottom.001|chimney|chimney|inside stairsAction|chimn
+  - first:
+      74: -580513944347450857
+    second: bottom.001|bottom.001|bottom.001|chimney|chimney|outside propsAction|chimn
+  - first:
+      74: -3225356861877670260
+    second: bottom.001|bottom.001|bottom.001|chimney|chimney|roofAction|chimney|roofAc
+  - first:
+      74: -729860117806269634
+    second: bottom.001|bottom.001|bottom.001|chimney|chimney|upstairsfloorAction|chimn
+  - first:
+      74: -3911839207918343885
+    second: bottom.001|bottom.001|bottom.001|doorstairs|doorstairs|baseAction|doorstai
+  - first:
+      74: 4084106605865841176
+    second: bottom.001|bottom.001|bottom.001|doorstairs|doorstairs|bottomAction|doorst
+  - first:
+      74: -3875473701931044634
+    second: bottom.001|bottom.001|bottom.001|doorstairs|doorstairs|chimneyAction|doors
+  - first:
+      74: 5710620926932300081
+    second: bottom.001|bottom.001|bottom.001|doorstairs|doorstairs|doorstairsAction|do
+  - first:
+      74: -8856926551062358863
+    second: bottom.001|bottom.001|bottom.001|doorstairs|doorstairs|inside stairsAction
+  - first:
+      74: -488452457086314060
+    second: bottom.001|bottom.001|bottom.001|doorstairs|doorstairs|outside propsAction
+  - first:
+      74: 2856922585761922942
+    second: bottom.001|bottom.001|bottom.001|doorstairs|doorstairs|roofAction|doorstai
+  - first:
+      74: -2613540636885809497
+    second: bottom.001|bottom.001|bottom.001|doorstairs|doorstairs|upstairsfloorAction
+  - first:
+      74: -3862764363428040212
+    second: bottom.001|bottom.001|bottom.001|inside stairs|inside stairs|baseAction|in
+  - first:
+      74: -4699392774792005709
+    second: bottom.001|bottom.001|bottom.001|inside stairs|inside stairs|bottomAction|
+  - first:
+      74: -2811613592838264819
+    second: bottom.001|bottom.001|bottom.001|inside stairs|inside stairs|chimneyAction
+  - first:
+      74: -5163799126507161203
+    second: bottom.001|bottom.001|bottom.001|inside stairs|inside stairs|doorstairsAct
+  - first:
+      74: 1657723308500930244
+    second: bottom.001|bottom.001|bottom.001|inside stairs|inside stairs|inside stairs
+  - first:
+      74: 6000737940693638826
+    second: bottom.001|bottom.001|bottom.001|inside stairs|inside stairs|outside
+      props
+  - first:
+      74: -6514945982921882939
+    second: bottom.001|bottom.001|bottom.001|inside stairs|inside stairs|roofAction|in
+  - first:
+      74: -9166011447818347576
+    second: bottom.001|bottom.001|bottom.001|inside stairs|inside stairs|upstairsfloor
+  - first:
+      74: 8330809824626875955
+    second: bottom.001|bottom.001|bottom.001|roof|roof|baseAction|roof|baseAction|bott
+  - first:
+      74: -5781216736851425247
+    second: bottom.001|bottom.001|bottom.001|roof|roof|bottomAction|roof|bottomAction|
+  - first:
+      74: 3384838456338403666
+    second: bottom.001|bottom.001|bottom.001|roof|roof|chimneyAction|roof|chimneyActio
+  - first:
+      74: 1984722134634634938
+    second: bottom.001|bottom.001|bottom.001|roof|roof|doorstairsAction|roof|doorstair
+  - first:
+      74: 7525470739969381033
+    second: bottom.001|bottom.001|bottom.001|roof|roof|inside stairsAction|roof|inside
+  - first:
+      74: -935069745190611059
+    second: bottom.001|bottom.001|bottom.001|roof|roof|outside propsAction|roof|outsid
+  - first:
+      74: -4788307648492892878
+    second: bottom.001|bottom.001|bottom.001|roof|roof|roofAction|roof|roofAction|bott
+  - first:
+      74: -5091303024457521861
+    second: bottom.001|bottom.001|bottom.001|roof|roof|upstairsfloorAction|roof|upstai
+  - first:
+      74: -3362039841396584737
+    second: bottom.001|bottom.001|bottom.001|upstairsfloor|upstairsfloor|baseAction|up
+  - first:
+      74: -8540233917103379725
+    second: bottom.001|bottom.001|bottom.001|upstairsfloor|upstairsfloor|bottomAction|
+  - first:
+      74: 398478940334817903
+    second: bottom.001|bottom.001|bottom.001|upstairsfloor|upstairsfloor|chimneyAction
+  - first:
+      74: -4648048257649710366
+    second: bottom.001|bottom.001|bottom.001|upstairsfloor|upstairsfloor|doorstairsAct
+  - first:
+      74: -2134864776517322268
+    second: bottom.001|bottom.001|bottom.001|upstairsfloor|upstairsfloor|inside stairs
+  - first:
+      74: 6506488881666662184
+    second: bottom.001|bottom.001|bottom.001|upstairsfloor|upstairsfloor|outside
+      props
+  - first:
+      74: 3412749733523941564
+    second: bottom.001|bottom.001|bottom.001|upstairsfloor|upstairsfloor|roofAction|up
+  - first:
+      74: 1163218434632478766
+    second: bottom.001|bottom.001|bottom.001|upstairsfloor|upstairsfloor|upstairsfloor
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

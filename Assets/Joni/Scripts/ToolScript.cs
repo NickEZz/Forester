@@ -8,12 +8,6 @@ public class ToolScript : MonoBehaviour
     [SerializeField] float axeDamage;
     [SerializeField] float sawDamage;
 
-    public int currentAxeUpgrade;
-    public int currentSawUpgrade;
-
-    public Tool[] axes;
-    public Tool[] saws;
-
     public bool sawing = false;
 
     GameObject[] trees;
@@ -35,6 +29,7 @@ public class ToolScript : MonoBehaviour
         cam = mainCamera.GetComponent<Camera>();
         trees = StorageScript.Instance.treeTypes;
         buildScript = GetComponent<BuildScript>();
+        UpdateTool();
     }
 
     // Update is called once per frame
@@ -68,7 +63,7 @@ public class ToolScript : MonoBehaviour
 
                     if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                     {
-                        if (Physics.Raycast(ray, out mouse, 40f, layerMasks[0]))
+                        if (Physics.Raycast(ray, out mouse, 40f, layerMasks[2]))
                         {
                             if (mouse.collider.GetComponent<TreeScript>().hp > 0)
                             {
@@ -83,7 +78,7 @@ public class ToolScript : MonoBehaviour
 
                     if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
                     {
-                        if (Physics.Raycast(ray, out mouse, 40f, layerMasks[0]))
+                        if (Physics.Raycast(ray, out mouse, 40f, layerMasks[2]))
                         {
                             if (mouse.collider.GetComponent<TreeScript>().adultTree && mouse.collider.GetComponent<TreeScript>().hp > 0)
                             {
@@ -149,7 +144,7 @@ public class ToolScript : MonoBehaviour
                         TreeScript newTreeScript = newTree.GetComponent<TreeScript>();
                         newTreeScript.treeHeight = Random.Range(newTreeScript.averageTreeHeight - 0.02f, newTreeScript.averageTreeHeight + 0.02f); // Arpoo random numeron puun korkeudelle
                         newTree.transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0);
-                        StorageScript.Instance.treesInGame.Add(newTree);
+                        //StorageScript.Instance.treesInGame.Add(newTree);
                     }
                 }
             }
@@ -162,8 +157,8 @@ public class ToolScript : MonoBehaviour
 
     public void UpdateTool()
     {
-        axeDamage = axes[currentAxeUpgrade].toolDamage;
-        sawDamage = saws[currentSawUpgrade].toolDamage;
+        axeDamage = StorageScript.Instance.axes[StorageScript.Instance.currentAxeUpgrade].toolDamage;
+        sawDamage = StorageScript.Instance.saws[StorageScript.Instance.currentSawUpgrade].toolDamage;
     }
 
     void DestroyTool()

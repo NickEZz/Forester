@@ -23,14 +23,14 @@ public class UIScript : MonoBehaviour
 
     [SerializeField] private RawImage currentToolIcon;
     [SerializeField] private Texture2D[] toolIcons;
-    [SerializeField] private TextMeshProUGUI saplingNameText;
+    [SerializeField] private RawImage currentSaplingIcon;
     [SerializeField] private TextMeshProUGUI saplingAmountText;
 
     [SerializeField] private RawImage[] shopToolIcons;
     [SerializeField] private TextMeshProUGUI[] shopToolPrices;
 
-    [SerializeField] private GameObject pineSapling;
-    [SerializeField] private GameObject birchSapling;
+    [SerializeField] private GameObject[] pineSaplingButtons, birchSaplingButtons;
+    //[SerializeField] private GameObject[] birchSapling;
 
     [SerializeField] private GameObject gameMenu;
     [SerializeField] private GameObject exitConfirmWindow;
@@ -38,11 +38,13 @@ public class UIScript : MonoBehaviour
     [SerializeField] private GameObject optionsMenu;
     [SerializeField] private GameObject resetConfirmation;
     [SerializeField] private Toggle fullscreenToggle;
-    [SerializeField] public Slider volumeSlider;
-    [SerializeField] public Slider sensitivitySlider;
+    public Slider volumeSlider;
+    public Slider sensitivitySlider;
 
     [SerializeField] private MoveCamera moveCamera;
     [SerializeField] private AudioManager audioManager;
+
+    bool requestQuit;
 
     private void Start()
     {
@@ -74,89 +76,90 @@ public class UIScript : MonoBehaviour
             saplingCounters[i].text = StorageScript.Instance.saplings[i].ToString();
         }
 
-        toolIcons[0] = toolScript.axes[toolScript.currentAxeUpgrade].toolSprite;
-        toolIcons[1] = toolScript.saws[toolScript.currentSawUpgrade].toolSprite;
+        // Vaihtaa kirveen ja sahan kuvakkeet jos niitä on päivitetty
+        toolIcons[0] = StorageScript.Instance.axes[StorageScript.Instance.currentAxeUpgrade].toolSprite;
+        toolIcons[1] = StorageScript.Instance.saws[StorageScript.Instance.currentSawUpgrade].toolSprite;
 
         for (int i = 0; i < shopToolIcons.Length; i++)
         {
-            if (toolScript.currentAxeUpgrade == toolScript.axes.Length - 1) // Jos on max päivitys
+            if (StorageScript.Instance.currentAxeUpgrade == StorageScript.Instance.axes.Length - 1) // Jos on max päivitys
             {
                 shopToolPrices[0].text = "Max";
-                shopToolIcons[0].texture = toolScript.axes[toolScript.currentAxeUpgrade].toolSprite;
+                shopToolIcons[0].texture = StorageScript.Instance.axes[StorageScript.Instance.currentAxeUpgrade].toolSprite;
             }
             else
             {
-                shopToolIcons[0].texture = toolScript.axes[toolScript.currentAxeUpgrade + 1].toolSprite;
-                shopToolPrices[0].text = toolScript.axes[toolScript.currentAxeUpgrade + 1].toolPrice.ToString() + "€";
+                shopToolIcons[0].texture = StorageScript.Instance.axes[StorageScript.Instance.currentAxeUpgrade + 1].toolSprite;
+                shopToolPrices[0].text = StorageScript.Instance.axes[StorageScript.Instance.currentAxeUpgrade + 1].toolPrice.ToString() + "€";
             }
 
-            if (toolScript.currentSawUpgrade == toolScript.saws.Length - 1) // Jos on max päivitys
+            if (StorageScript.Instance.currentSawUpgrade == StorageScript.Instance.saws.Length - 1) // Jos on max päivitys
             {
                 shopToolPrices[1].text = "Max";
-                shopToolIcons[1].texture = toolScript.saws[toolScript.currentSawUpgrade].toolSprite;
+                shopToolIcons[1].texture = StorageScript.Instance.saws[StorageScript.Instance.currentSawUpgrade].toolSprite;
             }
             else
             {
-                shopToolIcons[1].texture = toolScript.saws[toolScript.currentSawUpgrade + 1].toolSprite;
-                shopToolPrices[1].text = toolScript.saws[toolScript.currentSawUpgrade + 1].toolPrice.ToString() + "€";
+                shopToolIcons[1].texture = StorageScript.Instance.saws[StorageScript.Instance.currentSawUpgrade + 1].toolSprite;
+                shopToolPrices[1].text = StorageScript.Instance.saws[StorageScript.Instance.currentSawUpgrade + 1].toolPrice.ToString() + "€";
             }
         }
 
+        
         // Piilottaa saplingit jota ei voi ostaa vielä
         switch (StorageScript.Instance.currentSector)
         {
             case 0:
-                if (pineSapling.activeSelf)
+                if (pineSaplingButtons[0].activeSelf || pineSaplingButtons[1].activeSelf)
                 {
-                    pineSapling.SetActive(false);
+                    pineSaplingButtons[0].SetActive(false);
+                    pineSaplingButtons[1].SetActive(false);
                 }
-                /*
-                if (birchSapling.activeSelf)
+                if (birchSaplingButtons[0].activeSelf || birchSaplingButtons[1].activeSelf)
                 {
-                    birchSapling.SetActive(false);
+                    birchSaplingButtons[0].SetActive(false);
+                    birchSaplingButtons[1].SetActive(false);
                 }
-                */
                 break;
             case 1:
-                if (!pineSapling.activeSelf)
+                for (int i = 0; i < pineSaplingButtons.Length; i++)
                 {
-                    pineSapling.SetActive(true);
+                    if (!pineSaplingButtons[i].activeSelf)
+                    {
+                        pineSaplingButtons[i].SetActive(true);
+                    }
                 }
                 break;
             case 2:
-                if (!pineSapling.activeSelf)
+                for (int i = 0; i < pineSaplingButtons.Length; i++)
                 {
-                    pineSapling.SetActive(true);
+                    if (!pineSaplingButtons[i].activeSelf)
+                    {
+                        pineSaplingButtons[i].SetActive(true);
+                    }
                 }
-                /*if (!birchSapling.activeSelf)
+                for (int i = 0; i < birchSaplingButtons.Length; i++)
                 {
-                    //birchSapling.SetActive(true);
-                }*/
+                    if (!birchSaplingButtons[i].activeSelf)
+                    {
+                        birchSaplingButtons[i].SetActive(true);
+                    }
+                }
                 break;
         }
-        
-        // Vaihtaa työkalun kuvakkeen oikeaksi kuvakkeeksi
-        //currentToolIcon.texture = toolIcons[toolScript.tool];
-        switch (toolScript.tool)
+
+        if (toolScript.tool < 2)
         {
-            default:
-                saplingNameText.gameObject.SetActive(false);
-                currentToolIcon.gameObject.SetActive(true);
-                currentToolIcon.texture = toolIcons[toolScript.tool];
-                break;
-            case 2:
-                currentToolIcon.gameObject.SetActive(false);
-                saplingNameText.gameObject.SetActive(true);
-                saplingNameText.text = "Spruce sapling";
-                saplingAmountText.text = StorageScript.Instance.saplings[0].ToString();
-                break;
-            case 3:
-                currentToolIcon.gameObject.SetActive(false);
-                saplingNameText.gameObject.SetActive(true);
-                saplingNameText.text = "Pine sapling";
-                saplingAmountText.text = StorageScript.Instance.saplings[1].ToString();
-                break;
-            
+            currentSaplingIcon.gameObject.SetActive(false);
+            currentToolIcon.gameObject.SetActive(true);
+            currentToolIcon.texture = toolIcons[toolScript.tool];
+        }
+        else
+        {
+            currentToolIcon.gameObject.SetActive(false);
+            currentSaplingIcon.gameObject.SetActive(true);
+            currentSaplingIcon.texture = StorageScript.Instance.saplingTypes[toolScript.tool - 2].sprite;
+            saplingAmountText.text = StorageScript.Instance.saplings[0].ToString();
         }
 
 
@@ -192,7 +195,21 @@ public class UIScript : MonoBehaviour
         audioManager.volumeMaster = volumeSlider.value;
         moveCamera.sensitivity = sensitivitySlider.value;
 
+
         Screen.fullScreen = fullscreenToggle.isOn;
+        if (fullscreenToggle.isOn)
+        {
+            Screen.SetResolution(1920, 1080, fullscreenToggle);
+        }
+
+        if (requestQuit)
+        {
+            if (SaveManager.Instance.saving == false)
+            {
+                print("quit");
+                Application.Quit();
+            }
+        }
     }
 
     public void ToggleToolMenu()
@@ -220,7 +237,6 @@ public class UIScript : MonoBehaviour
     public void SelectSpruceSapling()
     {
         toolScript.tool = 2;
-        currentToolIcon.texture = toolIcons[2];
         ToggleToolMenu();
         audioManager.PlaySound("click", Vector3.zero);
     }
@@ -228,7 +244,6 @@ public class UIScript : MonoBehaviour
     public void SelectPineSapling()
     {
         toolScript.tool = 3;
-        currentToolIcon.texture = toolIcons[2];
         ToggleToolMenu();
         audioManager.PlaySound("click", Vector3.zero);
     }
@@ -236,7 +251,6 @@ public class UIScript : MonoBehaviour
     public void SelectBirchSapling()
     {
         toolScript.tool = 4;
-        currentToolIcon.texture = toolIcons[2];
         ToggleToolMenu();
         audioManager.PlaySound("click", Vector3.zero);
     }
@@ -340,22 +354,22 @@ public class UIScript : MonoBehaviour
 
     public void BuyAxeUpgrade()
     {
-        if (StorageScript.Instance.money >= toolScript.axes[toolScript.currentAxeUpgrade + 1].toolPrice)
+        if (StorageScript.Instance.money >= StorageScript.Instance.axes[StorageScript.Instance.currentAxeUpgrade + 1].toolPrice)
         {
             audioManager.PlaySound("transactionsound", Vector3.zero);
-            toolScript.currentAxeUpgrade++;
-            StorageScript.Instance.money -= toolScript.axes[toolScript.currentAxeUpgrade].toolPrice;
+            StorageScript.Instance.currentAxeUpgrade++;
+            StorageScript.Instance.money -= StorageScript.Instance.axes[StorageScript.Instance.currentAxeUpgrade].toolPrice;
             toolScript.UpdateTool();
         }
     }
 
     public void BuySawUpgrade()
     {
-        if (StorageScript.Instance.money >= toolScript.saws[toolScript.currentSawUpgrade + 1].toolPrice)
+        if (StorageScript.Instance.money >= StorageScript.Instance.saws[StorageScript.Instance.currentSawUpgrade + 1].toolPrice)
         {
             audioManager.PlaySound("transactionsound", Vector3.zero);
-            toolScript.currentSawUpgrade++;
-            StorageScript.Instance.money -= toolScript.saws[toolScript.currentSawUpgrade].toolPrice;
+            StorageScript.Instance.currentSawUpgrade++;
+            StorageScript.Instance.money -= StorageScript.Instance.saws[StorageScript.Instance.currentSawUpgrade].toolPrice;
             toolScript.UpdateTool();
         }
         
@@ -384,21 +398,22 @@ public class UIScript : MonoBehaviour
         }
         
     }
-    public void BuyBirchSapling()
+    public void BuyBirchSapling(float amount)
     {
         if (StorageScript.Instance.currentSector >= 2)
         {
-            if (StorageScript.Instance.money >= 2000f)
+            if (StorageScript.Instance.money >= 200f * amount)
             {
                 audioManager.PlaySound("transactionsound", Vector3.zero);
-                StorageScript.Instance.saplings[2]++;
-                StorageScript.Instance.money -= 2000f;
+                StorageScript.Instance.saplings[2] += (int)amount;
+                StorageScript.Instance.money -= 200f * amount;
             }
         }
     }
 
     public void ToggleGameMenu()
     {
+        optionsMenu.SetActive(false);
         gameMenu.SetActive(!gameMenu.activeSelf);
         exitConfirmWindow.SetActive(false);
         audioManager.PlaySound("click", Vector3.zero);
@@ -412,12 +427,19 @@ public class UIScript : MonoBehaviour
 
     public void SaveVolume()
     {
-        SaveManager.Instance.SaveSetting("Volume", volumeSlider.value);
+        PlayerPrefs.SetFloat("Volume", volumeSlider.value);
+        //SaveManager.Instance.SaveSetting("Volume", volumeSlider.value);
     }
 
     public void SaveSensitivity()
     {
-        SaveManager.Instance.SaveSetting("Sensitivity", sensitivitySlider.value);
+        PlayerPrefs.SetFloat("Sensitivity", sensitivitySlider.value);
+        //SaveManager.Instance.SaveSetting("Sensitivity", sensitivitySlider.value);
+    }
+
+    public void SaveWindowSize()
+    {
+
     }
 
     public void ResetSaveGameButton()
@@ -432,7 +454,6 @@ public class UIScript : MonoBehaviour
         {
             print("reset");
             SaveManager.Instance.ResetSaveData();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         else
         {
@@ -452,8 +473,9 @@ public class UIScript : MonoBehaviour
     {
         if (choice)
         {
-            print("quit");
-            Application.Quit();
+            print("saved before quit");
+            SaveManager.Instance.SaveGameData();
+            requestQuit = true;
         }
         else
         {

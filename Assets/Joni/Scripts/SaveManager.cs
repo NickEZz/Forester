@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
@@ -10,15 +12,26 @@ public class SaveManager : MonoBehaviour
 
     protected string savePath;
 
+    public bool saving;
+    bool loading;
+    bool reset = false;
+
+    [SerializeField] GameObject savingIcon;
+    [SerializeField] TextMeshProUGUI savingIconText;
+
     [SerializeField] float autosaveInterval;
 
     [SerializeField] ToolScript toolScript;
     [SerializeField] MapManager mapManager;
 
+    Fade fade;
+
     //public SaveData saveData;
 
     private void Awake()
     {
+        fade = GetComponent<Fade>();
+
         if (Instance == null)
         {
             Instance = this;
@@ -29,11 +42,11 @@ public class SaveManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        savePath = Application.persistentDataPath + "/save.dat";
+        savePath = Application.persistentDataPath + "/save.dat"; // Pitää muuttaa jos aikoo tehdä webgl buildin
 
-        LoadGameData();
+        LoadGameData(); // Kun peli käynnistyy, lataa tallennetut tiedot
 
-        InvokeRepeating("SaveGameData", autosaveInterval, autosaveInterval);
+        InvokeRepeating("SaveGameData", autosaveInterval, autosaveInterval); // Autosave
     }
 
     private void Update()
@@ -53,72 +66,103 @@ public class SaveManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.S))
             {
-                SaveGameData();
+                SaveGameData(); // Ctrl + s tallentaa pelin
             }
+        }
+
+        if (reset && !fade.fading)
+        {
+            File.Delete(savePath);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
     public void SaveGameData() 
     {
-        SaveData saveData = new SaveData();
+        saving = true;
+        savingIconText.text = "Saving...";
+        savingIcon.SetActive(true);
+
+        SaveData saveData = new SaveData(); // Tekee uuden savedata variablen, jonne se tallentaa mm. rahan, puun ja taimien määrät
 
         saveData.wood = StorageScript.Instance.wood;
         saveData.money = StorageScript.Instance.money;
         saveData.currentSector = StorageScript.Instance.currentSector;
         saveData.saplings = StorageScript.Instance.saplings;
 
-        saveData.currentAxeUpgrade = toolScript.currentAxeUpgrade;
-        saveData.currentSawUpgrade = toolScript.currentSawUpgrade;
+        saveData.currentAxeUpgrade = StorageScript.Instance.currentAxeUpgrade; // Tallentaa myös työkalujen päivitykset
+        saveData.currentSawUpgrade = StorageScript.Instance.currentSawUpgrade;
 
-        saveData.areas = StorageScript.Instance.areas;
+        saveData.areas = StorageScript.Instance.areas; // Tallentaa kaikki alueet, että peli muistaa minkä alueen pelaaja on ostanut.
 
-        StorageScript.Instance.trees.Clear();
+        StorageScript.Instance.trees.Clear(); // Tyhjentää trees listan edellisistä puista
 
-        for (int i = 0; i < StorageScript.Instance.treesInGame.Count; i++)
+        for (int i = 0; i < StorageScript.Instance.treesInGame.Count; i++) // Ottaa kaikki spawnatut puut ja tallentaa niiden tietoja toiseen listaan
         {
             TreeScript treeScript = StorageScript.Instance.treesInGame[i].GetComponent<TreeScript>();
-            Tree tree = new Tree(treeScript.treeType,
+            TreeSaveData tree = new TreeSaveData(treeScript.treeType,
                 treeScript.hp, 
                 treeScript.adultTree, 
                 treeScript.treeHeight,
                 new CustomVector(treeScript.transform.position.x, treeScript.transform.position.y, treeScript.transform.position.z), 
                 treeScript.transform.localScale.y, 
-                treeScript.transform.rotation.y);
+                treeScript.transform.eulerAngles.y);
 
             StorageScript.Instance.trees.Add(tree);
         }
 
-        saveData.trees = StorageScript.Instance.trees;
+        saveData.trees = StorageScript.Instance.trees; // Kun puiden tiedot on tallennettu, tiedot siirretään savedataan
 
-        Debug.Log("Saved game");
-        BinaryFormatter binaryFormatter = new BinaryFormatter();
+        StorageScript.Instance.buildings.Clear();
+
+        for (int i = 0; i < StorageScript.Instance.buildingsInGame.Count; i++)
+        {
+            HouseScript houseScript = StorageScript.Instance.buildingsInGame[i].GetComponent<HouseScript>();
+            BuildingSaveData house = new BuildingSaveData(houseScript.buildingLevel, 
+                houseScript.buildTime,
+                houseScript.chosenColor,
+                new CustomVector(houseScript.transform.position.x, houseScript.transform.position.y, houseScript.transform.position.z),
+                houseScript.transform.eulerAngles.y);
+
+            StorageScript.Instance.buildings.Add(house);
+        }
+
+        saveData.buildings = StorageScript.Instance.buildings;
+
+        BinaryFormatter binaryFormatter = new BinaryFormatter(); // Vie savedatan tiedot save.dat tiedostoon
         FileStream file = File.Create(savePath);
         binaryFormatter.Serialize(file, saveData);
         file.Close();
+
+        saving = false;
+        StartCoroutine(SaveIcon());
+        Debug.Log("Saved game");
     }
 
     public void LoadGameData()
     {
-        if (File.Exists(savePath))
+        loading = true;
+
+        if (File.Exists(savePath)) // Jos pelaajalla on save.dat tiedosto eli pelaaja on pelannut peliä ennenkin
         {
-            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            BinaryFormatter binaryFormatter = new BinaryFormatter(); // Ottaa savedatan tiedostot save.dat tiedostosta
             FileStream file = File.Open(savePath, FileMode.Open);
             SaveData saveData = (SaveData)binaryFormatter.Deserialize(file);
             file.Close();
 
-            StorageScript.Instance.money = saveData.money;
+            StorageScript.Instance.money = saveData.money; // Jonka jälkeen kopioi kaikki savedatan tiedot peliin, mm. rahan, puun ja taimien määrä
             StorageScript.Instance.wood = saveData.wood;
             StorageScript.Instance.currentSector = saveData.currentSector;
             StorageScript.Instance.saplings = saveData.saplings;
 
-            toolScript.currentAxeUpgrade = saveData.currentAxeUpgrade;
-            toolScript.currentSawUpgrade = saveData.currentSawUpgrade;
+            StorageScript.Instance.currentAxeUpgrade = saveData.currentAxeUpgrade; // Ja työkalujen päivitykset
+            StorageScript.Instance.currentSawUpgrade = saveData.currentSawUpgrade;
 
-            StorageScript.Instance.areas = saveData.areas;
+            StorageScript.Instance.areas = saveData.areas; // Myös tarkistaa alueiden tiedot että onko pelaaja ostanut alueita
 
             mapManager.CreateMap(true);
 
-            for (int i = 0; i < saveData.trees.Count; i++)
+            for (int i = 0; i < saveData.trees.Count; i++) // Ottaa edellisen pelikerran spawnatut puut ja spawnaa ne uudestaan ja antaa niille oikeat tiedot esim. hp, puun korkeus
             {
                 GameObject newTree = Instantiate(StorageScript.Instance.treeTypes[saveData.trees[i].treeType], new Vector3(saveData.trees[i].position.x, saveData.trees[i].position.y, saveData.trees[i].position.z), Quaternion.Euler(0, saveData.trees[i].yRotation, 0));
                 TreeScript newTreeScript = newTree.GetComponent<TreeScript>();
@@ -126,26 +170,44 @@ public class SaveManager : MonoBehaviour
                 newTreeScript.adultTree = saveData.trees[i].adultTree;
                 newTreeScript.treeHeight = saveData.trees[i].treeHeight;
                 newTree.transform.localScale = new Vector3(saveData.trees[i].scale, saveData.trees[i].scale, saveData.trees[i].scale);
+            }
 
-                StorageScript.Instance.treesInGame.Add(newTree);
+            for (int i = 0; i < saveData.buildings.Count; i++)
+            {
+                GameObject newBuilding = Instantiate(StorageScript.Instance.buildingTypes[saveData.buildings[i].buildingLevel].buildingPrefab, new Vector3(saveData.buildings[i].position.x, saveData.buildings[i].position.y, saveData.buildings[i].position.z), Quaternion.Euler(0, saveData.buildings[i].yRotation, 0));
+                HouseScript newBuildingScript = newBuilding.GetComponent<HouseScript>();
+                newBuildingScript.buildingLevel = saveData.buildings[i].buildingLevel;
+                newBuildingScript.buildTime = saveData.buildings[i].timer;
+                newBuildingScript.chosenColor = saveData.buildings[i].mat;
             }
 
             Debug.Log("Loaded game");
         }
-        else
+        else // Jos pelaajalla ei ole save.dat tiedostoa, eli peli alkaa alusta/pelaaja pelaa ensimmäistä kertaa
         {
-            mapManager.CreateMap(false);
+            mapManager.CreateMap(false); 
         }
+
+        loading = false;
+        fade.FadeIn();
     }
 
     public void ResetSaveData()
     {
-        File.Delete(savePath);
+        if (!reset)
+        {
+            fade.FadeOut();
+            reset = true;
+        }
     }
 
-    public void SaveSetting(string key, float value)
+    IEnumerator SaveIcon()
     {
-        PlayerPrefs.SetFloat(key, value);
+        savingIconText.text = "Saved";
+
+        yield return new WaitForSeconds(1f);
+
+        savingIcon.SetActive(false);
     }
 }
 
@@ -160,6 +222,7 @@ public class SaveData
     public int currentAxeUpgrade;
     public int currentSawUpgrade;
 
-    public List<Area> areas;
-    public List<Tree> trees;
+    public List<AreaSaveData> areas;
+    public List<TreeSaveData> trees;
+    public List<BuildingSaveData> buildings;
 }

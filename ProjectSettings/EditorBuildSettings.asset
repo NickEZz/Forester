@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Joni/MainMenu.unity
+    guid: b5f03bf8386de00409ccf4ecbaad3f69
+  - enabled: 1
     path: Assets/Joni/JoninScene.unity
     guid: 3653a71219a90e94fb4b855fd5cbda27
   m_configObjects: {}

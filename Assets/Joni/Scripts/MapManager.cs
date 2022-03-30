@@ -88,10 +88,11 @@ public class MapManager : MonoBehaviour
             AreaScript newAreaScript = center.GetComponent<AreaScript>();
             newAreaScript.SetAreaStats(sector, 0, i, buildScript);
             newAreaScript.bought = true;
-            StorageScript.Instance.currentSector = 0;
             if (!mapExists)
             {
-                Area area = new Area(newAreaScript.bought, newAreaScript.totalBuildingsInArea, newAreaScript.builtBuildingsInArea, /*newAreaScript.treesInArea,*/ newAreaScript.workingPower);
+                StorageScript.Instance.currentSector = 0;
+
+                AreaSaveData area = new AreaSaveData(newAreaScript.bought, newAreaScript.totalBuildingsInArea, newAreaScript.builtBuildingsInArea, /*newAreaScript.treesInArea,*/ newAreaScript.workingPower);
 
                 StorageScript.Instance.areas.Add(area);
             }
@@ -112,7 +113,7 @@ public class MapManager : MonoBehaviour
             }
             else
             {
-                Area area = new Area(newAreaScript.bought, newAreaScript.totalBuildingsInArea, newAreaScript.builtBuildingsInArea, /*newAreaScript.treesInArea,*/ newAreaScript.workingPower);
+                AreaSaveData area = new AreaSaveData(newAreaScript.bought, newAreaScript.totalBuildingsInArea, newAreaScript.builtBuildingsInArea, /*newAreaScript.treesInArea,*/ newAreaScript.workingPower);
 
                 StorageScript.Instance.areas.Add(area);
             }

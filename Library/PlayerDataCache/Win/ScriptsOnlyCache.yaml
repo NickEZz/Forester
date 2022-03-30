@@ -5,10 +5,13 @@ ScriptsOnlyBuild:
     - AudioManager
     - BuildScript
     - DeveloperScript
+    - Fade
     - HouseScript
+    - MainMenuScript
     - MapManager
     - MoveCamera
     - PopUpScript
+    - SaveManager
     - StorageScript
     - ToolEvent
     - ToolScript
@@ -60,6 +63,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.RawImage
     - UnityEngine.UI.RectMask2D
     - UnityEngine.UI.Slider
+    - UnityEngine.UI.Toggle
   sceneClasses:
     Assets/Joni/JoninScene.unity:
     - Class: 1
@@ -79,8 +83,6 @@ ScriptsOnlyBuild:
     - Class: 43
       Script: {instanceID: 0}
     - Class: 48
-      Script: {instanceID: 0}
-    - Class: 49
       Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
@@ -105,75 +107,75 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1566}
+      Script: {instanceID: 1570}
     - Class: 114
-      Script: {instanceID: 1592}
+      Script: {instanceID: 1596}
     - Class: 114
-      Script: {instanceID: 1622}
+      Script: {instanceID: 1626}
     - Class: 114
-      Script: {instanceID: 1684}
+      Script: {instanceID: 1674}
     - Class: 114
-      Script: {instanceID: 1734}
+      Script: {instanceID: 1688}
     - Class: 114
-      Script: {instanceID: 1812}
+      Script: {instanceID: 1738}
     - Class: 114
-      Script: {instanceID: 1822}
+      Script: {instanceID: 1816}
     - Class: 114
-      Script: {instanceID: 1930}
+      Script: {instanceID: 1826}
     - Class: 114
-      Script: {instanceID: 2116}
+      Script: {instanceID: 1934}
     - Class: 114
-      Script: {instanceID: 2254}
+      Script: {instanceID: 2258}
     - Class: 114
-      Script: {instanceID: 2324}
+      Script: {instanceID: 2328}
     - Class: 114
-      Script: {instanceID: 2442}
+      Script: {instanceID: 2446}
     - Class: 114
-      Script: {instanceID: 2472}
+      Script: {instanceID: 2476}
     - Class: 114
-      Script: {instanceID: 2560}
-    - Class: 114
-      Script: {instanceID: 2586}
+      Script: {instanceID: 2564}
     - Class: 114
       Script: {instanceID: 2590}
     - Class: 114
-      Script: {instanceID: 2606}
+      Script: {instanceID: 2594}
     - Class: 114
-      Script: {instanceID: 2688}
+      Script: {instanceID: 2610}
     - Class: 114
-      Script: {instanceID: 2736}
+      Script: {instanceID: 2692}
     - Class: 114
-      Script: {instanceID: 2926}
+      Script: {instanceID: 2740}
     - Class: 114
-      Script: {instanceID: 3024}
+      Script: {instanceID: 2930}
     - Class: 114
-      Script: {instanceID: 3026}
+      Script: {instanceID: 3028}
     - Class: 114
-      Script: {instanceID: 3048}
+      Script: {instanceID: 3030}
     - Class: 114
-      Script: {instanceID: 3268}
+      Script: {instanceID: 3052}
     - Class: 114
-      Script: {instanceID: 3524}
+      Script: {instanceID: 3272}
     - Class: 114
-      Script: {instanceID: 3768}
+      Script: {instanceID: 3530}
     - Class: 114
-      Script: {instanceID: 3900}
+      Script: {instanceID: 3548}
     - Class: 114
-      Script: {instanceID: 4018}
+      Script: {instanceID: 3776}
     - Class: 114
-      Script: {instanceID: 4036}
+      Script: {instanceID: 3908}
     - Class: 114
-      Script: {instanceID: 4220}
+      Script: {instanceID: 4026}
     - Class: 114
-      Script: {instanceID: 4304}
+      Script: {instanceID: 4228}
     - Class: 114
-      Script: {instanceID: 4318}
+      Script: {instanceID: 4312}
     - Class: 114
-      Script: {instanceID: 4564}
+      Script: {instanceID: 4572}
     - Class: 114
-      Script: {instanceID: 4710}
+      Script: {instanceID: 4718}
     - Class: 114
-      Script: {instanceID: 4742}
+      Script: {instanceID: 4750}
+    - Class: 114
+      Script: {instanceID: 17502}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -192,9 +194,80 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 224
       Script: {instanceID: 0}
+    - Class: 225
+      Script: {instanceID: 0}
     - Class: 258
       Script: {instanceID: 0}
     - Class: 850595691
+      Script: {instanceID: 0}
+    Assets/Joni/MainMenu.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1570}
+    - Class: 114
+      Script: {instanceID: 1826}
+    - Class: 114
+      Script: {instanceID: 2120}
+    - Class: 114
+      Script: {instanceID: 2258}
+    - Class: 114
+      Script: {instanceID: 2446}
+    - Class: 114
+      Script: {instanceID: 2564}
+    - Class: 114
+      Script: {instanceID: 2610}
+    - Class: 114
+      Script: {instanceID: 2740}
+    - Class: 114
+      Script: {instanceID: 2930}
+    - Class: 114
+      Script: {instanceID: 3028}
+    - Class: 114
+      Script: {instanceID: 4044}
+    - Class: 114
+      Script: {instanceID: 4326}
+    - Class: 114
+      Script: {instanceID: 17502}
+    - Class: 114
+      Script: {instanceID: 17564}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 225
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -271,7 +344,7 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
-      Hash: d64c04a61cf365acfb83eead763516e7
+      Hash: b22cae6a2aeada6b002d2ccd91e026d2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: HouseScript
@@ -379,13 +452,13 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 860caea6adfe389fccf895364a2815fb
+      Hash: ffbd0ad69a2b361b14d09a39f6ca5287
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BuildScript
   - hash:
       serializedVersion: 2
-      Hash: f1b6666f8b337410200e1a9a774af7dc
+      Hash: b027de7b9b5ce2ec14c9c373f04a23ea
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: StorageScript
@@ -397,7 +470,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: db11ba6afc67fec1207178a698d20006
+      Hash: 0dc9f7d6cc2feb2d096afb980b1e03ba
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MapManager
@@ -493,7 +566,7 @@ ScriptsOnlyBuild:
     className: MoveCamera
   - hash:
       serializedVersion: 2
-      Hash: 1f95b3b241eaf832708ff2a127a4d65b
+      Hash: fda45712da5e4725504afdc27399aa00
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AreaScript
@@ -595,10 +668,16 @@ ScriptsOnlyBuild:
     className: AudioPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 67d4642660a84756ce14df407bfc5083
+      Hash: 372320ef8f9e5d05422e008c97728ff0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TreeScript
+  - hash:
+      serializedVersion: 2
+      Hash: 3dda6408e107a893ebc9c4bb404c3391
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SaveManager
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -631,7 +710,7 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
-      Hash: 2b95dff544034ef03f7837b925e31364
+      Hash: cbfeff98f8eb6caf5c4370d139f9a677
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIScript
@@ -803,7 +882,20 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Postprocessing.Runtime.dll
     namespaceName: UnityEngine.Rendering.PostProcessing
     className: AmbientOcclusion
+  - hash:
+      serializedVersion: 2
+      Hash: 343ae2826d2a1b66c07fd66feced688a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Fade
+  - hash:
+      serializedVersion: 2
+      Hash: 5526b5cb7dbc3e51fde570267500df6a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainMenuScript
   platform: 5
   scenePathNames:
+  - Assets/Joni/MainMenu.unity
   - Assets/Joni/JoninScene.unity
-  playerPath: C:/Users/Joni/Desktop/Unity/Builds/3D/Forester/ForesterV0.2/Forester.exe
+  playerPath: C:/Users/Joni/Desktop/Unity/Builds/3D/Forester/ForesterV0.2.2/Forester.exe

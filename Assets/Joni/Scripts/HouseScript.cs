@@ -6,72 +6,79 @@ public class HouseScript : MonoBehaviour
 {
     public int buildingLevel;
 
+    public float workingPower;
+
     public bool upgradeable;
-    public float[] upgradeCost;
-    public float moneyCost;
-    Building[] buildings;
+    public float[] upgradeWoodCost;
+    public float upgradeMoneyCost;
 
-    Material mat;
+    bool beingBuilt = true;
 
-    [SerializeField] bool building;
+    public float buildTime;
 
-    float workingPower;
+    public float yOffset;
 
-    [SerializeField] float buildTime;
-    [SerializeField] float timer;
-
+    public int chosenColor;
     [SerializeField] int materialIndex;
+    [SerializeField] MeshRenderer meshRenderer;
 
-    AreaScript targetArea;
+
+    [SerializeField] LayerMask groundMask;
+
+    public AreaScript targetArea;
 
     // Start is called before the first frame update
     void Start()
     {
-        building = true;
-        timer = buildTime;
-        targetArea.totalBuildingsInArea++;
+        StorageScript.Instance.buildingsInGame.Add(gameObject);
+
+        //MeshRenderer meshRenderer = houseBase.GetComponent<MeshRenderer>();
+
+        if (meshRenderer != null)
+        {
+            Material[] materials = meshRenderer.materials;
+            materials[materialIndex] = StorageScript.Instance.buildingTypes[buildingLevel].colors[chosenColor];
+            meshRenderer.sharedMaterials = materials;
+        }   
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (building)
+        if (targetArea == null)
         {
-            timer -= Time.deltaTime;
-            if (timer <= 0)
+            RaycastHit areaCheck;
+            if (Physics.Raycast(new Vector3(transform.position.x, 10f, transform.position.z), Vector3.down, out areaCheck, 20f, groundMask))
+            {
+                targetArea = areaCheck.collider.GetComponent<AreaScript>();
+                targetArea.totalBuildingsInArea++;
+            }
+        }
+
+        if (beingBuilt)
+        {
+            buildTime -= Time.deltaTime;
+            if (buildTime <= 0)
             {
                 targetArea.builtBuildingsInArea++;
                 targetArea.workingPower += workingPower;
-                building = false;
+                beingBuilt = false;
             }
         }
     }
 
-    public void SetupHouse(int _buildingLevel, float _workingPower, AreaScript _targetArea, Material color, Building[] _buildings)
-    {
-        //workingPower = _workingPower;
-        buildingLevel = _buildingLevel;
-        workingPower = _buildings[_buildingLevel].workingPower;
-        targetArea = _targetArea;
-        buildings = _buildings;
-        mat = color;
-
-        MeshRenderer renderer = GetComponent<MeshRenderer>(); // Ei muuta väriä
-        Material[] materials = renderer.materials;
-        materials[materialIndex] = color;
-        renderer.sharedMaterials = materials;
-
-        StorageScript.Instance.buildingsInGame.Add(gameObject);
-    }
-
     public bool UpgradeHouse()
     {
-        if (StorageScript.Instance.money >= moneyCost && StorageScript.Instance.wood[buildingLevel + 1] >= upgradeCost[buildingLevel + 1])
+        if (StorageScript.Instance.money >= upgradeMoneyCost && StorageScript.Instance.wood[buildingLevel + 1] >= upgradeWoodCost[buildingLevel + 1])
         {
-            StorageScript.Instance.money -= moneyCost;
-            StorageScript.Instance.wood[buildingLevel + 1] -= upgradeCost[buildingLevel];
-            GameObject newBuilding = Instantiate(buildings[buildingLevel + 1].buildingPrefab, transform.position, transform.rotation);
-            newBuilding.GetComponent<HouseScript>().SetupHouse(buildingLevel + 1, buildings[buildingLevel + 1].workingPower, targetArea, mat, buildings);
+            FindObjectOfType<AudioManager>().PlaySound("construction", transform.position);
+
+            StorageScript.Instance.money -= upgradeMoneyCost;
+            StorageScript.Instance.wood[buildingLevel + 1] -= upgradeWoodCost[buildingLevel + 1];
+            GameObject newBuilding = Instantiate(StorageScript.Instance.buildingTypes[buildingLevel + 1].buildingPrefab, transform.position, transform.rotation);
+            HouseScript newBuildingScript = newBuilding.GetComponent<HouseScript>();
+            newBuildingScript.chosenColor = chosenColor;
+            newBuildingScript.buildingLevel = buildingLevel + 1;
 
             targetArea.totalBuildingsInArea--;
             targetArea.builtBuildingsInArea--;
@@ -86,5 +93,24 @@ public class HouseScript : MonoBehaviour
         {
             return false;
         }
+    }
+}
+
+[System.Serializable]
+public class BuildingSaveData
+{
+    public int buildingLevel;
+    public float timer;
+    public int mat;
+    public CustomVector position;
+    public float yRotation;
+
+    public BuildingSaveData(int _buildingLevel, float _timer, int _mat, CustomVector _position, float _yRotation)
+    {
+        buildingLevel = _buildingLevel;
+        timer = _timer;
+        mat = _mat;
+        position = _position;
+        yRotation = _yRotation;
     }
 }
