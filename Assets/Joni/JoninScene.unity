@@ -8919,6 +8919,8 @@ MonoBehaviour:
   - 0
   saplings: 0a0000000000000000000000
   totalWood: 0
+  totalWorkingPower: 0
+  offlineEarningMultiplier: 0.05
   currentAxeUpgrade: 0
   currentSawUpgrade: 0
   treeTypes:
@@ -9392,7 +9394,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.09162975, y: 0.02235942}
   m_AnchorMax: {x: 0.46975315, y: 0.16521353}
-  m_AnchoredPosition: {x: -0.20000267, y: -0.25299835}
+  m_AnchoredPosition: {x: -0.20000076, y: -0.25299835}
   m_SizeDelta: {x: 1.0384998, y: 0.23999786}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &267059716
@@ -17858,7 +17860,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.66887295, y: 0.15900001}
   m_AnchorMax: {x: 0.975, y: 0.7808196}
-  m_AnchoredPosition: {x: 0.7962036, y: 0.6657791}
+  m_AnchoredPosition: {x: 0.7962036, y: 0.66578674}
   m_SizeDelta: {x: 1.7589998, y: 1.2358}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &500207977
@@ -18556,7 +18558,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.62886566, y: 0.16521353}
   m_AnchorMax: {x: 0.8103817, y: 0.2447865}
-  m_AnchoredPosition: {x: -0.034999847, y: -0.18700027}
+  m_AnchoredPosition: {x: -0.034999847, y: -0.187006}
   m_SizeDelta: {x: 0.22809982, y: -0.018096924}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &519676428
@@ -19627,7 +19629,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.061000004, y: 0.38836172}
   m_AnchorMax: {x: 0.446, y: 0.7772045}
-  m_AnchoredPosition: {x: -3.4375992, y: 0.45058823}
+  m_AnchoredPosition: {x: -3.4375916, y: 0.45058823}
   m_SizeDelta: {x: -0.6252003, y: 1.099}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &541547116
@@ -44701,7 +44703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.18239447, y: 0.16521353}
   m_AnchorMax: {x: 0.37886855, y: 0.23478648}
-  m_AnchoredPosition: {x: 0.069000244, y: 0.5340004}
+  m_AnchoredPosition: {x: 0.069000244, y: 0.5339947}
   m_SizeDelta: {x: -0.7719002, y: 0.9819031}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1199060592
@@ -68563,7 +68565,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.629, y: 0.16521353}
   m_AnchorMax: {x: 0.8106574, y: 0.23478648}
-  m_AnchoredPosition: {x: -0.034999847, y: 0.31299973}
+  m_AnchoredPosition: {x: -0.034999847, y: 0.3129959}
   m_SizeDelta: {x: 0.22809982, y: 0.9819031}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1787437298
@@ -68910,7 +68912,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2036263411}
+        m_TargetAssemblyTypeName: UIScript, Assembly-CSharp
+        m_MethodName: SaveWindowSize
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &1794117384
 GameObject:
@@ -76428,7 +76442,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6288766, y: 0.16521353}
   m_AnchorMax: {x: 0.8103703, y: 0.2447865}
-  m_AnchoredPosition: {x: -0.034999847, y: -0.18700027}
+  m_AnchoredPosition: {x: -0.034999847, y: -0.187006}
   m_SizeDelta: {x: 0.22809982, y: -0.018096924}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2035020502
@@ -76735,6 +76749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1c84b7d9127624bb57a0a553ecda95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMenu: {fileID: 0}
   totalWoodCounter: {fileID: 1237241185}
   moneyCounters:
   - {fileID: 3204920}

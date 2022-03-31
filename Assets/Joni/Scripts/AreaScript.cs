@@ -21,6 +21,8 @@ public class AreaScript : MonoBehaviour
 
     public float workingPower;
 
+    public bool[] treeTypesInArea;
+
     [SerializeField] bool working;
 
     [SerializeField] float timer;
@@ -83,6 +85,8 @@ public class AreaScript : MonoBehaviour
             {
                 currentMaterial.material = grassMat;
             }
+
+            StorageScript.Instance.areas[areaId].treeTypesInArea = treeTypesInArea;
         }
 
         if (working) // Jos alueella on rakennuksia ja puita on enemmän kuin 5
@@ -181,6 +185,7 @@ public class AreaSaveData
     public int totalBuildingsInArea;
     public int builtBuildingsInArea;
     public float workingPower;
+    public bool[] treeTypesInArea;
 
     public AreaSaveData(bool _bought, int _totalBuildingsInArea, int _builtBuildingsInArea, float _workingPower)
     {

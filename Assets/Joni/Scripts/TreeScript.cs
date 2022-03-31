@@ -104,9 +104,8 @@ public class TreeScript : MonoBehaviour
 
             }
         }
-        
 
-
+        areaOfTree.treeTypesInArea[treeType] = true;
     }
 
     void SpawnTree()
@@ -213,6 +212,7 @@ public class TreeScript : MonoBehaviour
 
     void DestroyTree()
     {
+        areaOfTree.treeTypesInArea[treeType] = false;
         Destroy(gameObject);
     }
 }

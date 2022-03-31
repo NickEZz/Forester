@@ -14,10 +14,11 @@ public class StorageScript : MonoBehaviour
 
     public float totalWood;
 
+    public float totalWorkingPower;
+    public float offlineEarningMultiplier;
+
     public int currentAxeUpgrade;
     public int currentSawUpgrade;
-
-    SaveData saveData;
 
     public GameObject[] treeTypes;
     public Sapling[] saplingTypes;
@@ -34,8 +35,6 @@ public class StorageScript : MonoBehaviour
 
     public List<BuildingSaveData> buildings;
 
-
-
     private void Awake()
     {
         if (Instance == null)
@@ -47,8 +46,6 @@ public class StorageScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        saveData = new SaveData();
     }
 
     private void Update()

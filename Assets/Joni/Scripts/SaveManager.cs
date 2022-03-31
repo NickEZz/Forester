@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -44,24 +45,23 @@ public class SaveManager : MonoBehaviour
 
         savePath = Application.persistentDataPath + "/save.dat"; // Pit‰‰ muuttaa jos aikoo tehd‰ webgl buildin
 
-        LoadGameData(); // Kun peli k‰ynnistyy, lataa tallennetut tiedot
+        try
+        {
+            LoadGameData(); // Kun peli k‰ynnistyy, lataa tallennetut tiedot
+        }
+        catch (System.Exception)
+        {
+            print("Game data corrupted.");
+            File.Delete(savePath);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        
 
         InvokeRepeating("SaveGameData", autosaveInterval, autosaveInterval); // Autosave
     }
 
     private void Update()
     {
-        /*
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            SaveGameData();
-        } 
-        */
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            LoadGameData(); 
-        }
-       
         if (Input.GetKey(KeyCode.LeftControl))
         {
             if (Input.GetKeyDown(KeyCode.S))
@@ -129,6 +129,9 @@ public class SaveManager : MonoBehaviour
 
         saveData.buildings = StorageScript.Instance.buildings;
 
+        DateTime dateTime = DateTime.Now;
+        saveData.quitTimeString = dateTime.ToString();
+
         BinaryFormatter binaryFormatter = new BinaryFormatter(); // Vie savedatan tiedot save.dat tiedostoon
         FileStream file = File.Create(savePath);
         binaryFormatter.Serialize(file, saveData);
@@ -181,6 +184,26 @@ public class SaveManager : MonoBehaviour
                 newBuildingScript.chosenColor = saveData.buildings[i].mat;
             }
 
+            TimeSpan timeSpan = DateTime.Now - DateTime.Parse(saveData.quitTimeString);
+            print("Offline for " + timeSpan.TotalSeconds + " seconds.");
+            for (int i = 0; i < saveData.areas.Count; i++)
+            {
+                if (saveData.areas[i].bought)
+                {
+                    if (saveData.areas[i].workingPower > 0)
+                    {
+                        for (int j = 0; j < saveData.areas[i].treeTypesInArea.Length; j++)
+                        {
+                            if (saveData.areas[i].treeTypesInArea[j] == true)
+                            {
+                                print("Earned " + StorageScript.Instance.offlineEarningMultiplier * saveData.areas[i].workingPower * (float)timeSpan.TotalSeconds + " wood of type: " + j);
+                                StorageScript.Instance.wood[j] += StorageScript.Instance.offlineEarningMultiplier * saveData.areas[i].workingPower * (float)timeSpan.TotalSeconds;
+                            }   
+                        }
+                    }
+                }
+            }
+
             Debug.Log("Loaded game");
         }
         else // Jos pelaajalla ei ole save.dat tiedostoa, eli peli alkaa alusta/pelaaja pelaa ensimm‰ist‰ kertaa
@@ -225,4 +248,6 @@ public class SaveData
     public List<AreaSaveData> areas;
     public List<TreeSaveData> trees;
     public List<BuildingSaveData> buildings;
+
+    public string quitTimeString;
 }
