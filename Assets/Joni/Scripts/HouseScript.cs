@@ -31,6 +31,7 @@ public class HouseScript : MonoBehaviour
     void Start()
     {
         StorageScript.Instance.buildingsInGame.Add(gameObject);
+        
 
         //MeshRenderer meshRenderer = houseBase.GetComponent<MeshRenderer>();
 
@@ -62,6 +63,8 @@ public class HouseScript : MonoBehaviour
             {
                 targetArea.builtBuildingsInArea++;
                 targetArea.workingPower += workingPower;
+                StorageScript.Instance.totalWorkingPower += workingPower;
+                StorageScript.Instance.areas[targetArea.areaId].workingPower += workingPower;
                 beingBuilt = false;
             }
         }
@@ -83,8 +86,10 @@ public class HouseScript : MonoBehaviour
             targetArea.totalBuildingsInArea--;
             targetArea.builtBuildingsInArea--;
             targetArea.workingPower -= workingPower;
-
+            StorageScript.Instance.totalWorkingPower -= workingPower;
+            StorageScript.Instance.areas[targetArea.areaId].workingPower -= workingPower;
             StorageScript.Instance.buildingsInGame.Remove(gameObject);
+
             Destroy(gameObject);
 
             return true;

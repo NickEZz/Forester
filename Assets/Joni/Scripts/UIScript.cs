@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class UIScript : MonoBehaviour
 {
+    [SerializeField] private GameObject activeMenu;
+
     [SerializeField] private TextMeshProUGUI totalWoodCounter;
     [SerializeField] private TextMeshProUGUI[] moneyCounters;
 
@@ -55,6 +57,22 @@ public class UIScript : MonoBehaviour
         if (PlayerPrefs.HasKey("Volume"))
         {
             volumeSlider.value = PlayerPrefs.GetFloat("Volume");
+        }
+        if (PlayerPrefs.HasKey("FullScreen"))
+        {
+            if (PlayerPrefs.GetInt("FullScreen") == 0) // Jos peli ei ole fullscreen
+            {
+                fullscreenToggle.isOn = false;
+                Screen.SetResolution(PlayerPrefs.GetInt("WindowSizeX"), PlayerPrefs.GetInt("WindowSizeY"), false);
+            }
+            else // Jos on
+            {
+                fullscreenToggle.isOn = true;
+            }
+        }
+        else
+        {
+            Screen.SetResolution(Screen.resolutions[Screen.resolutions.Length - 1].width, Screen.resolutions[Screen.resolutions.Length - 1].height, fullscreenToggle);
         }
     }
 
@@ -195,11 +213,17 @@ public class UIScript : MonoBehaviour
         audioManager.volumeMaster = volumeSlider.value;
         moveCamera.sensitivity = sensitivitySlider.value;
 
-
         Screen.fullScreen = fullscreenToggle.isOn;
         if (fullscreenToggle.isOn)
         {
-            Screen.SetResolution(1920, 1080, fullscreenToggle);
+            Screen.SetResolution(Screen.resolutions[Screen.resolutions.Length - 1].width, Screen.resolutions[Screen.resolutions.Length - 1].height, fullscreenToggle);
+            PlayerPrefs.SetInt("FullScreen", 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("FullScreen", 0);
+            PlayerPrefs.SetInt("WindowSizeX", Screen.width);
+            PlayerPrefs.SetInt("WindowSizeY", Screen.height);
         }
 
         if (requestQuit)
@@ -210,6 +234,11 @@ public class UIScript : MonoBehaviour
                 Application.Quit();
             }
         }
+    }
+
+    void ClosePrevMenu(GameObject openMenu)
+    {
+        
     }
 
     public void ToggleToolMenu()
@@ -435,11 +464,6 @@ public class UIScript : MonoBehaviour
     {
         PlayerPrefs.SetFloat("Sensitivity", sensitivitySlider.value);
         //SaveManager.Instance.SaveSetting("Sensitivity", sensitivitySlider.value);
-    }
-
-    public void SaveWindowSize()
-    {
-
     }
 
     public void ResetSaveGameButton()

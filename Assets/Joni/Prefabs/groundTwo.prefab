@@ -2746,6 +2746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5a6c51a0ba9cec4bbe491c3de44d9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  areaId: 0
   price: 0
   bought: 0
   sector: 0
@@ -2755,6 +2756,7 @@ MonoBehaviour:
   builtBuildingsInArea: 0
   treesInArea: []
   workingPower: 0
+  treeTypesInArea: 000000
   working: 0
   timer: 0
   grassMat: {fileID: 2100000, guid: 62f73d8016c37c34b838056f114c92c0, type: 2}
