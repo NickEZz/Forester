@@ -27,11 +27,15 @@ public class SaveManager : MonoBehaviour
 
     Fade fade;
 
+    float totalWoodEarned;
+    StartupAlert alert;
+
     //public SaveData saveData;
 
     private void Awake()
     {
         fade = GetComponent<Fade>();
+        alert = GetComponent<StartupAlert>();
 
         if (Instance == null)
         {
@@ -186,6 +190,7 @@ public class SaveManager : MonoBehaviour
 
             TimeSpan timeSpan = DateTime.Now - DateTime.Parse(saveData.quitTimeString);
             print("Offline for " + timeSpan.TotalSeconds + " seconds.");
+
             for (int i = 0; i < saveData.areas.Count; i++)
             {
                 if (saveData.areas[i].bought)
@@ -197,13 +202,22 @@ public class SaveManager : MonoBehaviour
                             if (saveData.areas[i].treeTypesInArea[j] == true)
                             {
                                 print("Earned " + StorageScript.Instance.offlineEarningMultiplier * saveData.areas[i].workingPower * (float)timeSpan.TotalSeconds + " wood of type: " + j);
-                                StorageScript.Instance.wood[j] += StorageScript.Instance.offlineEarningMultiplier * saveData.areas[i].workingPower * (float)timeSpan.TotalSeconds;
+
+                                float amount = StorageScript.Instance.offlineEarningMultiplier * saveData.areas[i].workingPower * (float)timeSpan.TotalSeconds;
+
+                                StorageScript.Instance.wood[j] += amount;
+                                totalWoodEarned += amount;
                             }   
                         }
                     }
                 }
             }
 
+            if (totalWoodEarned > 0)
+            {
+                alert.ShowAlert(totalWoodEarned);
+            }
+            
             Debug.Log("Loaded game");
         }
         else // Jos pelaajalla ei ole save.dat tiedostoa, eli peli alkaa alusta/pelaaja pelaa ensimmäistä kertaa

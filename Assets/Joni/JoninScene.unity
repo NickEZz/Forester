@@ -8919,6 +8919,8 @@ MonoBehaviour:
   - 0
   saplings: 0a0000000000000000000000
   totalWood: 0
+  totalWorkingPower: 0
+  offlineEarningMultiplier: 0.05
   currentAxeUpgrade: 0
   currentSawUpgrade: 0
   treeTypes:
@@ -33188,7 +33190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &905948691
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33229,7 +33231,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -44656,7 +44658,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1187297267}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2007688529}
+        m_TargetAssemblyTypeName: StartupAlert, Assembly-CSharp
+        m_MethodName: CloseAlert
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1187297267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75945,8 +75959,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e4ddf825d5fd542a8e45b0fe58b504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alertWindow: {fileID: 0}
-  alertText: {fileID: 0}
+  alertWindow: {fileID: 905948690}
+  alertText: {fileID: 1392141725}
 --- !u!1 &2008212854
 GameObject:
   m_ObjectHideFlags: 0
@@ -77293,6 +77307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1c84b7d9127624bb57a0a553ecda95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeMenu: {fileID: 0}
   totalWoodCounter: {fileID: 1237241185}
   moneyCounters:
   - {fileID: 3204920}

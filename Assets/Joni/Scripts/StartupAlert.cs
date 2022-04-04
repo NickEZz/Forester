@@ -8,20 +8,14 @@ public class StartupAlert : MonoBehaviour
     [SerializeField] GameObject alertWindow;
     [SerializeField] TextMeshProUGUI alertText;
 
-    // Start is called before the first frame update
-    void Start()
+    public void ShowAlert(float totalWood)
     {
-        
+        alertWindow.SetActive(true);
+        alertText.text = "You earned a total of\n " + totalWood + " wood\n while you were offline!";
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CloseAlert()
     {
-        
-    }
-
-    void ShowAlert(float totalWood)
-    {
-
+        alertWindow.SetActive(false);
     }
 }
