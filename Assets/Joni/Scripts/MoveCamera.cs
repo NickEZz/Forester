@@ -13,7 +13,7 @@ public class MoveCamera : MonoBehaviour
     
     float tempSpeed;
 
-    float targetPos;
+    public float targetPos;
 
     // Start is called before the first frame update
     void Start()

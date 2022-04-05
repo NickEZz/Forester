@@ -72,6 +72,7 @@
     <Compile Include="Assets\Joni\Scripts\DeveloperScript.cs" />
     <Compile Include="Assets\Joni\Scripts\Fade.cs" />
     <Compile Include="Assets\Joni\test.cs" />
+    <Compile Include="Assets\Joni\Scripts\TutorialScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

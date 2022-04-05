@@ -15,6 +15,9 @@ public class UIScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] woodCounters;
     [SerializeField] private TextMeshProUGUI[] saplingCounters;
 
+    [SerializeField] private GameObject saplingMenu;
+    [SerializeField] private GameObject toolMenu;
+
     [SerializeField] private GameObject[] elementsToHide;
 
     [SerializeField] private ToolScript toolScript;
@@ -22,6 +25,10 @@ public class UIScript : MonoBehaviour
 
     [SerializeField] private RawImage currentBuildingIcon;
     [SerializeField] private Image[] buildingButtons;
+
+
+    [SerializeField] private int lastSelectedTool;
+    [SerializeField] private int lastSelectedSapling;
 
     [SerializeField] private RawImage currentToolIcon;
     [SerializeField] private Texture2D[] toolIcons;
@@ -167,15 +174,11 @@ public class UIScript : MonoBehaviour
         }
 
         if (toolScript.tool < 2)
-        {
-            currentSaplingIcon.gameObject.SetActive(false);
-            currentToolIcon.gameObject.SetActive(true);
+        {   
             currentToolIcon.texture = toolIcons[toolScript.tool];
         }
         else
         {
-            currentToolIcon.gameObject.SetActive(false);
-            currentSaplingIcon.gameObject.SetActive(true);
             currentSaplingIcon.texture = StorageScript.Instance.saplingTypes[toolScript.tool - 2].sprite;
             saplingAmountText.text = StorageScript.Instance.saplings[0].ToString();
         }
@@ -243,13 +246,24 @@ public class UIScript : MonoBehaviour
 
     public void ToggleToolMenu()
     {
-        elementsToHide[2].SetActive(!elementsToHide[2].activeSelf);
+        toolScript.tool = lastSelectedTool;
+        saplingMenu.SetActive(false);
+        toolMenu.SetActive(!toolMenu.activeSelf);
+        audioManager.PlaySound("click", Vector3.zero);
+    }
+
+    public void ToggleSaplingMenu()
+    {
+        toolScript.tool = lastSelectedSapling;
+        toolMenu.SetActive(false);
+        saplingMenu.SetActive(!saplingMenu.activeSelf);
         audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void SelectAxe()
     {
         toolScript.tool = 0;
+        lastSelectedTool = 0;
         currentToolIcon.texture = toolIcons[0];
         ToggleToolMenu();
         audioManager.PlaySound("click", Vector3.zero);
@@ -258,6 +272,7 @@ public class UIScript : MonoBehaviour
     public void SelectSaw()
     {
         toolScript.tool = 1;
+        lastSelectedTool = 1;
         currentToolIcon.texture = toolIcons[1];
         ToggleToolMenu();
         audioManager.PlaySound("click", Vector3.zero);
@@ -266,21 +281,24 @@ public class UIScript : MonoBehaviour
     public void SelectSpruceSapling()
     {
         toolScript.tool = 2;
-        ToggleToolMenu();
+        lastSelectedSapling = 2;
+        ToggleSaplingMenu();
         audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void SelectPineSapling()
     {
         toolScript.tool = 3;
-        ToggleToolMenu();
+        lastSelectedSapling = 3;
+        ToggleSaplingMenu();
         audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void SelectBirchSapling()
     {
         toolScript.tool = 4;
-        ToggleToolMenu();
+        lastSelectedSapling = 4;
+        ToggleSaplingMenu();
         audioManager.PlaySound("click", Vector3.zero);
     }
 
