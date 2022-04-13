@@ -24,6 +24,7 @@ public class SaveManager : MonoBehaviour
 
     [SerializeField] ToolScript toolScript;
     [SerializeField] MapManager mapManager;
+    [SerializeField] TutorialScript tutorialScript;
 
     Fade fade;
 
@@ -222,7 +223,8 @@ public class SaveManager : MonoBehaviour
         }
         else // Jos pelaajalla ei ole save.dat tiedostoa, eli peli alkaa alusta/pelaaja pelaa ensimmäistä kertaa
         {
-            mapManager.CreateMap(false); 
+            mapManager.CreateMap(false);
+            tutorialScript.StartTutorial();
         }
 
         loading = false;

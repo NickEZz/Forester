@@ -64,6 +64,7 @@
     <Compile Include="Assets\Joni\Scripts\MainMenuScript.cs" />
     <Compile Include="Assets\Joni\Scripts\MoveCamera.cs" />
     <Compile Include="Assets\Joni\Scripts\AreaScript.cs" />
+    <Compile Include="Assets\Joni\Scripts\TutorialScript.cs" />
     <Compile Include="Assets\Joni\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Joni\Scripts\CustomVector.cs" />
     <Compile Include="Assets\Joni\Scripts\TreeScript.cs" />
@@ -72,7 +73,6 @@
     <Compile Include="Assets\Joni\Scripts\DeveloperScript.cs" />
     <Compile Include="Assets\Joni\Scripts\Fade.cs" />
     <Compile Include="Assets\Joni\test.cs" />
-    <Compile Include="Assets\Joni\Scripts\TutorialScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

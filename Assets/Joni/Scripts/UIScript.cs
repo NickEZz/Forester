@@ -15,23 +15,30 @@ public class UIScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI[] woodCounters;
     [SerializeField] private TextMeshProUGUI[] saplingCounters;
 
+
+    [SerializeField] private GameObject buildingMenu;
+    [SerializeField] private Image[] buildingButtons;
+
+    [SerializeField] private GameObject storeButton;
+    [SerializeField] private GameObject store;
+
+    [SerializeField] private GameObject toolButtons;
     [SerializeField] private GameObject saplingMenu;
     [SerializeField] private GameObject toolMenu;
 
-    [SerializeField] private GameObject[] elementsToHide;
+    [SerializeField] private Image[] test;
 
     [SerializeField] private ToolScript toolScript;
     [SerializeField] private BuildScript buildScript;
 
     [SerializeField] private RawImage currentBuildingIcon;
-    [SerializeField] private Image[] buildingButtons;
-
 
     [SerializeField] private int lastSelectedTool;
     [SerializeField] private int lastSelectedSapling;
 
     [SerializeField] private RawImage currentToolIcon;
     [SerializeField] private Texture2D[] toolIcons;
+    [SerializeField] private RawImage[] toolMenuToolIcons;
     [SerializeField] private RawImage currentSaplingIcon;
     [SerializeField] private TextMeshProUGUI saplingAmountText;
 
@@ -81,6 +88,8 @@ public class UIScript : MonoBehaviour
         {
             Screen.SetResolution(Screen.resolutions[Screen.resolutions.Length - 1].width, Screen.resolutions[Screen.resolutions.Length - 1].height, fullscreenToggle);
         }
+
+        saplingAmountText.text = StorageScript.Instance.saplings[0].ToString();
     }
 
     private void Update()
@@ -104,6 +113,9 @@ public class UIScript : MonoBehaviour
         // Vaihtaa kirveen ja sahan kuvakkeet jos niitä on päivitetty
         toolIcons[0] = StorageScript.Instance.axes[StorageScript.Instance.currentAxeUpgrade].toolSprite;
         toolIcons[1] = StorageScript.Instance.saws[StorageScript.Instance.currentSawUpgrade].toolSprite;
+
+        toolMenuToolIcons[0].texture = toolIcons[0];
+        toolMenuToolIcons[1].texture = toolIcons[1];
 
         for (int i = 0; i < shopToolIcons.Length; i++)
         {
@@ -154,6 +166,11 @@ public class UIScript : MonoBehaviour
                         pineSaplingButtons[i].SetActive(true);
                     }
                 }
+                if (birchSaplingButtons[0].activeSelf || birchSaplingButtons[1].activeSelf)
+                {
+                    birchSaplingButtons[0].SetActive(false);
+                    birchSaplingButtons[1].SetActive(false);
+                }
                 break;
             case 2:
                 for (int i = 0; i < pineSaplingButtons.Length; i++)
@@ -173,25 +190,14 @@ public class UIScript : MonoBehaviour
                 break;
         }
 
-        if (toolScript.tool < 2)
-        {   
-            currentToolIcon.texture = toolIcons[toolScript.tool];
-        }
-        else
-        {
-            currentSaplingIcon.texture = StorageScript.Instance.saplingTypes[toolScript.tool - 2].sprite;
-            saplingAmountText.text = StorageScript.Instance.saplings[0].ToString();
-        }
-
-
         // Kun menee buildmodeen, piilottaa joitain ui elementtejä ja tuo muita esille
         if (buildScript.buildMode)
         {
-            for (int i = 0; i < elementsToHide.Length - 1; i++)
-            {
-                elementsToHide[i].SetActive(false);
-            }
-            elementsToHide[3].SetActive(true);
+            storeButton.SetActive(false);
+            toolButtons.SetActive(false);
+            toolMenu.SetActive(false);
+            saplingMenu.SetActive(false);
+            buildingMenu.SetActive(true);
 
             for (int i = 0; i < buildingButtons.Length; i++)
             {
@@ -207,9 +213,23 @@ public class UIScript : MonoBehaviour
         }
         else
         {
-            elementsToHide[0].SetActive(true);
-            elementsToHide[1].SetActive(true);
-            elementsToHide[3].SetActive(false);
+            storeButton.SetActive(true);
+            toolButtons.SetActive(true);
+            buildingMenu.SetActive(false);
+
+            if (toolScript.tool < 2)
+            {
+                currentToolIcon.texture = toolIcons[toolScript.tool];
+                test[1].color = Color.white;
+                test[0].color = Color.gray;
+            }
+            else
+            {
+                currentSaplingIcon.texture = StorageScript.Instance.saplingTypes[toolScript.tool - 2].sprite;
+                saplingAmountText.text = StorageScript.Instance.saplings[toolScript.tool - 2].ToString();
+                test[0].color = Color.white;
+                test[1].color = Color.gray;
+            }
         }
 
         // Volume ja sensitivity sliderit
@@ -328,8 +348,8 @@ public class UIScript : MonoBehaviour
 
     public void ToggleStore()
     {
-        elementsToHide[4].SetActive(!elementsToHide[4].activeSelf);
-        buildScript.inStore = elementsToHide[4].activeSelf;
+        store.SetActive(!store.activeSelf);
+        buildScript.inStore = store.activeSelf;
         audioManager.PlaySound("click", Vector3.zero);
     }
     

@@ -17,7 +17,7 @@ public class TreeScript : MonoBehaviour
 
     [SerializeField] bool beingSawed = false;
 
-    [SerializeField] float growthEveryFrame;
+    public float growthEveryFrame;
 
     AreaScript areaOfTree;
 
