@@ -40,6 +40,8 @@ public class TreeScript : MonoBehaviour
 
     AudioManager audioManager;
 
+    TutorialScript tutorialScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +50,8 @@ public class TreeScript : MonoBehaviour
         audioManager = FindObjectOfType<AudioManager>();
 
         animator = GetComponent<Animator>();
+
+        tutorialScript = FindObjectOfType<TutorialScript>();
     }
 
     // Update is called once per frame
@@ -178,7 +182,7 @@ public class TreeScript : MonoBehaviour
 
     IEnumerator SawTree(float damage)
     {
-        GameObject saw = Instantiate(sawModel, transform.position + new Vector3(0.6f, 0.36f, 0f), Quaternion.Euler(0, 50, 90));
+        GameObject saw = Instantiate(sawModel, transform.position + new Vector3(0.55f, 0.5f, 0f), Quaternion.Euler(90, 50, 50));
         audioManager.PlaySound("sawtree", transform.position);
 
         while (true)
@@ -207,6 +211,11 @@ public class TreeScript : MonoBehaviour
             areaOfTree.treesInArea.Remove(gameObject);
             StorageScript.Instance.treesInGame.Remove(gameObject);
             StorageScript.Instance.wood[treeType] += treeHeight * 10;
+
+            if (tutorialScript.tutorial)
+            {
+                tutorialScript.treesCutDown++;
+            }
         }
     }
 

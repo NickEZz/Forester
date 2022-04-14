@@ -69,7 +69,7 @@ MonoBehaviour:
     m_Bits: 256
   toolScript: {fileID: 0}
   axeModel: {fileID: 487764712207142321, guid: 5db51bfdc58a6dd4d8049410b275c53b, type: 3}
-  sawModel: {fileID: 9217152719721841283, guid: 98b8eb897139d894d924e14b3f49cec1, type: 3}
+  sawModel: {fileID: 3400896371314573759, guid: 7e860f997f2a20c479ca6230085cf818, type: 3}
 --- !u!95 &4347354049761296062
 Animator:
   serializedVersion: 3

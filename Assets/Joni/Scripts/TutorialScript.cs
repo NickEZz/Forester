@@ -5,7 +5,7 @@ using TMPro;
 
 public class TutorialScript : MonoBehaviour
 {
-    [SerializeField] bool tutorial;
+    public bool tutorial;
 
     [SerializeField] int currentScene;
 
@@ -18,12 +18,16 @@ public class TutorialScript : MonoBehaviour
     [SerializeField] GameObject previousMenu;
 
     int amountOfTrees;
-    int treesCutDown;
+    public int treesCutDown;
+
+    public float originalWoodCost;
+    public float originalMoneyCost;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        originalMoneyCost = StorageScript.Instance.buildingTypes[0].moneyCost;
+        originalWoodCost = StorageScript.Instance.buildingTypes[0].woodCost[0];
     }
 
     // Update is called once per frame
@@ -94,13 +98,135 @@ public class TutorialScript : MonoBehaviour
                     }
                     break;
                 case 8:
-                    treesCutDown = amountOfTrees - StorageScript.Instance.treesInGame.Count;
+                    if (scenes[currentScene].relatedObject.activeSelf)
+                    {
+                        previousMenu = scenes[currentScene].relatedObject.gameObject;
+                        NextScene();
+                    }
+                    
 
+                    /*
                     scenes[currentScene].relatedObject.GetComponent<TextMeshProUGUI>().text = treesCutDown + "/5";
 
+                    if (treesCutDown >= 5)
+                    {
+                        NextScene();
+                    }
+                    */
+                    break;
+                case 9:
+                    if (scenes[currentScene].relatedObject.GetComponent<ToolScript>().tool < 2 && !previousMenu.activeSelf)
+                    {
+                        NextScene();
+                    }
 
+                    /*
+                    if (scenes[currentScene].relatedObject.activeSelf)
+                    {
+                        NextScene();
+                    }
+                    */
+                    break;
+                case 10:
+                    scenes[currentScene].relatedObject.GetComponent<TextMeshProUGUI>().text = treesCutDown + "/5";
+
+                    if (treesCutDown >= 5)
+                    {
+                        NextScene();
+                    }
+                    /*
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        NextScene();
+                    }
+                    */
+                    break;
+                case 11:
+                    if (scenes[currentScene].relatedObject.activeSelf)
+                    {
+                        NextScene();
+                    }
+
+                    /*
+                    scenes[currentScene].relatedObject.SetActive(true);
+
+                    if (StorageScript.Instance.wood[0] <= 0)
+                    {
+                        NextScene();
+                    }
+                    */
+                    break;
+                case 12:
+                    scenes[currentScene].relatedObject.SetActive(true);
+
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        NextScene();
+                    }
+                    break;
+                case 13:
+                    scenes[currentScene].relatedObject.SetActive(true);
+
+                    if (StorageScript.Instance.wood[0] <= 0)
+                    {
+                        NextScene();
+                    }
+                    break;
+                case 14:
+                    if (!scenes[currentScene].relatedObject.activeSelf)
+                    {
+                        NextScene();
+                    }
+                    break;
+                case 15:
+                    if (scenes[currentScene].relatedObject.activeSelf)
+                    {
+                        NextScene();
+                    }
+                    break;
+                case 16:
+                    scenes[currentScene].relatedObject.SetActive(true);
+
+                    StorageScript.Instance.buildingTypes[0].moneyCost = 0f;
+                    StorageScript.Instance.buildingTypes[0].woodCost[0] = 0f;
+
+                    if (StorageScript.Instance.buildingsInGame.Count > 0)
+                    {
+                        StorageScript.Instance.buildingTypes[0].moneyCost = originalMoneyCost;
+                        StorageScript.Instance.buildingTypes[0].woodCost[0] = originalWoodCost;
+                        NextScene();
+                    }
+                    break;
+                case 17:
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        NextScene();
+                    }
+                    break;
+                case 18:
+                    if (!scenes[currentScene].relatedObject.activeSelf)
+                    {
+                        NextScene();
+                    }
+                    break;
+                case 19:
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        NextScene();
+                    }
+                    break;
+                case 20:
+                    if (Input.GetMouseButton(0))
+                    {
+                        StopTutorial();
+                    }
                     break;
             }
+        }
+        else
+        {
+            StorageScript.Instance.buildingTypes[0].moneyCost = originalMoneyCost;
+            StorageScript.Instance.buildingTypes[0].woodCost[0] = originalWoodCost;
         }
     }
 
@@ -128,6 +254,15 @@ public class TutorialScript : MonoBehaviour
         currentScene--;
         scenes[currentScene].gameObject.SetActive(true);
     }
+
+    public void StopTutorial()
+    {
+        for (int i = 0; i < scenes.Length; i++)
+        {
+            scenes[i].gameObject.SetActive(false);
+        }
+        tutorial = false;
+    }
 }
 
 [System.Serializable]
@@ -137,36 +272,3 @@ public class TutorialScene
     public GameObject relatedObject;
     public Vector3 cameraPosition;
 }
-
-/*choose spruce sapling
-
-plant 5-10 spruce trees
-
-explain tree spawning system
-
-open tool menu
-
-explain tools, select axe or saw
-
-cut trees down
-
-explain cost of house
-
-open store
-
-explain tool upgrades/store
-
-sell wood
-
-close store
-
-open build menu
-
-give player first house for free and explain what they do
-
-close build menu
-
-explain buying areas
-
-done explaining basics, good luck
-*/
