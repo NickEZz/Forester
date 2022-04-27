@@ -56,7 +56,7 @@ MonoBehaviour:
   adultTree: 0
   grass: {fileID: 7828139134651479135}
   beingSawed: 0
-  growthEveryFrame: 0.0025
+  growthEveryFrame: 0.004
   treeSpawnChance: 20
   loopTime: 1
   timer: 1

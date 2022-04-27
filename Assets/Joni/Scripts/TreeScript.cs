@@ -202,6 +202,48 @@ public class TreeScript : MonoBehaviour
         }
     }
 
+    public void StartChainsaw()
+    {
+        if (!beingSawed)
+        {
+            if (adultTree)
+            {
+                audioManager.PlaySound("chainsawstart", Vector3.zero);
+            }
+        }
+    }
+
+    public void ChainsawTree(float damage)
+    {
+        if (!beingSawed)
+        {
+            if (adultTree)
+            {
+                if (!audioManager.IsPlaying("chainsawstart") && !audioManager.IsPlaying("chainsawloop"))
+                {
+                    audioManager.PlaySound("chainsawloop", Vector3.zero);
+                }
+
+                hp -= damage;
+                //Instantiate(axeModel, transform.position + new Vector3(0, 0.45f, -0.8f), Quaternion.Euler(0f, 180f, 90f));
+                
+                if (hp <= 0)
+                {
+                    audioManager.PlaySound("treefall", transform.position);
+                    StopChainsaw();
+                    StartAnimation();
+                }
+            }
+        }
+    }
+
+    public void StopChainsaw()
+    {
+        audioManager.StopSound("chainsawstart");
+        audioManager.StopSound("chainsawloop");
+        audioManager.PlaySound("chainsawstop", Vector3.zero);
+    }
+
     public void StartAnimation()
     {
         if (!animationPlaying)

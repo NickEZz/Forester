@@ -161,6 +161,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 3364}
     - Class: 114
+      Script: {instanceID: 3540}
+    - Class: 114
       Script: {instanceID: 3622}
     - Class: 114
       Script: {instanceID: 3640}
@@ -590,7 +592,7 @@ ScriptsOnlyBuild:
     className: AreaScript
   - hash:
       serializedVersion: 2
-      Hash: 5988da5d378ee796e84236ac81ed0eb5
+      Hash: 3ae845794e1bcdd4beb0fdcfd08a0702
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TutorialScript
@@ -698,7 +700,7 @@ ScriptsOnlyBuild:
     className: TreeScript
   - hash:
       serializedVersion: 2
-      Hash: 3dda6408e107a893ebc9c4bb404c3391
+      Hash: a2d26e15ddc1fb4f382646d8ce2cd65a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SaveManager
@@ -916,4 +918,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Joni/MainMenu.unity
   - Assets/Joni/JoninScene.unity
-  playerPath: C:/Users/Joni/Desktop/Unity/Builds/3D/Forester/ForesterV0.2.3/Forester.exe
+  playerPath: C:/Users/Joni/Desktop/Unity/Builds/3D/Forester/ForesterV0.2.4/Forester.exe

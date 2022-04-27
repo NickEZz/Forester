@@ -19,6 +19,7 @@ public class StorageScript : MonoBehaviour
 
     public int currentAxeUpgrade;
     public int currentSawUpgrade;
+    public int currentChainsawUpgrade;
 
     public GameObject[] treeTypes;
     public Sapling[] saplingTypes;

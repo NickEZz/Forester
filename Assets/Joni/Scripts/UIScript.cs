@@ -298,6 +298,15 @@ public class UIScript : MonoBehaviour
         audioManager.PlaySound("click", Vector3.zero);
     }
 
+    public void Chainsaw()
+    {
+        toolScript.tool = 5;
+        lastSelectedTool = 5;
+        currentToolIcon.texture = toolIcons[2];
+        ToggleToolMenu();
+        audioManager.PlaySound("click", Vector3.zero);
+    }
+
     public void SelectSpruceSapling()
     {
         toolScript.tool = 2;
@@ -440,6 +449,19 @@ public class UIScript : MonoBehaviour
             toolScript.UpdateTool();
         }
         
+    }
+
+    public void BuyChainsaw()
+    {
+        /*
+        if (StorageScript.Instance.money >= StorageScript.Instance.chainsaws[StorageScript.Instance.currentChainsawUpgrade + 1].toolPrice)
+        {
+            audioManager.PlaySound("transactionsound", Vector3.zero);
+            StorageScript.Instance.currentChainsawUpgrade++;
+            StorageScript.Instance.money -= StorageScript.Instance.chainsaws[StorageScript.Instance.currentChainsawUpgrade].toolPrice;
+            toolScript.UpdateTool();
+        }
+        */
     }
 
     public void BuySpruceSapling(float amount)
