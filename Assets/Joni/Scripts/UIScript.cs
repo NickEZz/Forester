@@ -22,6 +22,10 @@ public class UIScript : MonoBehaviour
     [SerializeField] private GameObject storeButton;
     [SerializeField] private GameObject store;
 
+    [SerializeField] private GameObject woodStoreMenu;
+    [SerializeField] private GameObject toolStoreMenu;
+    [SerializeField] private GameObject saplingStoreMenu;
+
     [SerializeField] private GameObject toolButtons;
     [SerializeField] private GameObject saplingMenu;
     [SerializeField] private GameObject toolMenu;
@@ -361,6 +365,14 @@ public class UIScript : MonoBehaviour
         buildScript.inStore = store.activeSelf;
         audioManager.PlaySound("click", Vector3.zero);
     }
+
+    public void OpenStoreWoodMenu()
+    {
+        toolStoreMenu.SetActive(false);
+        saplingStoreMenu.SetActive(false);
+        woodStoreMenu.SetActive(true);
+        audioManager.PlaySound("click", Vector3.zero);
+    }
     
     public void SellSpruce(float amount)
     {
@@ -428,6 +440,14 @@ public class UIScript : MonoBehaviour
         }
     }
 
+    public void OpenStoreToolMenu()
+    {
+        saplingStoreMenu.SetActive(false);
+        woodStoreMenu.SetActive(false);
+        toolStoreMenu.SetActive(true);
+        audioManager.PlaySound("click", Vector3.zero);
+    }
+
     public void BuyAxeUpgrade()
     {
         if (StorageScript.Instance.money >= StorageScript.Instance.axes[StorageScript.Instance.currentAxeUpgrade + 1].toolPrice)
@@ -462,6 +482,14 @@ public class UIScript : MonoBehaviour
             toolScript.UpdateTool();
         }
         */
+    }
+
+    public void OpenStoreSaplingMenu()
+    {
+        toolStoreMenu.SetActive(false);
+        woodStoreMenu.SetActive(false);
+        saplingStoreMenu.SetActive(true);
+        audioManager.PlaySound("click", Vector3.zero);
     }
 
     public void BuySpruceSapling(float amount)

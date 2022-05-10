@@ -24,7 +24,10 @@ public class RoadScript : MonoBehaviour
         if (timer <= 0)
         {
             timer = spawnTimer;
-            if (Random.Range(0, 101) <= percentChance)
+
+            float chance = Random.Range(0, 101);
+            
+            if (chance <= percentChance)
             {
                 GameObject chosenVehicle = vehiclePrefabs[Random.Range(0, vehiclePrefabs.Length)];
                 GameObject chosenSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];

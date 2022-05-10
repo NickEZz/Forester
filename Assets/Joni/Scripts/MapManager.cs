@@ -15,6 +15,9 @@ public class MapManager : MonoBehaviour
 
     [SerializeField] GameObject[] groundPrefabs;
 
+    [SerializeField] GameObject[] groundObjectPrefabs;
+    [SerializeField] float objectSpawnChance;
+
     public int[] sectorsOwned = new int[3];
     public int[] sectorAreaAmounts = new int[3];
 
@@ -27,20 +30,6 @@ public class MapManager : MonoBehaviour
     {
         
     }
-
-    /*
-    public void UpdatePrices(int sector, List<AreaScript> areaList, AreaScript area, float originalCost)
-    {
-        areaList.Remove(area);
-        for (int i = 0; i < areaList.Count; i++)
-        {
-            //int multiplier = sectorAreaAmounts[i] - areaList.Count;
-
-            areaList[i].price = originalCost * (sectorsOwned[sector] / 2 * 1000);
-            
-        }
-    }
-    */
 
     public void CreateMap(bool mapExists)
     {
@@ -78,6 +67,8 @@ public class MapManager : MonoBehaviour
                 }
             }
         }
+
+        SpawnGroundObjects();
     }
 
     void SpawnLevelPart(bool firstPart, int sector, float groundSize, List<AreaScript> areaList, float x, float y, float cost, System.Random rng, bool mapExists)
@@ -120,4 +111,50 @@ public class MapManager : MonoBehaviour
         }
         i++;
     }
+
+    void SpawnGroundObjects()
+    {
+        System.Random rng = new System.Random(seed);
+
+        float w = width * 10;
+        float h = height * 10;
+
+        for (int x = 0; x < w; x++)
+        {
+            for (int y = 0; y < h; y++)
+            {
+                //print(x + ", " + y);
+
+                if (rng.Next(0, 101) <= objectSpawnChance)
+                {
+                    //print("tried spawning");
+                    RaycastHit hit;
+                    if (Physics.Raycast(new Vector3(x, 10, y), Vector3.down, out hit, 20f))
+                    {
+                        if (hit.collider.tag != "Structure")
+                        {
+                            Instantiate(groundObjectPrefabs[rng.Next(0, groundObjectPrefabs.Length)], hit.point, Quaternion.Euler(-90f, 0f, 0f));
+                            //print("spawned");
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
 }
+
+
+/*
+    public void UpdatePrices(int sector, List<AreaScript> areaList, AreaScript area, float originalCost)
+    {
+        areaList.Remove(area);
+        for (int i = 0; i < areaList.Count; i++)
+        {
+            //int multiplier = sectorAreaAmounts[i] - areaList.Count;
+
+            areaList[i].price = originalCost * (sectorsOwned[sector] / 2 * 1000);
+            
+        }
+    }
+    */
