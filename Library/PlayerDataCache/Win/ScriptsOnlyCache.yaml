@@ -4,6 +4,8 @@ ScriptsOnlyBuild:
     - AreaScript
     - AudioManager
     - BuildScript
+    - CarDespawner
+    - CarScript
     - DeveloperScript
     - Fade
     - HouseScript
@@ -11,6 +13,7 @@ ScriptsOnlyBuild:
     - MapManager
     - MoveCamera
     - PopUpScript
+    - RoadScript
     - SaveManager
     - StartupAlert
     - StorageScript
@@ -86,6 +89,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 54
+      Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
     - Class: 65
@@ -109,81 +114,87 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1656}
+      Script: {instanceID: 1664}
     - Class: 114
-      Script: {instanceID: 1682}
+      Script: {instanceID: 1690}
     - Class: 114
-      Script: {instanceID: 1712}
+      Script: {instanceID: 1720}
     - Class: 114
-      Script: {instanceID: 1760}
+      Script: {instanceID: 1768}
     - Class: 114
-      Script: {instanceID: 1774}
+      Script: {instanceID: 1782}
     - Class: 114
-      Script: {instanceID: 1824}
+      Script: {instanceID: 1832}
     - Class: 114
-      Script: {instanceID: 1902}
+      Script: {instanceID: 1910}
     - Class: 114
-      Script: {instanceID: 1912}
+      Script: {instanceID: 1920}
     - Class: 114
-      Script: {instanceID: 2020}
+      Script: {instanceID: 2028}
     - Class: 114
-      Script: {instanceID: 2344}
+      Script: {instanceID: 2352}
     - Class: 114
-      Script: {instanceID: 2414}
+      Script: {instanceID: 2422}
     - Class: 114
-      Script: {instanceID: 2532}
+      Script: {instanceID: 2540}
     - Class: 114
-      Script: {instanceID: 2562}
+      Script: {instanceID: 2570}
     - Class: 114
-      Script: {instanceID: 2650}
+      Script: {instanceID: 2658}
     - Class: 114
-      Script: {instanceID: 2676}
+      Script: {instanceID: 2684}
     - Class: 114
-      Script: {instanceID: 2680}
+      Script: {instanceID: 2688}
     - Class: 114
-      Script: {instanceID: 2696}
+      Script: {instanceID: 2704}
     - Class: 114
-      Script: {instanceID: 2778}
+      Script: {instanceID: 2786}
     - Class: 114
-      Script: {instanceID: 2826}
+      Script: {instanceID: 2834}
     - Class: 114
-      Script: {instanceID: 2830}
+      Script: {instanceID: 2838}
     - Class: 114
-      Script: {instanceID: 3020}
+      Script: {instanceID: 2960}
     - Class: 114
-      Script: {instanceID: 3118}
+      Script: {instanceID: 3030}
     - Class: 114
-      Script: {instanceID: 3120}
+      Script: {instanceID: 3128}
     - Class: 114
-      Script: {instanceID: 3142}
+      Script: {instanceID: 3130}
     - Class: 114
-      Script: {instanceID: 3174}
+      Script: {instanceID: 3152}
     - Class: 114
-      Script: {instanceID: 3364}
+      Script: {instanceID: 3184}
     - Class: 114
-      Script: {instanceID: 3540}
+      Script: {instanceID: 3374}
     - Class: 114
-      Script: {instanceID: 3622}
+      Script: {instanceID: 3550}
     - Class: 114
-      Script: {instanceID: 3640}
+      Script: {instanceID: 3632}
     - Class: 114
-      Script: {instanceID: 3868}
+      Script: {instanceID: 3650}
     - Class: 114
-      Script: {instanceID: 4000}
+      Script: {instanceID: 3722}
     - Class: 114
-      Script: {instanceID: 4118}
+      Script: {instanceID: 3882}
     - Class: 114
-      Script: {instanceID: 4320}
+      Script: {instanceID: 4014}
     - Class: 114
-      Script: {instanceID: 4404}
+      Script: {instanceID: 4132}
     - Class: 114
-      Script: {instanceID: 4500}
+      Script: {instanceID: 4334}
     - Class: 114
-      Script: {instanceID: 4666}
+      Script: {instanceID: 4418}
     - Class: 114
-      Script: {instanceID: 4812}
+      Script: {instanceID: 4514}
     - Class: 114
-      Script: {instanceID: 4844}
+      Script: {instanceID: 4680}
+    - Class: 114
+      Script: {instanceID: 4826}
+    - Class: 114
+      Script: {instanceID: 4858}
+    - Class: 114
+      Script: {instanceID: 4866}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -232,33 +243,33 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1656}
+      Script: {instanceID: 1664}
     - Class: 114
-      Script: {instanceID: 1912}
+      Script: {instanceID: 1920}
     - Class: 114
-      Script: {instanceID: 2206}
+      Script: {instanceID: 2214}
     - Class: 114
-      Script: {instanceID: 2344}
+      Script: {instanceID: 2352}
     - Class: 114
-      Script: {instanceID: 2532}
+      Script: {instanceID: 2540}
     - Class: 114
-      Script: {instanceID: 2650}
+      Script: {instanceID: 2658}
     - Class: 114
-      Script: {instanceID: 2696}
+      Script: {instanceID: 2704}
     - Class: 114
-      Script: {instanceID: 2826}
+      Script: {instanceID: 2834}
     - Class: 114
-      Script: {instanceID: 2884}
+      Script: {instanceID: 2892}
     - Class: 114
-      Script: {instanceID: 3020}
+      Script: {instanceID: 3030}
     - Class: 114
-      Script: {instanceID: 3118}
+      Script: {instanceID: 3128}
     - Class: 114
-      Script: {instanceID: 4136}
+      Script: {instanceID: 4150}
     - Class: 114
-      Script: {instanceID: 4418}
+      Script: {instanceID: 4432}
     - Class: 114
-      Script: {instanceID: 4500}
+      Script: {instanceID: 4514}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -298,7 +309,7 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
-      Hash: 143637727ef78addd07b11522d0c112d
+      Hash: 1781a8ec307762bce83888b3f77412b8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ToolScript
@@ -466,7 +477,7 @@ ScriptsOnlyBuild:
     className: BuildScript
   - hash:
       serializedVersion: 2
-      Hash: 67a78384fbf089f65ca7cf1dbc501b32
+      Hash: 3e0359c3668c7bce6bf76ffa702793d7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: StorageScript
@@ -478,7 +489,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 0dc9f7d6cc2feb2d096afb980b1e03ba
+      Hash: 54c84651822da942d1483e9ded7c1189
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MapManager
@@ -536,6 +547,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: TestResultRendererCallback
+  - hash:
+      serializedVersion: 2
+      Hash: 2ad4fe39945ce8dc8c0712cb84e52846
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CarScript
   - hash:
       serializedVersion: 2
       Hash: 748dd2a2a28da4e618912da5ac45684b
@@ -718,6 +735,12 @@ ScriptsOnlyBuild:
     className: EventTrigger
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CarDespawner
+  - hash:
+      serializedVersion: 2
       Hash: a81d4c2c1cf3ad164d277d927a193679
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -730,13 +753,19 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
+      Hash: 67488d5cf7b30bb82b3395ce21be5fab
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: VehicleScript
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalTrack
   - hash:
       serializedVersion: 2
-      Hash: 455ae525b82520f7dc4c07bbc2faea4b
+      Hash: c6fbfacb5f33eed1d4118ab452404d19
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIScript
@@ -914,8 +943,14 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Postprocessing.Runtime.dll
     namespaceName: UnityEngine.Rendering.PostProcessing
     className: AmbientOcclusion
+  - hash:
+      serializedVersion: 2
+      Hash: 41db2b463005c45689caa372bd6be675
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RoadScript
   platform: 5
   scenePathNames:
   - Assets/Joni/MainMenu.unity
   - Assets/Joni/JoninScene.unity
-  playerPath: C:/Users/Joni/Desktop/Unity/Builds/3D/Forester/ForesterV0.2.4/Forester.exe
+  playerPath: C:/Users/s0pyjo01/Desktop/forestertestbuild/Forester.exe

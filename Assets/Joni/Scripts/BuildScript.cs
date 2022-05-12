@@ -192,6 +192,7 @@ public class BuildScript : MonoBehaviour
     IEnumerator MoveBuilding(GameObject movableObject)
     {
         GameObject originalArea = movableObject.GetComponent<HouseScript>().targetArea.gameObject;
+        HouseScript houseScript = movableObject.GetComponent<HouseScript>();
         Vector3 oldPos = movableObject.transform.position;
         previewObject.transform.rotation = movableObject.transform.rotation;
         previewObject.SetActive(true);
@@ -225,7 +226,9 @@ public class BuildScript : MonoBehaviour
 
                     if (Input.GetMouseButtonUp(0))
                     {
-                        movableObject.transform.position = new Vector3(previewTargetPos.x, hit.point.y + 0.2f, previewTargetPos.z);
+                        //movableObject.transform.position = new Vector3(previewTargetPos.x, hit.point.y + 0.2f, previewTargetPos.z);
+
+                        movableObject.transform.position = new Vector3(previewTargetPos.x, hit.point.y + houseScript.yOffset, previewTargetPos.z);
                         break;
                     }
                 }
@@ -260,7 +263,6 @@ public class BuildScript : MonoBehaviour
 
         if (targetArea.totalBuildingsInArea < 6)
         {
-            
             FindObjectOfType<AudioManager>().PlaySound("construction", hit.point);
 
             GameObject building = Instantiate(StorageScript.Instance.buildingTypes[select].buildingPrefab, hit.point, previewObject.transform.rotation); // buildings[select].buildingPrefab

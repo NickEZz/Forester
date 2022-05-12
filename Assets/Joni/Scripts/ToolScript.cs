@@ -82,7 +82,7 @@ public class ToolScript : MonoBehaviour
                     {
                         if (Physics.Raycast(ray, out mouse, 40f, layerMasks[2]))
                         {
-                            if (mouse.collider.GetComponent<TreeScript>().adultTree && mouse.collider.GetComponent<TreeScript>().hp > 0)
+                            if (mouse.collider.GetComponent<TreeScript>().hp > 0)
                             {
                                 if (!sawing)
                                 {

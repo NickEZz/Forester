@@ -11,7 +11,7 @@ public class StartupAlert : MonoBehaviour
     public void ShowAlert(float totalWood)
     {
         alertWindow.SetActive(true);
-        alertText.text = "You earned a total of\n " + totalWood + " wood\n while you were offline!";
+        alertText.text = "You earned a total of\n " + totalWood.ToString("F2") + " wood\n while you were offline!";
     }
 
     public void CloseAlert()

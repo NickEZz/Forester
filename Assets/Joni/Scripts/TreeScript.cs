@@ -146,24 +146,35 @@ public class TreeScript : MonoBehaviour
     {
         if (!beingSawed)
         {
-            if (adultTree)
+            hp -= damage;
+            Instantiate(axeModel, transform.position + new Vector3(0, 0.45f, -0.8f), Quaternion.Euler(0f, 180f, 90f));
+
+            if (player)
             {
-                hp -= damage;
-                Instantiate(axeModel, transform.position + new Vector3(0, 0.45f, -0.8f), Quaternion.Euler(0f, 180f, 90f));
+                audioManager.PlaySound("choptree", transform.position);
+            }
+
+            if (hp <= 0)
+            {
+                if (adultTree)
+                {
+                    areaOfTree.treesInArea.Remove(gameObject);
+                   
+                    StorageScript.Instance.wood[treeType] += treeHeight * 10;
+
+                    if (tutorialScript.tutorial)
+                    {
+                        tutorialScript.treesCutDown++;
+                    }
+                }
+
+                StorageScript.Instance.treesInGame.Remove(gameObject);
 
                 if (player)
                 {
-                    audioManager.PlaySound("choptree", transform.position);
+                    audioManager.PlaySound("treefall", transform.position);
                 }
-
-                if (hp <= 0)
-                {
-                    if (player)
-                    {
-                        audioManager.PlaySound("treefall", transform.position);
-                    }
-                    StartAnimation();
-                }
+                StartAnimation();
             }
         }
     }
@@ -172,11 +183,8 @@ public class TreeScript : MonoBehaviour
     {
         if (!beingSawed)
         {
-            if (adultTree)
-            {
-                beingSawed = true;
-                StartCoroutine(SawTree(damage));
-            }   
+            beingSawed = true;
+            StartCoroutine(SawTree(damage));
         }
     }
 
@@ -192,6 +200,20 @@ public class TreeScript : MonoBehaviour
 
             if (hp <= 0)
             {
+                if (adultTree)
+                {
+                    areaOfTree.treesInArea.Remove(gameObject);
+                    
+                    StorageScript.Instance.wood[treeType] += treeHeight * 10;
+
+                    if (tutorialScript.tutorial)
+                    {
+                        tutorialScript.treesCutDown++;
+                    }
+                }
+
+                StorageScript.Instance.treesInGame.Remove(gameObject);
+
                 toolScript.sawing = false;
 
                 Destroy(saw);
@@ -250,14 +272,6 @@ public class TreeScript : MonoBehaviour
         {
             animator.SetTrigger("Cut");
             animationPlaying = true;
-            areaOfTree.treesInArea.Remove(gameObject);
-            StorageScript.Instance.treesInGame.Remove(gameObject);
-            StorageScript.Instance.wood[treeType] += treeHeight * 10;
-
-            if (tutorialScript.tutorial)
-            {
-                tutorialScript.treesCutDown++;
-            }
         }
     }
 

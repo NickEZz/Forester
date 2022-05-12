@@ -26,6 +26,7 @@ public class StorageScript : MonoBehaviour
     public Building[] buildingTypes;
     public Tool[] axes;
     public Tool[] saws;
+    public Tool chainsaw;
 
     public List<GameObject> buildingsInGame;
     public List<GameObject> treesInGame;
@@ -47,6 +48,9 @@ public class StorageScript : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        Application.targetFrameRate = 144;
+        QualitySettings.vSyncCount = 0;
     }
 
     private void Update()

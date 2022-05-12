@@ -473,15 +473,13 @@ public class UIScript : MonoBehaviour
 
     public void BuyChainsaw()
     {
-        /*
-        if (StorageScript.Instance.money >= StorageScript.Instance.chainsaws[StorageScript.Instance.currentChainsawUpgrade + 1].toolPrice)
+        if (StorageScript.Instance.money >= StorageScript.Instance.chainsaw.toolPrice)
         {
             audioManager.PlaySound("transactionsound", Vector3.zero);
             StorageScript.Instance.currentChainsawUpgrade++;
-            StorageScript.Instance.money -= StorageScript.Instance.chainsaws[StorageScript.Instance.currentChainsawUpgrade].toolPrice;
+            StorageScript.Instance.money -= StorageScript.Instance.chainsaw.toolPrice;
             toolScript.UpdateTool();
         }
-        */
     }
 
     public void OpenStoreSaplingMenu()

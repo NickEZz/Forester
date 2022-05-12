@@ -87,34 +87,35 @@ public class AreaScript : MonoBehaviour
             }
 
             StorageScript.Instance.areas[areaId].treeTypesInArea = treeTypesInArea;
-        }
 
-        if (working) // Jos alueella on rakennuksia ja puita on enemm‰n kuin 5
-        {
-            timer -= Time.deltaTime; // Laskee yhden sekunnin
-
-            if (timer <= 0)
+            if (working) // Jos alueella on rakennuksia ja puita on enemm‰n kuin 5
             {
-                foreach (var tree in treesInArea) // Jonka j‰lkeen k‰y l‰pi puut listasta
+                timer -= Time.deltaTime; // Laskee yhden sekunnin
+
+                if (timer <= 0)
                 {
-                    TreeScript treeScript = tree.GetComponent<TreeScript>();
-                    if (treeScript.adultTree) // Ottaa ekan puun joka on jo kasvanut
+                    foreach (var tree in treesInArea) // Jonka j‰lkeen k‰y l‰pi puut listasta
                     {
-                        treeScript.ChopTree(workingPower / 2f, false); // Ja v‰hent‰‰ silt‰ puulta hp:ta
-                        if (treeScript.hp <= 0)
+                        TreeScript treeScript = tree.GetComponent<TreeScript>();
+                        if (treeScript.adultTree) // Ottaa ekan puun joka on jo kasvanut
                         {
-                            treesInArea.Remove(tree); // Jos puulla on 0 hp, poistaa sen listasta
+                            treeScript.ChopTree(workingPower / 2f, false); // Ja v‰hent‰‰ silt‰ puulta hp:ta
+                            if (treeScript.hp <= 0)
+                            {
+                                treesInArea.Remove(tree); // Jos puulla on 0 hp, poistaa sen listasta
+                            }
+
+                            timer = 1;
+
+                            break; // Lopettaa foreach loopin koska se teki puuhun vahinkoa
                         }
-                        
-                        timer = 1;
-
-                        break; // Lopettaa foreach loopin koska se teki puuhun vahinkoa
                     }
-                }
 
+                }
             }
         }
 
+        /*
         if (gameObject.layer == 10) // Jos aluetta ei ole viel‰ ostettu
         {
             // Etsii gridin osia, jotka eiv‰t ole pois k‰ytˆst‰, ja poistaa ne k‰ytˆst‰
@@ -135,6 +136,7 @@ public class AreaScript : MonoBehaviour
                 gridParts[i].gameObject.layer = 11;
             }
         }   
+        */
     }
 
     public bool BuyArea()
