@@ -167,7 +167,7 @@ public class SaveManager : MonoBehaviour
             StorageScript.Instance.currentSawUpgrade = saveData.currentSawUpgrade;
 
             StorageScript.Instance.areas = saveData.areas; // Myös tarkistaa alueiden tiedot että onko pelaaja ostanut alueita
-
+            
             mapManager.CreateMap(true);
 
             for (int i = 0; i < saveData.trees.Count; i++) // Ottaa edellisen pelikerran spawnatut puut ja spawnaa ne uudestaan ja antaa niille oikeat tiedot esim. hp, puun korkeus
@@ -247,6 +247,27 @@ public class SaveManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         savingIcon.SetActive(false);
+    }
+
+    IEnumerator WaitForMapLoaded(List<TreeSaveData> trees)
+    {
+        while (true)
+        {
+            if (StorageScript.Instance.areas.Count == mapManager.width * mapManager.height)
+            {
+                for (int i = 0; i < trees.Count; i++) // Ottaa edellisen pelikerran spawnatut puut ja spawnaa ne uudestaan ja antaa niille oikeat tiedot esim. hp, puun korkeus
+                {
+                    GameObject newTree = Instantiate(StorageScript.Instance.treeTypes[trees[i].treeType], new Vector3(trees[i].position.x, trees[i].position.y, trees[i].position.z), Quaternion.Euler(0, trees[i].yRotation, 0));
+                    TreeScript newTreeScript = newTree.GetComponent<TreeScript>();
+                    newTreeScript.hp = trees[i].hp;
+                    newTreeScript.adultTree = trees[i].adultTree;
+                    newTreeScript.treeHeight = trees[i].treeHeight;
+                    newTree.transform.localScale = new Vector3(trees[i].scale, trees[i].scale, trees[i].scale);
+                }
+
+                yield break;
+            }
+        }
     }
 }
 

@@ -19,7 +19,7 @@ public class TreeScript : MonoBehaviour
 
     public float growthEveryFrame;
 
-    AreaScript areaOfTree;
+    [SerializeField] AreaScript areaOfTree;
 
     Animator animator;
 
@@ -27,8 +27,6 @@ public class TreeScript : MonoBehaviour
 
     [SerializeField] float loopTime = 1;
     [SerializeField] float timer;
-
-    [SerializeField] int treesInRadius;
 
     [SerializeField] LayerMask[] layerMasks;
     public ToolScript toolScript;
@@ -52,12 +50,54 @@ public class TreeScript : MonoBehaviour
         animator = GetComponent<Animator>();
 
         tutorialScript = FindObjectOfType<TutorialScript>();
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (areaOfTree == null)
+        if (areaOfTree != null)
+        {
+            if (adultTree) // Sitten ku puu on kasvanut kokonaan, se alkaa spawnaamaan muita puita
+            {
+                // Ajastin, kun ajastin on 0, aloittaa ajastimen alusta
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    timer = loopTime;
+
+                    // Valitsee random numeron 1-100 eli 1-100%
+                    float rng = Random.Range(1, 101);
+                    if (rng <= treeSpawnChance)
+                    {
+                        SpawnTree();
+                    }
+                }
+            }
+            else // Puu kasvaa ensin
+            {
+                if (transform.localScale.y >= treeHeight) // Kun puu on kasvanut
+                {
+                    adultTree = true;
+                    transform.localScale = new Vector3(treeHeight, treeHeight, treeHeight);
+                    grass.SetActive(true);
+                }
+
+                if (areaOfTree.builtBuildingsInArea > 0) // Puu kasvaa nopeammin jos alueella on rakennuksia
+                {
+                    transform.localScale += new Vector3(1, 1, 1) * growthEveryFrame * (areaOfTree.workingPower + 1) * Time.deltaTime; // include workingpower in this too
+                }
+                else
+                {
+                    transform.localScale += new Vector3(1, 1, 1) * growthEveryFrame * Time.deltaTime;
+
+                }
+            }
+
+            areaOfTree.treeTypesInArea[treeType] = true;
+        }
+        else
         {
             RaycastHit treePos;
             if (Physics.Raycast(new Vector3(transform.position.x, 10f, transform.position.z), Vector3.down, out treePos, 20f, layerMasks[2]))
@@ -67,49 +107,6 @@ public class TreeScript : MonoBehaviour
                 treeSpawnChance += (int)areaOfTree.workingPower * 4;
             }
         }
-
-        if (adultTree) // Sitten ku puu on kasvanut kokonaan, se alkaa spawnaamaan muita puita
-        {
-            transform.localScale = new Vector3(treeHeight, treeHeight, treeHeight);
-            grass.SetActive(true);
-
-            // Ajastin, kun ajastin on 0, aloittaa ajastimen alusta
-            timer -= Time.deltaTime;
-            if (timer <= 0)
-            {
-                timer = loopTime;
-
-                // Valitsee random numeron 1-100 eli 1-100%
-                float rng = Random.Range(1, 101);
-                if (rng <= treeSpawnChance)
-                {
-                    SpawnTree();
-                }
-
-                // Tarkistaa kuinka monta puuta tämän puun lähellä on
-                Collider[] sphere = Physics.OverlapSphere(transform.position, 3f, layerMasks[0]);
-                treesInRadius = sphere.Length;
-            }
-        }
-        else // Puu kasvaa ensin
-        {
-            if (transform.localScale.y >= treeHeight) // Kun puu on kasvanut
-            {
-                adultTree = true;
-            }
-
-            if (areaOfTree.builtBuildingsInArea > 0) // Puu kasvaa nopeammin jos alueella on rakennuksia
-            {
-                transform.localScale += new Vector3(1, 1, 1) * growthEveryFrame * (areaOfTree.workingPower + 1) * Time.deltaTime; // include workingpower in this too
-            }
-            else
-            {
-                transform.localScale += new Vector3(1, 1, 1) * growthEveryFrame * Time.deltaTime;
-
-            }
-        }
-
-        areaOfTree.treeTypesInArea[treeType] = true;
     }
 
     void SpawnTree()

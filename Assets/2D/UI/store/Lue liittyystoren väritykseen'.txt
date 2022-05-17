@@ -1,0 +1,3 @@
+hex koodi storen teksteille 085210
+
+sitten hex koodi nuille pienille valkosille näppäimille niin että sen reunan väri on 329E07 muuten valkonen kysy jos et ymmärtäny

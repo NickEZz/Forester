@@ -6,8 +6,8 @@ public class MapManager : MonoBehaviour
 {
     [SerializeField] int seed;
 
-    [SerializeField] int width;
-    [SerializeField] int height;
+    public int width;
+    public int height;
 
     [SerializeField] float sector0Cost, sector1Cost, sector2Cost;
 
@@ -28,7 +28,7 @@ public class MapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        seed = Random.Range(0, 1001);
     }
 
     public void CreateMap(bool mapExists)
@@ -78,6 +78,7 @@ public class MapManager : MonoBehaviour
             GameObject center = Instantiate(groundPrefabs[rng.Next(0, groundPrefabs.Length)], new Vector3(x * groundSize, 0, y * groundSize), Quaternion.Euler(-90f, 0f, 0f), gameObject.transform);
             AreaScript newAreaScript = center.GetComponent<AreaScript>();
             newAreaScript.SetAreaStats(sector, 0, i, buildScript);
+            newAreaScript.enabled = true;
             newAreaScript.bought = true;
             if (!mapExists)
             {
@@ -96,6 +97,7 @@ public class MapManager : MonoBehaviour
             newAreaScript.SetAreaStats(sector, cost, i, buildScript);
             if (mapExists)
             {
+                newAreaScript.enabled = StorageScript.Instance.areas[i].bought;
                 newAreaScript.bought = StorageScript.Instance.areas[i].bought;
                 newAreaScript.totalBuildingsInArea = StorageScript.Instance.areas[i].totalBuildingsInArea;
                 newAreaScript.builtBuildingsInArea = StorageScript.Instance.areas[i].builtBuildingsInArea;

@@ -32,7 +32,7 @@ public class DeveloperScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            hud.SetActive(!hud.activeSelf);
+            //hud.SetActive(!hud.activeSelf);
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
@@ -94,6 +94,14 @@ public class DeveloperScript : MonoBehaviour
         if (devMode)
         {
             Time.timeScale = float.Parse(parameters[1]);
+        }
+    }
+
+    void ToggleUI()
+    {
+        if (devMode)
+        {
+            hud.SetActive(!hud.activeSelf);
         }
     }
 }

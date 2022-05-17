@@ -34,7 +34,7 @@ public class AreaScript : MonoBehaviour
 
     [SerializeField] Vector3 size;
 
-    [SerializeField] LayerMask[] gridPartMasks;
+    [SerializeField] LayerMask treeLayerMask;
 
     [SerializeField] Mesh planeMesh;
 
@@ -64,10 +64,10 @@ public class AreaScript : MonoBehaviour
 
                 setup = true; // Laittaa setup boolin true että peli ei toista näitä montaa kertaa
             }
-            
-            if (builtBuildingsInArea > 0) 
+
+            if (builtBuildingsInArea > 0)
             {
-                if (treesInArea.Count > 5) 
+                if (treesInArea.Count > 5)
                 {
                     working = true;
                 }
@@ -114,29 +114,6 @@ public class AreaScript : MonoBehaviour
                 }
             }
         }
-
-        /*
-        if (gameObject.layer == 10) // Jos aluetta ei ole vielä ostettu
-        {
-            // Etsii gridin osia, jotka eivät ole pois käytöstä, ja poistaa ne käytöstä
-            Collider[] gridParts = Physics.OverlapBox(transform.position, size, Quaternion.identity, gridPartMasks[0]);
-            for (int i = 0; i < gridParts.Length; i++)
-            {
-                gridParts[i].gameObject.GetComponent<MeshFilter>().mesh = null;
-                gridParts[i].gameObject.layer = 12;
-            }
-        }
-        else if (gameObject.layer == 8) // Jos alue on ostettu
-        {
-            // Etsii gridin osia, jotka ovat pois käytöstä, ja laittaa ne takaisin päälle
-            Collider[] gridParts = Physics.OverlapBox(transform.position, size, Quaternion.identity, gridPartMasks[1]);
-            for (int i = 0; i < gridParts.Length; i++)
-            {
-                gridParts[i].gameObject.GetComponent<MeshFilter>().mesh = planeMesh;
-                gridParts[i].gameObject.layer = 11;
-            }
-        }   
-        */
     }
 
     public bool BuyArea()
@@ -152,6 +129,7 @@ public class AreaScript : MonoBehaviour
 
                 // save areas
 
+                this.enabled = true;
                 StorageScript.Instance.areas[areaId].bought = true;
                 SaveManager.Instance.SaveGameData();
 
