@@ -631,7 +631,7 @@ MonoBehaviour:
   upgradeable: 0
   upgradeWoodCost: []
   upgradeMoneyCost: 0
-  buildTime: 30
+  buildTime: 0
   yOffset: 0.6
   chosenColor: 0
   materialIndex: 0

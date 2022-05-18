@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 3080712938068371601}
   - component: {fileID: 3080712938068371603}
   - component: {fileID: 3080712938068371602}
+  - component: {fileID: 8267083104340886000}
+  - component: {fileID: 1288305560751990948}
+  - component: {fileID: 3112854837093350270}
   m_Layer: 6
   m_Name: pine
   m_TagString: Untagged
@@ -57,10 +60,10 @@ MonoBehaviour:
   grass: {fileID: 7828139134651479135}
   beingSawed: 0
   growthEveryFrame: 0.004
+  areaOfTree: {fileID: 0}
   treeSpawnChance: 20
   loopTime: 1
   timer: 1
-  treesInRadius: 0
   layerMasks:
   - serializedVersion: 2
     m_Bits: 64
@@ -99,10 +102,49 @@ BoxCollider:
   m_GameObject: {fileID: 3080712938068371604}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 2.8560119, y: 5.576862, z: 2.7366805}
   m_Center: {x: 0.16762127, y: 2.638431, z: -0.016134705}
+--- !u!65 &8267083104340886000
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3080712938068371604}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3171387, y: 3.3354232, z: 1.2306213}
+  m_Center: {x: 0.12973785, y: 1.6145872, z: 0}
+--- !u!65 &1288305560751990948
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3080712938068371604}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4755708, y: 0.9853798, z: 1.6919708}
+  m_Center: {x: 0.23778528, y: 4.9520144, z: -0.12973785}
+--- !u!65 &3112854837093350270
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3080712938068371604}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.7295685, y: 1.2013316, z: 2.6432037}
+  m_Center: {x: 0.14411926, y: 3.8491993, z: -0.057640076}
 --- !u!1 &5162299127617235194
 GameObject:
   m_ObjectHideFlags: 0

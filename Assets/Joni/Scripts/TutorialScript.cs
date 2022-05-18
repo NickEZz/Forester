@@ -7,6 +7,8 @@ public class TutorialScript : MonoBehaviour
 {
     public bool tutorial;
 
+    [SerializeField] bool finnish;
+
     [SerializeField] int currentScene;
 
     [SerializeField] TutorialScene[] scenes;
@@ -28,6 +30,23 @@ public class TutorialScript : MonoBehaviour
     {
         originalMoneyCost = StorageScript.Instance.buildingTypes[0].moneyCost;
         originalWoodCost = StorageScript.Instance.buildingTypes[0].woodCost[0];
+
+        if (finnish)
+        {
+            for (int i = 0; i < scenes.Length; i++)
+            {
+                scenes[i].textField.text = scenes[i].TextFI;
+                scenes[i].continueText.text = "Klikkaa jatkaaksesi";
+            }
+        }
+        else
+        {
+            for (int i = 0; i < scenes.Length; i++)
+            {
+                scenes[i].textField.text = scenes[i].TextEN;
+                scenes[i].continueText.text = "Click to continue";
+            }
+        }
     }
 
     // Update is called once per frame
@@ -63,7 +82,7 @@ public class TutorialScript : MonoBehaviour
                     }
                     break;
                 case 4:
-                    if (scenes[currentScene].relatedObject.GetComponent<ToolScript>().tool == 2 && !previousMenu.activeSelf)
+                    if (scenes[currentScene].relatedObject.GetComponent<ToolScript>().tool == 3 && !previousMenu.activeSelf)
                     {
                         NextScene();
                     }
@@ -270,5 +289,10 @@ public class TutorialScene
 {
     public GameObject gameObject;
     public GameObject relatedObject;
-    public Vector3 cameraPosition;
+    public TextMeshProUGUI textField;
+    public TextMeshProUGUI continueText;
+    [TextArea]
+    public string TextEN;
+    [TextArea]
+    public string TextFI;
 }

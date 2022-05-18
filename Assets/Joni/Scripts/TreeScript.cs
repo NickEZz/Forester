@@ -51,7 +51,10 @@ public class TreeScript : MonoBehaviour
 
         tutorialScript = FindObjectOfType<TutorialScript>();
 
-        
+        if (adultTree)
+        {
+            grass.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -248,6 +251,12 @@ public class TreeScript : MonoBehaviour
                 
                 if (hp <= 0)
                 {
+                    areaOfTree.treesInArea.Remove(gameObject);
+
+                    StorageScript.Instance.treesInGame.Remove(gameObject);
+
+                    StorageScript.Instance.wood[treeType] += treeHeight * 10;
+
                     audioManager.PlaySound("treefall", transform.position);
                     StopChainsaw();
                     StartAnimation();

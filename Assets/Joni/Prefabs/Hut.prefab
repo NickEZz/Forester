@@ -117,7 +117,7 @@ MonoBehaviour:
   - 40
   - 0
   upgradeMoneyCost: 1000
-  buildTime: 10
+  buildTime: 0
   yOffset: 0.14
   chosenColor: 0
   materialIndex: 1

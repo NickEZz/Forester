@@ -11,7 +11,6 @@ public class ToolScript : MonoBehaviour
 
     public bool sawing = false;
 
-    [SerializeField] bool chainsawOwned;
     [SerializeField] float chainsawSpeed;
     float timer;
 
@@ -42,19 +41,31 @@ public class ToolScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 tool--;
+
+                if (StorageScript.Instance.currentChainsawUpgrade == 0 && tool == 2)
+                {
+                    tool--;
+                }
             }
             if (Input.GetKeyDown(KeyCode.E))
             {
                 tool++;
+
+                if (StorageScript.Instance.currentChainsawUpgrade == 0 && tool == 2)
+                {
+                    tool++;
+                }
+
+                
             }
-            tool = Mathf.Clamp(tool++, 0, 5);
+            tool = Mathf.Clamp(tool++, 0, 5 - (2 - StorageScript.Instance.currentSector));
 
             Vector2 input = Input.mousePosition;
             Ray ray = cam.ScreenPointToRay(input);
 
             RaycastHit mouse;
 
-            if (tool <= 1)
+            if (tool <= 2)
             {
                 previewObject.SetActive(false);
             }
@@ -96,18 +107,7 @@ public class ToolScript : MonoBehaviour
 
                     break;
 
-                case 2: // Spruce
-                    SpawnTree(0, ray);
-                    break;
-
-                case 3:
-                    SpawnTree(1, ray);
-                    break;
-
-                case 4:
-                    SpawnTree(2, ray);
-                    break;
-                case 5:
+                case 2: 
                     if (StorageScript.Instance.currentChainsawUpgrade > 0)
                     {
                         if (Input.GetMouseButtonDown(0) && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
@@ -149,14 +149,33 @@ public class ToolScript : MonoBehaviour
 
                             if (Physics.Raycast(ray, out mouse, 40f, layerMasks[2]))
                             {
-                                if (mouse.collider.GetComponent<TreeScript>().hp > 0)
+                                TreeScript treeScript = mouse.collider.GetComponent<TreeScript>();
+
+                                if (treeScript.hp > 0 && treeScript.adultTree) 
                                 {
-                                    mouse.collider.GetComponent<TreeScript>().StopChainsaw();
+                                    treeScript.StopChainsaw();
                                 }
                             }
                         }
                     }
+
                     
+                    break;
+
+                case 3:
+                    SpawnTree(0, ray);
+
+                    
+                    break;
+
+                case 4:
+                    SpawnTree(1, ray);
+
+                    
+                    break;
+                case 5:
+                    SpawnTree(2, ray);
+
                     break;
 
                 default:
@@ -212,7 +231,6 @@ public class ToolScript : MonoBehaviour
     {
         axeDamage = StorageScript.Instance.axes[StorageScript.Instance.currentAxeUpgrade].toolDamage;
         sawDamage = StorageScript.Instance.saws[StorageScript.Instance.currentSawUpgrade].toolDamage;
-        //chainsawDamage = StorageScript.Instance.chainsaws[StorageScript.Instance.currentChainsawUpgrade].toolDamage;
     }
 
     void DestroyTool()

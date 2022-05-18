@@ -97,6 +97,7 @@ public class SaveManager : MonoBehaviour
 
         saveData.currentAxeUpgrade = StorageScript.Instance.currentAxeUpgrade; // Tallentaa myös työkalujen päivitykset
         saveData.currentSawUpgrade = StorageScript.Instance.currentSawUpgrade;
+        saveData.currentChainsawUpgrade = StorageScript.Instance.currentChainsawUpgrade;
 
         saveData.areas = StorageScript.Instance.areas; // Tallentaa kaikki alueet, että peli muistaa minkä alueen pelaaja on ostanut.
 
@@ -165,6 +166,7 @@ public class SaveManager : MonoBehaviour
 
             StorageScript.Instance.currentAxeUpgrade = saveData.currentAxeUpgrade; // Ja työkalujen päivitykset
             StorageScript.Instance.currentSawUpgrade = saveData.currentSawUpgrade;
+            StorageScript.Instance.currentChainsawUpgrade = saveData.currentChainsawUpgrade;
 
             StorageScript.Instance.areas = saveData.areas; // Myös tarkistaa alueiden tiedot että onko pelaaja ostanut alueita
             
@@ -281,6 +283,7 @@ public class SaveData
 
     public int currentAxeUpgrade;
     public int currentSawUpgrade;
+    public int currentChainsawUpgrade;
 
     public List<AreaSaveData> areas;
     public List<TreeSaveData> trees;
