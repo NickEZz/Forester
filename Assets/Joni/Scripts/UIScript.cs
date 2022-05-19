@@ -19,6 +19,8 @@ public class UIScript : MonoBehaviour
     [SerializeField] private GameObject buildingMenu;
     [SerializeField] private Image[] buildingButtons;
 
+    [SerializeField] private GameObject buildingInfoOne, buildingInfoTwo, buildingInfoThree;
+
     [SerializeField] private GameObject storeButton;
     [SerializeField] private GameObject store;
 
@@ -385,6 +387,36 @@ public class UIScript : MonoBehaviour
         audioManager.PlaySound("click", Vector3.zero);
     }
 
+    public void OpenBuildingInfoOne()
+    {
+        buildingInfoOne.SetActive(true);
+    }
+
+    public void CloseBuildingInfoOne()
+    {
+        buildingInfoOne.SetActive(false);
+    }
+
+    public void OpenBuildingInfoTwo()
+    {
+        buildingInfoTwo.SetActive(true);
+    }
+
+    public void CloseBuildingInfoTwo()
+    {
+        buildingInfoTwo.SetActive(false);
+    }
+
+    public void OpenBuildingInfoThree()
+    {
+        buildingInfoThree.SetActive(true);
+    }
+
+    public void CloseBuildingInfoThree()
+    {
+        buildingInfoThree.SetActive(false);
+    }
+
     public void ToggleStore()
     {
         store.SetActive(!store.activeSelf);
@@ -574,13 +606,11 @@ public class UIScript : MonoBehaviour
     public void SaveVolume()
     {
         PlayerPrefs.SetFloat("Volume", volumeSlider.value);
-        //SaveManager.Instance.SaveSetting("Volume", volumeSlider.value);
     }
 
     public void SaveSensitivity()
     {
         PlayerPrefs.SetFloat("Sensitivity", sensitivitySlider.value);
-        //SaveManager.Instance.SaveSetting("Sensitivity", sensitivitySlider.value);
     }
 
     public void ResetSaveGameButton()
