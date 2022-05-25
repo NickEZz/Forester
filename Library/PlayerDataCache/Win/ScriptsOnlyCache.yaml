@@ -768,7 +768,7 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
-      Hash: 17662696a6ca4ea5efbc5a19e4cc52cf
+      Hash: 948600e5adc770cccadce2f9ce6fad58
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIScript
@@ -956,4 +956,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Joni/MainMenu.unity
   - Assets/Joni/JoninScene.unity
-  playerPath: C:/Users/s0pyjo01/Desktop/ForesterV0.2.8/Forester.exe
+  playerPath: C:/Users/Joni/Desktop/Unity/Builds/3D/Forester/ForesterV0.3.0/Forester.exe

@@ -30,6 +30,7 @@ public class HouseScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Lis‰‰ uuden talon listaan, jossa on kaikki muutkin talot ett‰ peli voi tallentaa ne
         StorageScript.Instance.buildingsInGame.Add(gameObject);
         
 

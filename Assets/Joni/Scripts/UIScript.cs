@@ -18,6 +18,7 @@ public class UIScript : MonoBehaviour
 
     [SerializeField] private GameObject buildingMenu;
     [SerializeField] private Image[] buildingButtons;
+    [SerializeField] private GameObject buildingCover2, buildingCover3;
 
     [SerializeField] private GameObject buildingInfoOne, buildingInfoTwo, buildingInfoThree;
 
@@ -160,6 +161,7 @@ public class UIScript : MonoBehaviour
         // Piilottaa saplingit jota ei voi ostaa vielä
         switch (StorageScript.Instance.currentSector)
         {
+            /*
             case 0:
                 if (!lockedPineCovers[0].activeSelf || !lockedPineCovers[1].activeSelf)
                 {
@@ -174,6 +176,7 @@ public class UIScript : MonoBehaviour
                     lockedBirchCovers[2].SetActive(true);
                 }
                 break;
+            */
             case 1:
                 for (int i = 0; i < lockedPineCovers.Length; i++)
                 {
@@ -186,6 +189,11 @@ public class UIScript : MonoBehaviour
                 {
                     lockedBirchCovers[0].SetActive(true);
                     lockedBirchCovers[1].SetActive(true);
+                }
+
+                if (buildingCover2.activeSelf)
+                {
+                    buildingCover2.SetActive(false);
                 }
                 break;
             case 2:
@@ -202,6 +210,15 @@ public class UIScript : MonoBehaviour
                     {
                         lockedBirchCovers[i].SetActive(false);
                     }
+                }
+
+                if (buildingCover2.activeSelf)
+                {
+                    buildingCover2.SetActive(false);
+                }
+                if (buildingCover3.activeSelf)
+                {
+                    buildingCover3.SetActive(false);
                 }
                 break;
         }
