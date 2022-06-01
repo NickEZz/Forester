@@ -41,7 +41,7 @@ public class MapManager : MonoBehaviour
         // Laskee offsetin, jotta maa-alueen keskiosa on 0x, 0z positionissa
         float offset = Mathf.Floor(width / 2) * 10;
 
-        // Scripti generoi maa-palat rivi kerrallaan, vasemmalta oikealla jonka jälkeen se generoi seuraavan rivin edellisen yläpuolelle
+        // Scripti generoi maa-palat rivi kerrallaan, vasemmalta oikealle jonka jälkeen se generoi seuraavan rivin edellisen yläpuolelle
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++) // en keksiny parempaa tapaa jakaa alueet eri ryhmiin
@@ -50,6 +50,24 @@ public class MapManager : MonoBehaviour
                 {
                     SpawnLevelPart(true, 0, groundSize, sector0Areas, x, y, 0, rng, mapExists);
                 }
+                else if (y == 1 || x == 1)
+                {
+                    if (y == 1 && x < 2)
+                    {
+                        SpawnLevelPart(false, 1, groundSize, sector1Areas, x, y, sector1Cost, rng, mapExists);
+                    }
+                    else if (x == 1 && y < 2)
+                    {
+                        SpawnLevelPart(false, 1, groundSize, sector1Areas, x, y, sector1Cost, rng, mapExists);
+                    }
+                }
+                if (y > 1 || x > 1)
+                {
+                    SpawnLevelPart(false, 2, groundSize, sector2Areas, x, y, sector2Cost, rng, mapExists);
+                }
+
+
+                /*
                 else if (y < 3 && x < 3)
                 {
                     SpawnLevelPart(false, 0, groundSize, sector0Areas, x, y, sector0Cost, rng, mapExists);
@@ -65,6 +83,7 @@ public class MapManager : MonoBehaviour
                 {
                     SpawnLevelPart(false, 2, groundSize, sector2Areas, x, y, sector2Cost, rng, mapExists);
                 }
+                */
             }
         }
 
@@ -125,18 +144,14 @@ public class MapManager : MonoBehaviour
         {
             for (int y = 0; y < h; y++)
             {
-                //print(x + ", " + y);
-
                 if (rng.Next(0, 101) <= objectSpawnChance)
                 {
-                    //print("tried spawning");
                     RaycastHit hit;
                     if (Physics.Raycast(new Vector3(x, 10, y), Vector3.down, out hit, 20f))
                     {
                         if (hit.collider.tag != "Structure")
                         {
                             Instantiate(groundObjectPrefabs[rng.Next(0, groundObjectPrefabs.Length)], hit.point, Quaternion.Euler(-90f, 0f, 0f));
-                            //print("spawned");
                         }
                     }
                 }

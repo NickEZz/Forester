@@ -100,6 +100,7 @@ public class SaveManager : MonoBehaviour
         saveData.currentChainsawUpgrade = StorageScript.Instance.currentChainsawUpgrade;
 
         saveData.areas = StorageScript.Instance.areas; // Tallentaa kaikki alueet, että peli muistaa minkä alueen pelaaja on ostanut.
+        saveData.sectorsOwned = mapManager.sectorsOwned;
 
         StorageScript.Instance.trees.Clear(); // Tyhjentää trees listan edellisistä puista
 
@@ -169,6 +170,7 @@ public class SaveManager : MonoBehaviour
             StorageScript.Instance.currentChainsawUpgrade = saveData.currentChainsawUpgrade;
 
             StorageScript.Instance.areas = saveData.areas; // Myös tarkistaa alueiden tiedot että onko pelaaja ostanut alueita
+            mapManager.sectorsOwned = saveData.sectorsOwned;
             
             mapManager.CreateMap(true);
 
@@ -194,19 +196,33 @@ public class SaveManager : MonoBehaviour
             TimeSpan timeSpan = DateTime.Now - DateTime.Parse(saveData.quitTimeString);
             print("Offline for " + timeSpan.TotalSeconds + " seconds.");
 
-            for (int i = 0; i < saveData.areas.Count; i++)
+            for (int i = 0; i < saveData.areas.Count; i++) // Käy kaikki alueet läpi
             {
-                if (saveData.areas[i].bought)
+                if (saveData.areas[i].bought) // Tarkistaa onko ne ostettu
                 {
-                    if (saveData.areas[i].workingPower > 0)
+                    if (saveData.areas[i].workingPower > 0) // Jos alue on ostettu ja alueella on myös taloja
                     {
-                        for (int j = 0; j < saveData.areas[i].treeTypesInArea.Length; j++)
+                        for (int j = 0; j < saveData.areas[i].treeTypesInArea.Length; j++) 
                         {
-                            if (saveData.areas[i].treeTypesInArea[j] == true)
+                            if (saveData.areas[i].treeTypesInArea[j] == true) // Tarkistaa minkälaisia puita alueella oli
                             {
-                                print("Earned " + StorageScript.Instance.offlineEarningMultiplier * saveData.areas[i].workingPower * (float)timeSpan.TotalSeconds + " wood of type: " + j);
+                                float amount = 0;
 
-                                float amount = StorageScript.Instance.offlineEarningMultiplier * saveData.areas[i].workingPower * (float)timeSpan.TotalSeconds;
+                                switch (j) // Antaa pelaajalle puuta sen perusteella että mitä puita alueella oli ja myös rajoittaa määrät että pelaaja ei saa liian isoja määriä
+                                {
+                                    case 0:
+                                        amount = Mathf.Clamp(StorageScript.Instance.offlineEarningMultiplier * saveData.areas[i].workingPower * (float)timeSpan.TotalSeconds, 0, 180);
+                                        print("Earned " + amount + " wood of type: " + j);
+                                        break;
+                                    case 1:
+                                        amount = Mathf.Clamp(StorageScript.Instance.offlineEarningMultiplier * 0.66f * saveData.areas[i].workingPower * (float)timeSpan.TotalSeconds, 0, 120);
+                                        print("Earned " + amount + " wood of type: " + j);
+                                        break;
+                                    case 2:
+                                        amount = Mathf.Clamp(StorageScript.Instance.offlineEarningMultiplier * 0.33f * saveData.areas[i].workingPower * (float)timeSpan.TotalSeconds, 0, 60);
+                                        print("Earned " + amount + " wood of type: " + j);
+                                        break;
+                                }
 
                                 StorageScript.Instance.wood[j] += amount;
                                 totalWoodEarned += amount;
@@ -288,6 +304,8 @@ public class SaveData
     public List<AreaSaveData> areas;
     public List<TreeSaveData> trees;
     public List<BuildingSaveData> buildings;
+
+    public int[] sectorsOwned;
 
     public string quitTimeString;
 }

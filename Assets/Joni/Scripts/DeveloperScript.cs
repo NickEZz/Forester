@@ -35,13 +35,13 @@ public class DeveloperScript : MonoBehaviour
             //hud.SetActive(!hud.activeSelf);
         }
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return)) // Kun painaa enteriä consoleen
         {
             string input = console.GetComponent<TMP_InputField>().text; // Ottaa pelaajan inputin
-            string[] split = input.Split(' '); // Jakaa tekstin
-            parameters = split;
+            string[] split = input.Split(' '); // Jakaa tekstin osiin
+            parameters = split; // tallentaa osat 
 
-            Invoke(parameters[0], 0f);
+            Invoke(parameters[0], 0f); // Käyttää komennon minkä pelaaja syötti
 
             console.GetComponent<TMP_InputField>().text = "";
         }

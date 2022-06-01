@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Joni/MainMenu.unity
+- path: Assets/Joni/JoninScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
