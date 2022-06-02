@@ -243,11 +243,11 @@ public class ToolScript : MonoBehaviour
 public struct Tool
 {
     public int toolId;
-    public Texture2D toolSprite;
+    public Sprite toolSprite;
     public float toolPrice;
     public float toolDamage;
 
-    public Tool(Texture2D _toolSprite, float _toolPrice, float _toolDamage, int _toolId)
+    public Tool(Sprite _toolSprite, float _toolPrice, float _toolDamage, int _toolId)
     {
         toolSprite = _toolSprite;
         toolPrice = _toolPrice;

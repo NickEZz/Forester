@@ -23,7 +23,7 @@ public class MainMenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && !fade.fading)
         {
             fade.FadeOut();
             pressedKey = true;

@@ -38,18 +38,18 @@ public class UIScript : MonoBehaviour
     [SerializeField] private ToolScript toolScript;
     [SerializeField] private BuildScript buildScript;
 
-    [SerializeField] private RawImage currentBuildingIcon;
+    [SerializeField] private Image currentBuildingIcon;
 
     [SerializeField] private int lastSelectedTool;
     [SerializeField] private int lastSelectedSapling;
 
-    [SerializeField] private RawImage currentToolIcon;
-    [SerializeField] private Texture2D[] toolIcons;
-    [SerializeField] private RawImage[] toolMenuToolIcons;
-    [SerializeField] private RawImage currentSaplingIcon;
+    [SerializeField] private Image currentToolIcon;
+    [SerializeField] private Sprite[] toolIcons;
+    [SerializeField] private Image[] toolMenuToolIcons;
+    [SerializeField] private Image currentSaplingIcon;
     [SerializeField] private TextMeshProUGUI saplingAmountText;
 
-    [SerializeField] private RawImage[] shopToolIcons;
+    [SerializeField] private Image[] shopToolIcons;
     [SerializeField] private TextMeshProUGUI[] shopToolPrices;
 
     [SerializeField] private GameObject[] lockedPineCovers, lockedBirchCovers, lockedChainsawCovers;
@@ -121,30 +121,30 @@ public class UIScript : MonoBehaviour
         toolIcons[0] = StorageScript.Instance.axes[StorageScript.Instance.currentAxeUpgrade].toolSprite;
         toolIcons[1] = StorageScript.Instance.saws[StorageScript.Instance.currentSawUpgrade].toolSprite;
 
-        toolMenuToolIcons[0].texture = toolIcons[0];
-        toolMenuToolIcons[1].texture = toolIcons[1];
+        toolMenuToolIcons[0].sprite = toolIcons[0];
+        toolMenuToolIcons[1].sprite = toolIcons[1];
 
         for (int i = 0; i < shopToolIcons.Length; i++)
         {
             if (StorageScript.Instance.currentAxeUpgrade == StorageScript.Instance.axes.Length - 1) // Jos on max päivitys
             {
                 shopToolPrices[0].text = "Max";
-                shopToolIcons[0].texture = StorageScript.Instance.axes[StorageScript.Instance.currentAxeUpgrade].toolSprite;
+                shopToolIcons[0].sprite = StorageScript.Instance.axes[StorageScript.Instance.currentAxeUpgrade].toolSprite;
             }
             else
             {
-                shopToolIcons[0].texture = StorageScript.Instance.axes[StorageScript.Instance.currentAxeUpgrade + 1].toolSprite;
+                shopToolIcons[0].sprite = StorageScript.Instance.axes[StorageScript.Instance.currentAxeUpgrade + 1].toolSprite;
                 shopToolPrices[0].text = StorageScript.Instance.axes[StorageScript.Instance.currentAxeUpgrade + 1].toolPrice.ToString() + "€";
             }
 
             if (StorageScript.Instance.currentSawUpgrade == StorageScript.Instance.saws.Length - 1) // Jos on max päivitys
             {
                 shopToolPrices[1].text = "Max";
-                shopToolIcons[1].texture = StorageScript.Instance.saws[StorageScript.Instance.currentSawUpgrade].toolSprite;
+                shopToolIcons[1].sprite = StorageScript.Instance.saws[StorageScript.Instance.currentSawUpgrade].toolSprite;
             }
             else
             {
-                shopToolIcons[1].texture = StorageScript.Instance.saws[StorageScript.Instance.currentSawUpgrade + 1].toolSprite;
+                shopToolIcons[1].sprite = StorageScript.Instance.saws[StorageScript.Instance.currentSawUpgrade + 1].toolSprite;
                 shopToolPrices[1].text = StorageScript.Instance.saws[StorageScript.Instance.currentSawUpgrade + 1].toolPrice.ToString() + "€";
             }
         }
@@ -268,13 +268,13 @@ public class UIScript : MonoBehaviour
 
             if (toolScript.tool < 3)
             {
-                currentToolIcon.texture = toolIcons[toolScript.tool];
+                currentToolIcon.sprite = toolIcons[toolScript.tool];
                 test[1].color = Color.white;
                 test[0].color = Color.gray;
             }
             else
             {
-                currentSaplingIcon.texture = StorageScript.Instance.saplingTypes[toolScript.tool - 3].sprite;
+                currentSaplingIcon.sprite = StorageScript.Instance.saplingTypes[toolScript.tool - 3].sprite;
                 saplingAmountText.text = StorageScript.Instance.saplings[toolScript.tool - 3].ToString();
                 test[0].color = Color.white;
                 test[1].color = Color.gray;
@@ -333,7 +333,7 @@ public class UIScript : MonoBehaviour
     {
         toolScript.tool = 0;
         lastSelectedTool = 0;
-        currentToolIcon.texture = toolIcons[0];
+        currentToolIcon.sprite = toolIcons[0];
         ToggleToolMenu();
         audioManager.PlaySound("click", Vector3.zero);
     }
@@ -342,7 +342,7 @@ public class UIScript : MonoBehaviour
     {
         toolScript.tool = 1;
         lastSelectedTool = 1;
-        currentToolIcon.texture = toolIcons[1];
+        currentToolIcon.sprite = toolIcons[1];
         ToggleToolMenu();
         audioManager.PlaySound("click", Vector3.zero);
     }
@@ -351,7 +351,7 @@ public class UIScript : MonoBehaviour
     {
         toolScript.tool = 2;
         lastSelectedTool = 2;
-        currentToolIcon.texture = toolIcons[2];
+        currentToolIcon.sprite = toolIcons[2];
         ToggleToolMenu();
         audioManager.PlaySound("click", Vector3.zero);
     }
@@ -477,7 +477,7 @@ public class UIScript : MonoBehaviour
         if (StorageScript.Instance.wood[1] >= amount)
         {
             StorageScript.Instance.wood[1] -= amount;
-            StorageScript.Instance.money += amount * 130f;
+            StorageScript.Instance.money += amount * 80f;
             audioManager.PlaySound("transactionsound", Vector3.zero);
         }
         
@@ -488,7 +488,7 @@ public class UIScript : MonoBehaviour
         if (StorageScript.Instance.wood[1] > 0)
         {
             audioManager.PlaySound("transactionsound", Vector3.zero);
-            StorageScript.Instance.money += StorageScript.Instance.wood[1] * 130f;
+            StorageScript.Instance.money += StorageScript.Instance.wood[1] * 80f;
             StorageScript.Instance.wood[1] -= StorageScript.Instance.wood[1];
 
         }
@@ -499,7 +499,7 @@ public class UIScript : MonoBehaviour
         if (StorageScript.Instance.wood[2] >= amount)
         {
             StorageScript.Instance.wood[2] -= amount;
-            StorageScript.Instance.money += amount * 200f;
+            StorageScript.Instance.money += amount * 120f;
             audioManager.PlaySound("transactionsound", Vector3.zero);
         }
     }
@@ -509,7 +509,7 @@ public class UIScript : MonoBehaviour
         if (StorageScript.Instance.wood[2] > 0)
         {
             audioManager.PlaySound("transactionsound", Vector3.zero);
-            StorageScript.Instance.money += StorageScript.Instance.wood[2] * 200f;
+            StorageScript.Instance.money += StorageScript.Instance.wood[2] * 120f;
             StorageScript.Instance.wood[2] -= StorageScript.Instance.wood[2];
             
         }

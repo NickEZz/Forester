@@ -158,8 +158,6 @@ public class TreeScript : MonoBehaviour
             {
                 if (adultTree)
                 {
-                    areaOfTree.treesInArea.Remove(gameObject);
-                   
                     StorageScript.Instance.wood[treeType] += treeHeight * 10;
 
                     if (tutorialScript.tutorial)
@@ -169,6 +167,7 @@ public class TreeScript : MonoBehaviour
                 }
 
                 StorageScript.Instance.treesInGame.Remove(gameObject);
+                areaOfTree.treesInArea.Remove(gameObject);
 
                 if (player)
                 {
@@ -316,5 +315,5 @@ public class Sapling
 {
     public string name;
     public float price;
-    public Texture2D sprite;
+    public Sprite sprite;
 }

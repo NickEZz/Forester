@@ -56,6 +56,7 @@
     <Compile Include="Assets\Joni\Scripts\ToolScript.cs" />
     <Compile Include="Assets\Joni\Scripts\HouseScript.cs" />
     <Compile Include="Assets\Joni\Scripts\PopUpScript.cs" />
+    <Compile Include="Assets\Joni\Scripts\NewareaScript.cs" />
     <Compile Include="Assets\Joni\Scripts\ToolEvent.cs" />
     <Compile Include="Assets\Joni\Scripts\BuildScript.cs" />
     <Compile Include="Assets\Joni\Scripts\StorageScript.cs" />
@@ -77,7 +78,6 @@
     <Compile Include="Assets\Joni\Scripts\Fade.cs" />
     <Compile Include="Assets\Joni\test.cs" />
     <Compile Include="Assets\Joni\Scripts\RoadScript.cs" />
-    <Compile Include="Assets\Joni\Scripts\NewareaScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
